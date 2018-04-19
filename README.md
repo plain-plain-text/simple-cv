@@ -24,9 +24,7 @@ in.
 
 ## Installing
 
-1. Clone the repository:
-
-`git clone git@github.com:muziejus/simple-cv.git`
+1. Clone the repository: `git clone git@github.com:muziejus/simple-cv.git`
 
 1. Enable GitHub pages on your new repository:
   * Click on the “Settings” on your repository’s GitHub page.
