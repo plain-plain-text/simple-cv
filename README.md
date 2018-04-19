@@ -38,7 +38,10 @@ There are three things to edit in this repository.
    you want, which is distributed among the YAML files saved in `data/`.
 
 1. Each section of your CV (education, publications, etc.) is its own Markdown
-   file in `sections/`.
+   file in `sections/`. **Note:** The processing script does not know about
+   these files, so you need to inform the script about them under
+   `cv-sections` in `data/format.yml`. This allows you to determine the order
+   of the sections on the fly.
 
 1. The look and feel of both the `html` and `pdf` versions of the document are
    managed by the two files in the `templates/` directory.
