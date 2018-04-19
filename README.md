@@ -1,10 +1,10 @@
 # simple-cv
 
-This repository lets one create fill in a template of data that then creates a
+This repository lets one write a CV using Markdown. Using the discrete
+Markdown files and a bit of information provided by YAML files, it generates a
 CV in both `html` and `pdf` forms. Furthermore, it even hosts them on GitHub
 Pages. This project was inspired by my [own cv](http://cv.moacir.com), which
-uses the same underlying logic but has any amount of specialized fields coded
-in.
+uses the same underlying logic.
 
 ## Requirements/Assumptions
 
