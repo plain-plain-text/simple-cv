@@ -19,3 +19,6 @@ pdf-options:
   # - overlapped # section titles overlap the body
   - line # name on the left with a line and address on the right
   # - centered # name and address are centered
+## HTML options
+html-options:
+  lang: en # document language.
