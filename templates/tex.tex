@@ -4,13 +4,13 @@
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
 \hypersetup{
-            pdftitle={$title$},
-            pdfauthor={$author$},
+            pdftitle={$format.title$},
+            pdfauthor={$for(format.author)$$format.author$$sep$, $endfor$},
             pdfborder={0 0 0},
             breaklinks=true}
 
 \title{$personal.display-name$}
-\author{$author$}
+\author{$for(format.author)$$format.author$$sep$\and $endfor$}
 \date{$date$}
 
 \begin{document}

@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="$html-options.lang$" xml:lang="$html-options.lang$">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="author" content="$author$" />
+  $for(format.author)$
+  <meta name="author" content="$format.author$" />
+  $endfor$
   <meta name="dcterms.date" content="$date$" />
-  <title>$title$</title>
+  <title>$format.title$</title>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
 </head>
 <body>
-  <h1>$title$</h1>
+  <h1>$personal.display-name$</h1>
 </body>
 </html>
