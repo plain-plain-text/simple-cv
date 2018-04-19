@@ -10,7 +10,8 @@ in.
 
 1. You have used the command line before. 
 
-1. You know the basics of the [YAML syntax](https://learnxinyminutes.com/docs/yaml/)
+1. You know the basics of the [YAML
+   syntax](https://learnxinyminutes.com/docs/yaml/).
 
 1. [Pandoc](https://pandoc.org/). They have an [installing
    page](https://pandoc.org/installing.html) that explains the process for
