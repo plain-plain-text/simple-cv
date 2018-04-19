@@ -10,6 +10,11 @@ cv-sections: # Each of these corresponds to a file in sections/ and are in order
 - education
 - appointments
 - publications
+- lectures
+- teaching
+- service
+- skills
+- languages
 ## PDF options
 pdf-options:
   filename: H_W_Jones # no '.pdf' needed.
