@@ -4,7 +4,7 @@
 require 'yaml'
 
 # Load in data sources & dump them to a new file.
-data = { date: Time.now.strftime("%F") }
+data = {}
 Dir.glob('data/*.yml') do |file|
   key = file.sub(/^data\//, "").sub(/\.yml$/, "")
   data[key] = YAML.load_file file
@@ -12,6 +12,7 @@ end
 data["title"] = data["format"]["title"]
 File.open('metadata.yml', 'w') do |file|
   file.puts YAML::dump(data)
+  file.puts "date: #{Time.now.strftime "%F"}" 
   file.puts "---"
 end
 
