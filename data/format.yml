@@ -9,8 +9,6 @@ cv-sections: # Each of these corresponds to a file in sections/ and are in order
 - education
 - appointments
 - publications
-data-sources: # This describes other files in data/
-  personal: personal # so data/personal.yml
 ## PDF options
 pdf-options:
   filename: H_W_Jones # no '.pdf' needed.
