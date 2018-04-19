@@ -22,7 +22,7 @@ in.
    [EuropassCV](https://www.ctan.org/tex-archive/macros/latex/contrib/europasscv)
    package with `sudo tlmgr install europasscv`.
 
-## Using
+## Installing
 
 1. Clone the repository:
 
@@ -30,8 +30,48 @@ in.
 
 1. Enable GitHub pages on your new repository:
   * Click on the “Settings” on your repository’s GitHub page.
-  * 
+  * Scroll down to “GitHub Pages” and choose “master branch /docs folder.”
+  * Click “Save” beside that.
 
-1. Edit `data.yml` to match your personal details
+Now the sample webpage should be visible at
+`http://GITHUBUSERNAME.github.io/simple-civ/`.
 
-1. Edit the documents in `sections/` to match your own CV
+## Editing 
+
+There are three things to edit in this repository. 
+
+1. The metadata, which is simple information about yourself and about the CV
+   you want, is saved in the file `metadata.yml`
+
+1. Each section of your CV (education, publications, etc.) is its own Markdown
+   file in `sections/`.
+
+1. The look and feel of both the `html` and `pdf` versions of the document are
+   managed by the two files in the `templates/` directory.
+
+When you’ve made your changes, you must run the ruby script:
+
+`ruby process.rb`
+
+This produces new versions of the `html` and `pdf` files, so you can
+subsequently stage, commit, and push, to make the files available online.
+
+## Features
+
+## Metadata.yml
+
+## Sections
+
+## Rationale
+
+Being able to update both my online and “paper” CV at once has been a goal for
+over a decade. Luckily, Pandoc has stepped in to make that process simpler.
+This project used to be a complicated and very brittle system using
+MultiMarkDown and shell script. This all works, in my opinion, more simply.
+
+## Features to Add
+
+* BibTeX support
+* Europass support
+* font-wrangling support
+
