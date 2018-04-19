@@ -27,34 +27,24 @@ end
 # Make a list of the sections files.
 files = data["format"]["cv-sections"].map{ |section| "sections/#{section}.md" }.join " "
 
-# Add templating information
-tex_opts = "--template=#{tex_template} "
-pdf_opts = "--pdf-engine=xelatex --template=#{tex_template} "
-html_opts = "--template=#{html_template}"
+# Prepare the output for tex, pdf, and html
+output = [{
+  template: tex_template,
+  other_opts: "",
+  file_name: "out.tex"
+}, {
+  template: tex_template,
+  other_opts: "--pdf-engine=xelatex",
+  file_name: "#{data["format"]["pdf-options"]["filename"]}.pdf"
+}, {
+  template: html_template,
+  other_opts: "",
+  file_name: "index.html"
+}]
 
-tex_cmd = "pandoc -sr markdown+yaml_metadata_block \
-  #{tex_opts} \
-  'metadata.yml' \
-  #{files} \
-  -o docs/out.tex"
-pdf_cmd = "pandoc -sr markdown+yaml_metadata_block \
-  #{pdf_opts} \
-  'metadata.yml' \
-  #{files} \
-  -o docs/#{data["format"]["pdf-options"]["filename"]}.pdf"
-html_cmd = "pandoc -sr markdown+yaml_metadata_block \
-  #{html_opts} \
-  'metadata.yml' \
-  #{files} \
-  -o docs/index.html"
-
-system tex_cmd
-puts "Generated docs/out.tex"
-system pdf_cmd
-puts "Generated docs/#{data["format"]["pdf-options"]["filename"]}.pdf"
-system html_cmd
-puts "Generated docs/index.html"
-
-
-
-
+# Summon pandoc.
+output.each do |format|
+  command = "pandoc -sr markdown+yaml_metadata_block --template=#{format[:template]} #{format[:other_opts]} metadata.yml #{files} -o docs/#{format[:file_name]}"
+  system command
+  puts "Generated docs/#{format[:file_name]}"
+end
