@@ -45,7 +45,7 @@ There are three things to edit in this repository.
 
 When you’ve made your changes, you must run the ruby script:
 
-`ruby process.rb`
+`ruby process-cv.rb`
 
 This produces new versions of the `html` and `pdf` files, so you can
 subsequently stage, commit, and push, to make the files available online.

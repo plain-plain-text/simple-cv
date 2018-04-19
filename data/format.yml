@@ -1,0 +1,21 @@
+--- # format.yml holds the information about how to format the CV.
+## General options. These are all required.
+title: Henry Walton Jones, Jr. CV # This is for the pdf metadata and <title> in html
+author: Henry Walton Jones, Jr. # This is the *author*, not the person, though it’s probably the same.
+template: templates/tex.tex # for pdfs
+template-html: templates/html.html # for html
+cv-sections: # Each of these corresponds to a file in sections/ and are in order
+- fields # so, sections/fields.md
+- education
+- appointments
+- publications
+data-sources: # This describes other files in data/
+  personal: personal # so data/personal.yml
+## PDF options
+pdf-options:
+  filename: H_W_Jones # no '.pdf' needed.
+  style: 
+  - margin # section titles are in the margin
+  # - overlapped # section titles overlap the body
+  - line # name on the left with a line and address on the right
+  # - centered # name and address are centered
