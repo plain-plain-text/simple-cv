@@ -1,7 +1,7 @@
 --- # format.yml holds the information about how to format the CV.
 ## General options. These are all required.
 title: Henry Walton Jones, Jr. CV # This is for the pdf metadata and <title> in html
-author: Henry Walton Jones, Jr. # This is the *author*, not the person, though it’s probably the same.
+author: Moacir P. de Sá Pereira # This is the *author*, not the person, though it’s likely the same.
 template: templates/tex.tex # for pdfs
 template-html: templates/html.html # for html
 cv-sections: # Each of these corresponds to a file in sections/ and are in order
