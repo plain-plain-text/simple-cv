@@ -1,4 +1,4 @@
-\documentclass[]{article}
+\documentclass[margin,line]{res}
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -10,13 +10,24 @@
             breaklinks=true}
 
 \def\tightlist{} % Pandoc adds \tightlist when an md list isn’t sep. by newlines.
-\title{Indiana Jones}
-\author{Moacir P. de Sá Pereira\and Dr.~Jones}
+\renewcommand{\subsection}[1]{\section{#1}}
 \date{2018-04-19}
 
-\begin{document}
-  \maketitle
+\usepackage{fancyhdr}
+\pagestyle{fancy} % for fancy headers/footers
+\newcommand\datestyle{}
+\fancyhead{}
+\lfoot{}
+\cfoot{}% of \pageref{LastPage}}     % Use \thepage for counting page number
+\rfoot{\datestyle\datestyle\ Moacir P. de Sá Pereira, Dr.~Jones --- \today, \thepage}
+\renewcommand{\headrulewidth}{0.0pt}
 
+% res.cls variables
+\name{Indiana Jones}
+\address{Brody Hall 134\\ Marshall College\\ Bedford, CT 0649x}
+
+\begin{document}
+  \begin{resume}
 \hypertarget{fields-of-specialization}{%
 \subsection{Fields of Specialization}\label{fields-of-specialization}}
 
@@ -71,6 +82,6 @@ Ancient relics, Grail lore, anti-fascism.
 \item
   ``It Belongs in a Museum''
 \end{itemize}
-
+  \end{resume}
 \end{document}
 

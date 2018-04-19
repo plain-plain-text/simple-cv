@@ -1,4 +1,4 @@
-\documentclass[]{article}
+\documentclass[$for(format.pdf-options.style)$$format.pdf-options.style$$sep$,$endfor$]{res}
 \usepackage{lmodern}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -10,14 +10,29 @@
             breaklinks=true}
 
 \def\tightlist{} % Pandoc adds \tightlist when an md list isn’t sep. by newlines.
-\title{$personal.display-name$}
-\author{$for(format.author)$$format.author$$sep$\and $endfor$}
+\renewcommand{\subsection}[1]{\section{#1}}
 \date{$date$}
 
+\usepackage{fancyhdr}
+\pagestyle{fancy} % for fancy headers/footers
+\newcommand\datestyle{}
+\fancyhead{}
+\lfoot{}
+\cfoot{}% of \pageref{LastPage}}     % Use \thepage for counting page number
+\rfoot{\datestyle\datestyle\ $for(format.author)$$format.author$$sep$, $endfor$ --- \today, \thepage}
+\renewcommand{\headrulewidth}{0.0pt}
+
+% res.cls variables
+$if(personal.display-name)$
+\name{$personal.display-name$}
+$else$
+\name{$personal.display-name$}
+$endif$
+\address{$for(personal.address)$$personal.address$$sep$\\ $endfor$}
+
 \begin{document}
-  \maketitle
-
+  \begin{resume}
 $body$
-
+  \end{resume}
 \end{document}
 
