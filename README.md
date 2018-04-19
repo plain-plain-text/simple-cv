@@ -10,13 +10,15 @@ in.
 
 1. You have used the command line before. 
 
+1. You know the basics of the [YAML syntax](https://learnxinyminutes.com/docs/yaml/)
+
 1. [Pandoc](https://pandoc.org/). They have an [installing
    page](https://pandoc.org/installing.html) that explains the process for
    various computers. For Macs, you can simply do `brew install pandoc` if you
    have [Homebrew](http://brew.sh) installed, which you should.
 
-1. A TeX engine of some sort. The folks at Pandoc have recommendations for
-   different operating systems. 
+1. A TeX engine of some sort. The folks at Pandoc [have recommendations and
+   instructions](https://pandoc.org/installing.html) for different operating systems. 
    
 ## Installing
 
