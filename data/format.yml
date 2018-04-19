@@ -2,8 +2,7 @@
 ## General options. These are all required.
 title: Henry Walton Jones, Jr. CV # This is for the pdf metadata and <title> in html
 author: Moacir P. de Sá Pereira # This is the *author*, not the person, though it’s likely the same.
-template: templates/tex.tex # for pdfs
-template-html: templates/html.html # for html
+mode: markdown # or yaml. Yaml mode, however, is a future feature.
 cv-sections: # Each of these corresponds to a file in sections/ and are in order
 - fields # so, sections/fields.md
 - education
