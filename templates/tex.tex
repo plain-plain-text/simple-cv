@@ -9,11 +9,15 @@
             pdfborder={0 0 0},
             breaklinks=true}
 
+\def\tightlist{} % Pandoc adds \tightlist when an md list isn’t sep. by newlines.
 \title{$personal.display-name$}
 \author{$for(format.author)$$format.author$$sep$\and $endfor$}
 \date{$date$}
 
 \begin{document}
   \maketitle
+
+$body$
+
 \end{document}
 
