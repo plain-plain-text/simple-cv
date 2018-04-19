@@ -28,7 +28,7 @@ in.
   * Click “Save” beside that.
 
 Now the sample webpage should be visible at
-`http://GITHUBUSERNAME.github.io/simple-civ/`.
+`http://GITHUBUSERNAME.github.io/simple-cv/`.
 
 ## Editing 
 
