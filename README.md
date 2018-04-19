@@ -38,8 +38,8 @@ Now the sample webpage should be visible at
 
 There are three things to edit in this repository. 
 
-1. The metadata, which is simple information about yourself and about the CV
-   you want, is saved in the file `metadata.yml`
+1. The data, which is simple information about yourself and about the CV
+   you want, which is distributed among the YAML files in saved in `data/`.
 
 1. Each section of your CV (education, publications, etc.) is its own Markdown
    file in `sections/`.
@@ -56,7 +56,7 @@ subsequently stage, commit, and push, to make the files available online.
 
 ## Features
 
-## Metadata.yml
+## `data/` YAML files.
 
 ## Sections
 
