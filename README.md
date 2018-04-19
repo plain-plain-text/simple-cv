@@ -16,12 +16,8 @@ in.
    have [Homebrew](http://brew.sh) installed, which you should.
 
 1. A TeX engine of some sort. The folks at Pandoc have recommendations for
-   different operating systems. If you want a
-   [Europass](https://europass.cedefop.europa.eu/) CV, you will need to
-   install the
-   [EuropassCV](https://www.ctan.org/tex-archive/macros/latex/contrib/europasscv)
-   package with `sudo tlmgr install europasscv`.
-
+   different operating systems. 
+   
 ## Installing
 
 1. Clone the repository: `git clone git@github.com:muziejus/simple-cv.git`
