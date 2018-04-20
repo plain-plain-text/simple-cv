@@ -26,6 +26,7 @@ pdf-options:
   # - centered # name and address are centered
 ## HTML options
 html-options:
+  headshot-url: "https://i.imgur.com/Iz8zuDY.jpg" # or make blank for no headshot.
   lang: en # document language.
   navbar: # comment out this entire section to disable the navbar
     text: light # or dark. "light" is dark text for light bkgds & "dark" the inverse.

@@ -37,6 +37,9 @@
     <div id="cvBody" class="wrapper container">
     <h1>$if(personal.display-name)$$personal.display-name$$else$$personal.name$$endif$</h1>
     $endif$
+    $if(format.html-options.headshot-url)$
+    <img src="$format.html-options.headshot-url$" alt="$if(personal.display-name)$$personal.display-name$$else$$personal.name$$endif$" class="img-fluid m-2 w-25 rounded float-right">
+    $endif$
 
     $body$
   </div> <!-- wrapper container -->
