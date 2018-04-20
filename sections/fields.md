@@ -1,3 +1,3 @@
 ## Fields of Specialization
 
-Ancient relics, Grail lore, anti-fascism.
+Ancient relics, imperial theft of cultural patrimony, Grail lore, anti-fascism.

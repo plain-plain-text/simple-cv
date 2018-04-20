@@ -13,14 +13,18 @@
 \renewcommand{\subsection}[1]{\section{#1}}
 \date{$date$}
 
+$if(format.pdf-options.footer)$
 \usepackage{fancyhdr}
 \pagestyle{fancy} % for fancy headers/footers
 \newcommand\datestyle{}
 \fancyhead{}
 \lfoot{}
 \cfoot{}% of \pageref{LastPage}}     % Use \thepage for counting page number
-\rfoot{\datestyle\datestyle\ $for(format.author)$$format.author$$sep$, $endfor$ --- \today, \thepage}
+\rfoot{\datestyle\datestyle\
+$if(format.pdf-options.footer.display-author)$$for(format.author)$$format.author$$sep$,
+$endfor$$endif$  $if(format.pdf-options.footer.last-modified)$\today,$endif$ \thepage}
 \renewcommand{\headrulewidth}{0.0pt}
+$endif$
 
 % res.cls variables
 $if(personal.display-name)$
@@ -28,7 +32,9 @@ $if(personal.display-name)$
 $else$
 \name{$personal.display-name$}
 $endif$
+$if(format.pdf-options.address)$
 \address{$for(personal.address)$$personal.address$$sep$\\ $endfor$}
+$endif$
 
 \begin{document}
   \begin{resume}

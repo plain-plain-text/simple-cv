@@ -3,7 +3,7 @@
 title: Henry Walton Jones, Jr. CV # This is for the pdf metadata and <title> in html
 author: 
 - Moacir P. de Sá Pereira # This is the *author*, not the person, though it’s likely the same.
-- Dr. Jones
+- Henry Walton Jones, Jr.
 mode: markdown # or yaml. Yaml mode, however, is a future feature.
 cv-sections: # Each of these corresponds to a file in sections/ and are in order
 - fields # so, sections/fields.md
@@ -24,13 +24,16 @@ pdf-options:
   # - overlapped # section titles overlap the body
   - line # name on the left with a line and address on the right
   # - centered # name and address are centered
+  footer: # comment out this entire section to disable the footer
+    last-modified: true
+    display-author: true
 ## HTML options
 html-options:
-  headshot-url: "https://i.imgur.com/Iz8zuDY.jpg" # or make blank for no headshot.
+  headshot-url: "https://i.imgur.com/Iz8zuDY.jpg" # or delete for no headshot.
   lang: en # document language.
   navbar: # comment out this entire section to disable the navbar
-    text: light # or dark. "light" is dark text for light bkgds & "dark" the inverse.
     background: light # or dark, primary, secondary, success, danger, warning, or info
+    text: light # or dark. "light" is dark text for light bkgds & "dark" the inverse.
     position: default # or fixed-top, fixed-bottom, or sticky-top
     margin: 20 # pixels between navbar and content.
   fonts: # comment out this entire section to use default fonts
@@ -42,3 +45,8 @@ html-options:
       type: sans-serif
       name: Raleway
       url: https://fonts.googleapis.com/css?family=Raleway
+  keywords:
+  - Archæology
+  - anti-fascism
+  - colonial exploitation
+  last-modified: true

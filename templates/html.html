@@ -9,7 +9,7 @@
   $endfor$
   <meta name="dcterms.date" content="$date$" />
   $if(format.html-options.keywords)$
-  <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
+  <meta name="keywords" content="$for(format.html-options.keywords)$$format.html-options.keywords$$sep$, $endfor$" />
   $endif$
   <title>$format.title$</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -36,7 +36,7 @@
 <body>
     $if(format.html-options.navbar)$
     <nav class="navbar $format.html-options.navbar.position$ navbar-$format.html-options.navbar.text$ bg-$format.html-options.navbar.background$" id="navbar" data-margin="$format.html-options.navbar.margin$">
-      <p class="navbar-brand">$if(personal.display-name)$$personal.display-name$$else$$personal.name$$endif$ <small>(<a href="./$format.pdf-options.filename$.pdf">.pdf</a>)</small></p>
+      <span class="navbar-brand">$if(personal.display-name)$$personal.display-name$$else$$personal.name$$endif$ <small>(<a href="./$format.pdf-options.filename$.pdf">.pdf</a>)</small></span>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -51,9 +51,14 @@
     <div id="cvBody" class="wrapper container">
     <h1>$if(personal.display-name)$$personal.display-name$$else$$personal.name$$endif$</h1>
     $endif$
-    $if(format.html-options.headshot-url)$
-    <img src="$format.html-options.headshot-url$" alt="$if(personal.display-name)$$personal.display-name$$else$$personal.name$$endif$" class="img-fluid m-2 w-25 rounded float-right">
+    <div id="widgets" class="w-25 float-right">
+    $if(format.html-options.last-modified)$
+    <div id="last-modified"></div>
     $endif$
+    $if(format.html-options.headshot-url)$
+    <img src="$format.html-options.headshot-url$" alt="$if(personal.display-name)$$personal.display-name$$else$$personal.name$$endif$" class="img-fluid m-2 rounded">
+    $endif$
+    </div> <!-- widgets -->
 
     $body$
   </div> <!-- wrapper container -->
