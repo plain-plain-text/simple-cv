@@ -8,13 +8,27 @@
   <meta name="author" content="$format.author$" />
   $endfor$
   <meta name="dcterms.date" content="$date$" />
-  $if(keywords)$
+  $if(format.html-options.keywords)$
   <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
   $endif$
   <title>$format.title$</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/brands.css" integrity="sha384-KtmfosZaF4BaDBojD9RXBSrq5pNEO79xGiggBxf8tsX+w2dBRpVW5o0BPto2Rb2F" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/fontawesome.css" integrity="sha384-8WwquHbb2jqa7gKWSoAwbJBV2Q+/rQRss9UXL5wlvXOZfSodONmVnifo/+5xJIWX" crossorigin="anonymous">
+  $if(format.html-options.fonts)$
+    $if(format.html-options.fonts.body)$
+    <link href="$format.html-options.fonts.body.url$" rel="stylesheet">
+    <style>
+      body { font-family: "$format.html-options.fonts.body.name$", $format.html-options.fonts.body.type$; }
+    </style>
+    $endif$
+    $if(format.html-options.fonts.headings)$
+    <link href="$format.html-options.fonts.headings.url$" rel="stylesheet">
+    <style>
+      h1,h2,h3,h4,h5,h6 { font-family: "$format.html-options.fonts.headings.name$", $format.html-options.fonts.headings.type$; }
+    </style>
+    $endif$
+  $endif$
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
