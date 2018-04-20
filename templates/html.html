@@ -36,7 +36,7 @@
 <body>
     $if(format.html-options.navbar)$
     <nav class="navbar $format.html-options.navbar.position$ navbar-$format.html-options.navbar.text$ bg-$format.html-options.navbar.background$" id="navbar" data-margin="$format.html-options.navbar.margin$">
-      <a class="navbar-brand" href="#">$if(personal.display-name)$$personal.display-name$$else$$personal.name$$endif$</a>
+      <p class="navbar-brand">$if(personal.display-name)$$personal.display-name$$else$$personal.name$$endif$ <small>(<a href="./$format.pdf-options.filename$.pdf">.pdf</a>)</small></p>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
