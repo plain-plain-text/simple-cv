@@ -28,6 +28,6 @@ pdf-options:
 html-options:
   lang: en # document language.
   navbar: # comment out this entire section to disable the navbar
-    text: light # or dark. "light" is dark text for light bkgds and "dark" the inverse.
+    text: light # or dark. "light" is dark text for light bkgds & "dark" the inverse.
     background: light # or dark, primary, secondary, success, danger, warning, or info
-    position: default # or fixed-top, fixed-bottom, or sticky-top
+    position: fixed-top # or fixed-top, fixed-bottom, or sticky-top
