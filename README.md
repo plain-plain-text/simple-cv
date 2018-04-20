@@ -69,8 +69,8 @@ subsequently stage, commit, and push, to make the files available online.
   comparatively little effort.
 * Agnostic taxonomy of sections. If you don’t want to include your
   publications, say, don’t.
-* Responsive `html` page with navbar provided by
-  [Bootstrap](http://getbootstrap.com)
+* Responsive `html` page with dynamically-generated navbar provided by
+  [Bootstrap](http://getbootstrap.com).
 * URL support for digital projects, etc., in the `pdf`, meaning readers can
   click on the `pdf` to open websites.
 
