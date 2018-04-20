@@ -18,6 +18,7 @@ cv-sections: # Each of these corresponds to a file in sections/ and are in order
 ## PDF options
 pdf-options:
   filename: H_W_Jones # no '.pdf' needed.
+  address: false # print the address as its own entity. Can look clumsy.
   style: 
   - margin # section titles are in the margin
   # - overlapped # section titles overlap the body
@@ -26,3 +27,7 @@ pdf-options:
 ## HTML options
 html-options:
   lang: en # document language.
+  navbar: # comment out this entire section to disable the navbar
+    text: light # or dark. "light" is dark text for light bkgds and "dark" the inverse.
+    background: light # or dark, primary, secondary, success, danger, warning, or info
+    position: default # or fixed-top, fixed-bottom, or sticky-top

@@ -21,7 +21,21 @@
 </head>
 <body>
   <div class="wrapper container">
-    <h1>$personal.display-name$</h1>
+    $if(format.html-options.navbar)$
+    <nav class="navbar $format.html-options.navbar.position$ navbar-expand-lg navbar-$format.html-options.navbar.text$ bg-$format.html-options.navbar.background$">
+      <a class="navbar-brand" href="#">$if(personal.display-name)$$personal.display-name$$else$$personal.name$$endif$</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+      </div>
+    </nav>
+    $else$
+    <!-- no navbar. -->
+    <h1>$if(personal.display-name)$$personal.display-name$$else$$personal.name$$endif$</h1>
+    $endif$
 
     $body$
   </div> <!-- wrapper container -->
