@@ -1,10 +1,10 @@
 # simple-cv
 
-This repository lets one write a CV using Markdown. Using the discrete
-Markdown files and a bit of information provided by `YAML` files, it generates a
-CV in both `html` and `pdf` forms. Furthermore, it even hosts them on GitHub
-Pages. This project was inspired by my [own cv](http://cv.moacir.com), which
-uses the same underlying logic.
+This repository lets one write an academic CV using Markdown. Using the
+discrete Markdown files and a bit of information provided by `YAML` files, it
+generates a CV in both `html` and `pdf` forms. Furthermore, it even hosts them
+on GitHub Pages. This project was inspired by my [own
+cv](http://cv.moacir.com), which uses the same underlying logic.
 
 Demo:
 [http://muziejus.github.io/simple-cv/](http://muziejus.github.io/simple-cv/)
@@ -64,11 +64,11 @@ subsequently stage, commit, and push, to make the files available online.
 * Single source for both paper and web versions of your cv.
 * Customizable sections that can be switched in and out or reordered just by
   changing a `YAML` option.
-* Highly customizable styles for `html` *and* `pdf` (fonts, etc.) via `YAML` configuration files.
-  don’t. 
+* Customizable styles for `html` *and* `pdf` (fonts, etc.) via `YAML` configuration files.
 * Straightforward templates that allow for massive flexibility with
   comparatively little effort.
-* Agnostic taxonomy of sections. If you don’t want to include service, say,
+* Agnostic taxonomy of sections. If you don’t want to include your
+  publications, say, don’t.
 * Responsive `html` page with navbar provided by
   [Bootstrap](http://getbootstrap.com)
 * URL support for digital projects, etc., in the `pdf`, meaning readers can
