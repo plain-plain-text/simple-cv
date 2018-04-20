@@ -1,7 +1,7 @@
 # simple-cv
 
 This repository lets one write a CV using Markdown. Using the discrete
-Markdown files and a bit of information provided by YAML files, it generates a
+Markdown files and a bit of information provided by `YAML` files, it generates a
 CV in both `html` and `pdf` forms. Furthermore, it even hosts them on GitHub
 Pages. This project was inspired by my [own cv](http://cv.moacir.com), which
 uses the same underlying logic.
@@ -38,7 +38,7 @@ Now the sample webpage should be visible at
 There are three things to edit in this repository. 
 
 1. The data, which is simple information about yourself and about the CV
-   you want, which is distributed among the YAML files saved in `data/`.
+   you want, which is distributed among the `YAML` files saved in `data/`.
 
 1. Each section of your CV (education, publications, etc.) is its own Markdown
    file in `sections/`. **Note:** The processing script does not know about
@@ -58,9 +58,103 @@ subsequently stage, commit, and push, to make the files available online.
 
 ## Features
 
-## `data/` YAML files.
+* Single source for both paper and web versions of your cv.
+* Customizable sections that can be switched in and out or reordered just by
+  changing a `YAML` option.
+* Highly customizable styles for `html` *and* `pdf` (fonts, etc.) via `YAML` configuration files.
+  don’t. 
+* Straightforward templates that allow for massive flexibility with
+  comparatively little effort.
+* Agnostic taxonomy of sections. If you don’t want to include service, say,
+* Responsive `html` page with navbar provided by
+  [Bootstrap](http://getbootstrap.com)
+* URL support for digital projects, etc., in the `pdf`, meaning readers can
+  click on the `pdf` to open websites.
+
+## `data/` `YAML` files.
+
+### `format.yml`
+
+This document holds all the configuration options for formatting both
+documents as well as the `html` and `pdf` versions on their own. These options
+become variables like `$format.title$` in the templates. The templates use
+[Pandoc’s templating language](https://pandoc.org/MANUAL.html#templates),
+which allows for, crucially, iteration and conditionals. The options are split
+up into three groups:
+
+#### General options
+
+These are mandatory:
+
+* `title` this sets the `<title>` tag for the webpage and the metadata title
+  for the pdf.
+* `author`: This can be a collection or a single value of the author’s name.
+* `mode`: For the time being, this must be set to `markdown`.
+* `cv-sections`: This `YAML` collection stands in as the list of sections to
+  the CV. Every section is its own Markdown page in the `sections/` directory.
+  The order in which they are listed here is the order in which they appear in
+  the final documents
+
+#### `pdf` options
+
+These options alert the `pdf` template to make certain decisions in building
+the document
+
+* `filename`: The name of the resulting `pdf` document (which is linked to
+  from the `html` page as well).
+* `address`: Whether to print the address as its own entity. I find this to be
+  clumsy, so it’s set to false.
+* `style`: Four mix and matchable options are available here, that determine
+  how the headings are presented as well as the title
+* `footer`: By default, a footer is added that includes the author(s) name(s)
+  and the last modified date. One or both of those options can be suppressed.
+
+#### `html` options
+
+* `headshot-url`: Some cultures expect a headshot in a CV. Here is where you
+  tell Pandoc where to find it. Leaving it blank means no headshot.
+* `lang`: The language code for the CV. Default is `en` because American hegemony.
+* `navbar`: A set of settings regarding the navbar that is added by default.
+  * `background`: This option, set to `light` by default, corresponds to Bootstrap’s [semantic background
+    colors](https://getbootstrap.com/docs/4.1/utilities/colors/#background-color)
+  * `text`: `light` or `dark`, this corresponds to the background, so it’s a
+    bit counter intuitive. That is, pick `light` if your background is light
+    (though the text will be dark) and vice versa.
+  * `position`: By default, the navbar scrolls with the rest of the CV. The
+    other options, `fixed-top` and `fixed-bottom`, change that behavior. The
+    most correct one to use is `sticky-top`, but that is not fully supported
+    in all browsers yet.
+  * `margin`: If the navbar is fixed, then we need to push the content away
+    from it to provide some padding. Here you can tell it how many pixels to
+    push it away. Default is 20.
+* `fonts`: Two font families are supported, one for the body text (which
+  includes the navbar) and one for the headings. If you want both to be the
+  same font, you have to duplicate the efforts. Each of `body` and `headings`
+  needs three options:
+    * `type`: `serif`, `sans-serif`, or `monospace`. This is the fallback
+      should the preferred font not load.
+    * `url`: The URL for the font, like from
+      [Google](http://fonts.google.com).
+    * `name`: The name of the font for the CSS.
+* `keywords`: A list of keywords for SEO like this even works.
+* `last-modified`: As with the `pdf`, this triggers a “last modified” widget
+  to appear at the top right corner of the page.
+
+### personal.yml
 
 ## Sections
+
+The sections are all separate Markdown files in the `sections/` directory.
+They can be called whatever, but the file names must correspond with the
+`cv-sections` collection in `data/format.yml`. 
+
+Each section should begin with a `## Header`. Failure to do so will cause
+problems in both the `html` and `pdf` versions of the CV. The text of the
+header can be whatever.
+
+The Markdown files can then be written however you want. A list, a narrative,
+things with links, whatever is expected in your field and aligned with your
+fantasies.
 
 ## Rationale
 
