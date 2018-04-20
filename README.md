@@ -6,6 +6,9 @@ CV in both `html` and `pdf` forms. Furthermore, it even hosts them on GitHub
 Pages. This project was inspired by my [own cv](http://cv.moacir.com), which
 uses the same underlying logic.
 
+Demo:
+[http://muziejus.github.io/simple-cv/](http://muziejus.github.io/simple-cv/)
+
 ## Requirements/Assumptions
 
 1. You have used the command line before. 
