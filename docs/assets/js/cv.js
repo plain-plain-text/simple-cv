@@ -22,6 +22,10 @@ $(".navbar-collapse ul li a").click(function() {
   $(".navbar-toggler:visible").click();
 });
 
+// replace \LaTeX
+$(":contains('\LaTeX')").html(function(_, html){ return html.replace("\\LaTeX", "<span class='latex'>L<sup>A</sup>T<sub>E</sub>X</span>"); });
+
+
 function fetchHeader(url, wch) {
   try {
     var req=new XMLHttpRequest();

@@ -30,21 +30,21 @@ files = data["format"]["cv-sections"].map{ |section| "sections/#{section}.md" }.
 # Prepare the output for tex, pdf, and html
 output = [{
   template: tex_template,
-  other_opts: "",
+  other_opts: "+raw_tex",
   file_name: "out.tex"
 }, {
   template: tex_template,
-  other_opts: "--pdf-engine=xelatex",
+  other_opts: "+raw_tex --pdf-engine=xelatex",
   file_name: "#{data["format"]["pdf-options"]["filename"]}.pdf"
 }, {
   template: html_template,
-  other_opts: "",
+  other_opts: "-raw_tex",
   file_name: "index.html"
 }]
 
 # Summon pandoc.
 output.each do |format|
-  command = "pandoc -sr markdown+yaml_metadata_block --template=#{format[:template]} #{format[:other_opts]} metadata.yml #{files} -o docs/#{format[:file_name]}"
+  command = "pandoc -sr markdown+yaml_metadata_block#{format[:other_opts]} --template=#{format[:template]} metadata.yml #{files} -o docs/#{format[:file_name]}"
   system command
   puts "Generated docs/#{format[:file_name]}"
 end
