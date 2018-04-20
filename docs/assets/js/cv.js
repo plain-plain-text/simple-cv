@@ -6,6 +6,10 @@ if($(".fixed-bottom").length){
   $("#cvBody").css("margin-bottom",  $("#navbar").height() + $(".fixed-bottom").data("margin") + "px");
 }
 
+if($(window).width() > 575){
+  $("#widgets").removeClass("w-50").addClass("w-25");
+}
+
 // Build the dropdown.
 $("#navList").html(() => {
   let list = "";

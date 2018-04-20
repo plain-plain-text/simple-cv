@@ -1,0 +1,10 @@
+@media (max-width: 575.98px) {
+  #widgets {
+    width: 50%;
+  }
+}
+@media (min-width: 576px) {
+  #widgets {
+    width: 25%;
+  }
+}
