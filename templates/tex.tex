@@ -1,8 +1,10 @@
 \documentclass[$for(format.pdf-options.style)$$format.pdf-options.style$$sep$,$endfor$]{res}
-\usepackage{lmodern}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{hyperref}
+\usepackage{fontspec}
+\usepackage{tabulary}
+\usepackage[
+  breaklinks=true,
+  hidelinks
+]{hyperref}
 \hypersetup{
             pdftitle={$format.title$},
             pdfauthor={$for(format.author)$$format.author$$sep$, $endfor$},
@@ -10,7 +12,6 @@
             breaklinks=true}
 
 \def\tightlist{} % Pandoc adds \tightlist when an md list isn’t sep. by newlines.
-\renewcommand{\subsection}[1]{\section{#1}}
 \date{$date$}
 
 $if(format.pdf-options.footer)$
@@ -27,10 +28,20 @@ $endfor$$endif$  $if(format.pdf-options.footer.last-modified)$\today,$endif$ \th
 $endif$
 
 % res.cls variables
-$if(personal.display-name)$
-\name{$personal.display-name$}
+$if(format.pdf-options.smallcaps)$
+  $if(personal.display-name)$
+  \name{\sc{$personal.display-name$}}
+  $else$
+  \name{\sc{$personal.display-name$}}
+  $endif$
+  \renewcommand{\subsection}[1]{\section{\sc{#1}}} % res.cls expects \section, but pandoc gives \subsection
 $else$
-\name{$personal.display-name$}
+  $if(personal.display-name)$
+  \name{$personal.display-name$}
+  $else$
+  \name{$personal.display-name$}
+  $endif$
+  \renewcommand{\subsection}[1]{\section{#1}} % res.cls expects \section, but pandoc gives \subsection
 $endif$
 $if(format.pdf-options.address)$
 \address{$for(personal.address)$$personal.address$$sep$\\ $endfor$}

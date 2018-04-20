@@ -1,8 +1,10 @@
 \documentclass[margin,line]{res}
-\usepackage{lmodern}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{hyperref}
+\usepackage{fontspec}
+\usepackage{tabulary}
+\usepackage[
+  breaklinks=true,
+  hidelinks
+]{hyperref}
 \hypersetup{
             pdftitle={Henry Walton Jones, Jr.~CV},
             pdfauthor={Moacir P. de Sá Pereira, Henry Walton Jones, Jr.},
@@ -10,7 +12,6 @@
             breaklinks=true}
 
 \def\tightlist{} % Pandoc adds \tightlist when an md list isn’t sep. by newlines.
-\renewcommand{\subsection}[1]{\section{#1}}
 \date{2018-04-20}
 
 \usepackage{fancyhdr}
@@ -25,7 +26,8 @@ Henry Walton Jones, Jr.  \today, \thepage}
 \renewcommand{\headrulewidth}{0.0pt}
 
 % res.cls variables
-\name{Indiana Jones}
+    \name{Henry ``Indiana'' Jones, Jr.}
+    \renewcommand{\subsection}[1]{\section{#1}} % res.cls expects \section, but pandoc gives \subsection
 
 \begin{document}
   \begin{resume}

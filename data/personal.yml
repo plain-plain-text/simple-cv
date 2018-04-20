@@ -2,7 +2,7 @@
 # Required values
 name: Henry Walton Jones, Jr. # full name
 # Optional values. These can be commented out or deleted.
-display-name: Indiana Jones # name to be displayed.
+display-name: Henry “Indiana” Jones, Jr. # name to be displayed.
 date-of-birth: 1899-07-01 # in YYYY-MM-DD format
 citizenships:
 - United States of America

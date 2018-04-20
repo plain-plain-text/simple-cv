@@ -24,6 +24,7 @@ pdf-options:
   # - overlapped # section titles overlap the body
   - line # name on the left with a line and address on the right
   # - centered # name and address are centered
+  # smallcaps: true # Whether to use smallcaps or not in the main text elements.
   footer: # comment out this entire section to disable the footer
     last-modified: true
     display-author: true

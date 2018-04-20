@@ -108,7 +108,9 @@ the document
 * `address`: Whether to print the address as its own entity. I find this to be
   clumsy, so it’s set to false.
 * `style`: Four mix and matchable options are available here, that determine
-  how the headings are presented as well as the title
+  how the headings are presented as well as the title.
+* `smallcaps`: Whether the main text elements (headers and name) are in small
+  caps or not.
 * `footer`: By default, a footer is added that includes the author(s) name(s)
   and the last modified date. One or both of those options can be suppressed.
 
