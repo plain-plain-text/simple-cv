@@ -40,14 +40,18 @@ html-options:
     position: default # or fixed-top, fixed-bottom, or sticky-top
     margin: 20 # pixels between navbar and content.
   fonts: # comment out this entire section to use default fonts
+    body: # If you want just one custom font for everything, set only this one.
+      type: sans-serif
+      name: Raleway
+      url: https://fonts.googleapis.com/css?family=Raleway
     headings:
       type: serif # or sans-serif or monospace
       name: Playfair Display
       url: https://fonts.googleapis.com/css?family=Playfair+Display
-    body:
-      type: sans-serif
-      name: Raleway
-      url: https://fonts.googleapis.com/css?family=Raleway
+    navbar: 
+      type: serif
+      name: Playfair Display
+      url: https://fonts.googleapis.com/css?family=Playfair+Display
   keywords:
   - Archæology
   - anti-fascism

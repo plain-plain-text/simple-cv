@@ -134,10 +134,10 @@ the document
   * `margin`: If the navbar is fixed, then we need to push the content away
     from it to provide some padding. Here you can tell it how many pixels to
     push it away. Default is 20.
-* `fonts`: Two font families are supported, one for the body text (which
-  includes the navbar) and one for the headings. If you want both to be the
-  same font, you have to duplicate the efforts. Each of `body` and `headings`
-  needs three options:
+* `fonts`: Three separate font families are supported, one for the body text,
+  one for the headings, and one for the navbar. If you only want one custom
+  font throughout, set the `body` font and comment our `headings` and
+  `navbar`. Each of `body`, `headings`, and `navbar` needs three options:
     * `type`: `serif`, `sans-serif`, or `monospace`. This is the fallback
       should the preferred font not load.
     * `url`: The URL for the font, like from

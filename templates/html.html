@@ -30,6 +30,12 @@
       h1,h2,h3,h4,h5,h6 { font-family: "$format.html-options.fonts.headings.name$", $format.html-options.fonts.headings.type$; }
     </style>
     $endif$
+    $if(format.html-options.fonts.navbar)$
+    <link href="$format.html-options.fonts.navbar.url$" rel="stylesheet">
+    <style>
+      #navbar { font-family: "$format.html-options.fonts.navbar.name$", $format.html-options.fonts.navbar.type$; }
+    </style>
+    $endif$
   $endif$
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
