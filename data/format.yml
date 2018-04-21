@@ -33,6 +33,7 @@ pdf-options:
 html-options:
   headshot-url: "https://i.imgur.com/Iz8zuDY.jpg" # or delete for no headshot.
   lang: en # document language.
+  fontawesome: true # whether to include fontawesome glyphs on the webpage.
   navbar: # comment out this entire section to disable the navbar
     background: light # or dark, primary, secondary, success, danger, warning, or info
     text: light # or dark. "light" is dark text for light bkgds & "dark" the inverse.

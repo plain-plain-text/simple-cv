@@ -119,6 +119,8 @@ the document
 * `headshot-url`: Some cultures expect a headshot in a CV. Here is where you
   tell Pandoc where to find it. Leaving it blank means no headshot.
 * `lang`: The language code for the CV. Default is `en` because American hegemony.
+* `fontawesome`: Whether to use the [Font Awesome](http://fontawesome.com)
+  icons.
 * `navbar`: A set of settings regarding the navbar that is added by default.
   * `background`: This option, set to `light` by default, corresponds to Bootstrap’s [semantic background
     colors](https://getbootstrap.com/docs/4.1/utilities/colors/#background-color)

@@ -13,8 +13,9 @@
   $endif$
   <title>$format.title$</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/brands.css" integrity="sha384-KtmfosZaF4BaDBojD9RXBSrq5pNEO79xGiggBxf8tsX+w2dBRpVW5o0BPto2Rb2F" crossorigin="anonymous">
- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/fontawesome.css" integrity="sha384-8WwquHbb2jqa7gKWSoAwbJBV2Q+/rQRss9UXL5wlvXOZfSodONmVnifo/+5xJIWX" crossorigin="anonymous">
+  $if(format.html-options.fontawesome)$
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+  $endif$
  <link rel="stylesheet" href="./assets/css/cv.css">
   $if(format.html-options.fonts)$
     $if(format.html-options.fonts.body)$
@@ -67,19 +68,39 @@
       </div>
       <div class="col-6">
         $if(personal.telephone)$
-        <i>Tel:</i> $personal.telephone$ <br />
+        $if(format.html-options.fontawesome)$
+        <i class="fas fa-phone">
+        $else$
+        <i>Tel:
+        $endif$</i> $personal.telephone$ <br />
         $endif$
         $if(personal.email)$
-        <i>E-mail:</i> $personal.email$ <br />
+        $if(format.html-options.fontawesome)$
+        <i class="fas fa-envelope">
+        $else$
+        <i>Email:
+        $endif$</i> $personal.email$ <br />
         $endif$
         $if(personal.url)$
-        <i>Web:</i> <a href="http://$personal.url$">$personal.url$</a> <br />
+        $if(format.html-options.fontawesome)$
+        <i class="fas fa-globe">
+        $else$
+        <i>Web:
+        $endif$</i> <a href="http://$personal.url$">$personal.url$</a> <br />
         $endif$
         $if(personal.twitter)$
-        <i>Twitter:</i> <a href="http://twitter.com/$personal.twitter$">@$personal.twitter$</a> <br />
+        $if(format.html-options.fontawesome)$
+        <i class="fab fa-twitter">
+        $else$
+        <i>Twitter:
+        $endif$</i> <a href="http://twitter.com/$personal.twitter$">@$personal.twitter$</a> <br />
         $endif$
         $if(personal.github)$
-        <i>GitHub:</i> <a href="http://github.com/$personal.github$">@$personal.github$</a>
+        $if(format.html-options.fontawesome)$
+        <i class="fab fa-github">
+        $else$
+        <i>GitHub:
+        $endif$</i> <a href="http://github.com/$personal.github$">@$personal.github$</a>
         $endif$
       </div>
     </div>
