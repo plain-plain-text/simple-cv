@@ -60,6 +60,29 @@
     <img src="$format.html-options.headshot-url$" alt="$if(personal.display-name)$$personal.display-name$$else$$personal.name$$endif$" class="img-fluid m-2 rounded">
     $endif$
     </div> <!-- widgets -->
+    <h2 id="contact-information">$format.contact-information$</h2>
+    <div class="row">
+      <div class="col-6">
+        $for(personal.address)$$personal.address$$sep$<br />$endfor$
+      </div>
+      <div class="col-6">
+        $if(personal.telephone)$
+        <i>Tel:</i> $personal.telephone$ <br />
+        $endif$
+        $if(personal.email)$
+        <i>E-mail:</i> $personal.email$ <br />
+        $endif$
+        $if(personal.url)$
+        <i>Web:</i> <a href="http://$personal.url$">$personal.url$</a> <br />
+        $endif$
+        $if(personal.twitter)$
+        <i>Twitter:</i> <a href="http://twitter.com/$personal.twitter$">@$personal.twitter$</a> <br />
+        $endif$
+        $if(personal.github)$
+        <i>GitHub:</i> <a href="http://github.com/$personal.github$">@$personal.github$</a>
+        $endif$
+      </div>
+    </div>
 
     $body$
   </div> <!-- wrapper container -->

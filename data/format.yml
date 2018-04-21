@@ -15,6 +15,7 @@ cv-sections: # Each of these corresponds to a file in sections/ and are in order
 - service
 - skills
 - languages
+contact-information: Contact Information # The text for the contact information section.
 ## PDF options
 pdf-options:
   filename: H_W_Jones # no '.pdf' needed.

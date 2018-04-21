@@ -25,12 +25,27 @@ Moacir P. de Sá Pereira,
 Henry Walton Jones, Jr.  \today, \thepage}
 \renewcommand{\headrulewidth}{0.0pt}
 
+% \renewcommand{\sectionskip}{0pt}
+
 % res.cls variables
-    \name{Henry ``Indiana'' Jones, Jr.}
+    \name{Henry Walton ``Indiana'' Jones, Jr.}
     \renewcommand{\subsection}[1]{\section{#1}} % res.cls expects \section, but pandoc gives \subsection
 
 \begin{document}
   \begin{resume}
+  \hypertarget{contact-information}{
+  \subsection{Contact Information}\label{contact-information}}
+    \begin{minipage}[t]{0.3\textwidth}
+      Brody Hall 134\\ Marshall College\\ Bedford, CT 0649x
+    \end{minipage}
+    \begin{minipage}[t]{0.7\textwidth}
+                {\it Tel:} +1 860 555-5555 \\
+                        {\it E-mail:} hwjones@marshall-ct.edu \\
+                        {\it Web:} http://archaeology.marshall-ct.edu/faculty/jones-henry/ \\
+                        {\it Twitter:} \href{http://twitter.com/IndianaJones}{@IndianaJones} \\
+                        {\it GitHub:} \href{http://github.com/IndianaJones}{@IndianaJones}
+            \end{minipage}
+\vspace{-\baselineskip} % To pull the contact information back a line.
 \hypertarget{fields-of-specialization}{%
 \subsection{Fields of Specialization}\label{fields-of-specialization}}
 
