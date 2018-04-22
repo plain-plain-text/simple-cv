@@ -1,6 +1,28 @@
 \documentclass[$for(format.pdf-options.style)$$format.pdf-options.style$$sep$,$endfor$]{res}
 \usepackage{fontspec}
-\usepackage{tabulary}
+$if(format.pdf-options.font.regular)$
+\setmainfont{$format.pdf-options.font.regular$.otf}[
+  $if(format.pdf-options.font.italic)$
+  ItalicFont = $format.pdf-options.font.italic$.otf ,
+  $endif$
+  $if(format.pdf-options.font.bold)$
+  BoldFont = $format.pdf-options.font.bold$.otf ,
+  $endif$
+  $if(format.pdf-options.font.smallcaps)$
+  SmallCapsFont = $format.pdf-options.font.smallcaps$.otf ,
+  $endif$
+  Path = ./fonts/ ,
+  Ligatures=Historic ,
+  Ligatures=Rare ,
+  Mapping=tex-text ,
+  ItalicFeatures={Style=Swash} ,
+]
+$endif$
+$if(format.pdf-options.font.monospace)$
+\setmonofont{$format.pdf-options.font.monospace$.otf}[
+  Path = ./fonts/
+]
+$endif$
 \usepackage[
   breaklinks=true,
   hidelinks
@@ -30,7 +52,7 @@ $endif$
 % \renewcommand{\sectionskip}{0pt}
 
 % res.cls variables
-$if(format.pdf-options.smallcaps)$
+$if(format.pdf-options.smallcaps-headings)$
   $if(personal.display-name)$
   \name{\sc{$personal.display-name$}}
   $else$

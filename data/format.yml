@@ -29,6 +29,14 @@ pdf-options:
   footer: # comment out this entire section to disable the footer
     last-modified: true
     display-author: true
+  font: # please see fonts/FONTS-README.md for more information
+    # These are .otf files that should be in fonts/
+    regular: EBGaramond12-Regular # note no ".otf"
+    italic: EBGaramond12-Italic
+    monospace: SourceCodePro-Regular # not currently used in template
+    # bold: # No good bold version of EBGaramond and the template doesn't use it
+    # smallcaps: # smallcaps is built into EBGaramond
+  smallcaps-headings: true # To make headings smallcaps
 ## HTML options
 html-options:
   headshot-url: "https://i.imgur.com/Iz8zuDY.jpg" # or delete for no headshot.
@@ -46,12 +54,12 @@ html-options:
       url: https://fonts.googleapis.com/css?family=Raleway
     headings:
       type: serif # or sans-serif or monospace
-      name: Playfair Display
-      url: https://fonts.googleapis.com/css?family=Playfair+Display
+      name: Cormorant Garamond
+      url: https://fonts.googleapis.com/css?family=Cormorant+Garamond
     navbar: 
       type: serif
-      name: Playfair Display
-      url: https://fonts.googleapis.com/css?family=Playfair+Display
+      name: Cormorant Garamond
+      url: https://fonts.googleapis.com/css?family=Cormorant+Garamond
   keywords:
   - Archæology
   - anti-fascism

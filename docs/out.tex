@@ -1,6 +1,5 @@
 \documentclass[margin,line]{res}
 \usepackage{fontspec}
-\usepackage{tabulary}
 \usepackage[
   breaklinks=true,
   hidelinks
@@ -12,7 +11,7 @@
             breaklinks=true}
 
 \def\tightlist{} % Pandoc adds \tightlist when an md list isn’t sep. by newlines.
-\date{2018-04-21}
+\date{2018-04-22}
 
 \usepackage{fancyhdr}
 \pagestyle{fancy} % for fancy headers/footers
@@ -28,8 +27,8 @@ Henry Walton Jones, Jr.  \today, \thepage}
 % \renewcommand{\sectionskip}{0pt}
 
 % res.cls variables
-    \name{Henry Walton ``Indiana'' Jones, Jr.}
-    \renewcommand{\subsection}[1]{\section{#1}} % res.cls expects \section, but pandoc gives \subsection
+    \name{\sc{Henry Walton ``Indiana'' Jones, Jr.}}
+    \renewcommand{\subsection}[1]{\section{\sc{#1}}} % res.cls expects \section, but pandoc gives \subsection
 
 \begin{document}
   \begin{resume}

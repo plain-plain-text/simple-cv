@@ -109,10 +109,12 @@ the document
   clumsy, so it’s set to false.
 * `style`: Four mix and matchable options are available here, that determine
   how the headings are presented as well as the title.
-* `smallcaps`: Whether the main text elements (headers and name) are in small
-  caps or not.
+* `smallcaps-headings`: Whether the headers and name are in small caps or not.
 * `footer`: By default, a footer is added that includes the author(s) name(s)
   and the last modified date. One or both of those options can be suppressed.
+* `font`: This lets you give the name of OpenType fonts for use in the
+  document, but they must be in the `fonts/` directory. See `fonts/FONTS-README.md`
+  for more details.
 
 #### `html` options
 

@@ -10,6 +10,17 @@ Dir.glob('data/*.yml') do |file|
   data[key] = YAML.load_file file
 end
 data["title"] = data["format"]["title"] # pandoc complains if no "title" is set.
+# Check to make sure the LaTeX fonts exist.
+%w(regular italic monospace bold smallcaps).each do |font|
+  if data["format"]["pdf-options"]["font"][font]
+    if File.exist? "./fonts/#{data["format"]["pdf-options"]["font"][font]}.otf"
+      puts "Found font ./fonts/#{data["format"]["pdf-options"]["font"][font]}.otf"
+    else
+      puts "Could not find ./fonts/#{data["format"]["pdf-options"]["font"][font]}.otf, defaulting to Computer Modern"
+      data["format"]["pdf-options"]["font"][font] = nil
+    end
+  end
+end
 File.open('metadata.yml', 'w') do |file|
   file.puts YAML::dump(data)
   file.puts "date: #{Time.now.strftime "%F"}" # set the date
