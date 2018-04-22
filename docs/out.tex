@@ -1,5 +1,16 @@
 \documentclass[margin,line]{res}
 \usepackage{fontspec}
+\setmainfont{EBGaramond12-Regular.otf}[
+    ItalicFont = EBGaramond12-Italic.otf ,
+        Path = ./fonts/ ,
+  Ligatures=Historic ,
+  Ligatures=Rare ,
+  Mapping=tex-text ,
+  ItalicFeatures={Style=Swash} ,
+]
+\setmonofont{SourceCodePro-Regular.otf}[
+  Path = ./fonts/
+]
 \usepackage[
   breaklinks=true,
   hidelinks
