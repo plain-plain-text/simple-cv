@@ -26,9 +26,10 @@ Demo:
    
 ## Installing
 
-1. Clone the repository: `git clone git@github.com:muziejus/simple-cv.git`
+1. Fork this repository by clicking on the “Fork” link at the top of this
+   page.
 
-1. Enable GitHub pages on your new repository:
+1. In your new, forked repository, enable GitHub pages:
   * Click on the “Settings” on your repository’s GitHub page.
   * Scroll down to “GitHub Pages” and choose “master branch /docs folder.”
   * Click “Save” beside that.
