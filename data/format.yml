@@ -29,7 +29,7 @@ pdf-options:
   footer: # comment out this entire section to disable the footer
     last-modified: true
     display-author: true
-  font: # please see fonts/FONTS-README.md for more information
+  fonts: # please see fonts/FONTS-README.md for more information
     # These are .otf files that should be in fonts/
     regular: EBGaramond12-Regular # note no ".otf"
     italic: EBGaramond12-Italic

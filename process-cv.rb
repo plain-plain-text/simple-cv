@@ -12,12 +12,12 @@ end
 data["title"] = data["format"]["title"] # pandoc complains if no "title" is set.
 # Check to make sure the LaTeX fonts exist.
 %w(regular italic monospace bold smallcaps).each do |font|
-  if data["format"]["pdf-options"]["font"][font]
-    if File.exist? "./fonts/#{data["format"]["pdf-options"]["font"][font]}.otf"
-      puts "Found font ./fonts/#{data["format"]["pdf-options"]["font"][font]}.otf"
+  if data["format"]["pdf-options"]["fonts"][font]
+    if File.exist? "./fonts/#{data["format"]["pdf-options"]["fonts"][font]}.otf"
+      puts "Found font ./fonts/#{data["format"]["pdf-options"]["fonts"][font]}.otf"
     else
-      puts "Could not find ./fonts/#{data["format"]["pdf-options"]["font"][font]}.otf, defaulting to Computer Modern"
-      data["format"]["pdf-options"]["font"][font] = nil
+      puts "Could not find ./fonts/#{data["format"]["pdf-options"]["fonts"][font]}.otf, defaulting to Computer Modern"
+      data["format"]["pdf-options"]["fonts"][font] = nil
     end
   end
 end

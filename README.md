@@ -112,7 +112,7 @@ the document
 * `smallcaps-headings`: Whether the headers and name are in small caps or not.
 * `footer`: By default, a footer is added that includes the author(s) name(s)
   and the last modified date. One or both of those options can be suppressed.
-* `font`: This lets you give the name of OpenType fonts for use in the
+* `fonts`: This lets you give the name of OpenType fonts for use in the
   document, but they must be in the `fonts/` directory. See `fonts/FONTS-README.md`
   for more details.
 
