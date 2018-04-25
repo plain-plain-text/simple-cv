@@ -31,8 +31,8 @@ Demos:
    have [Homebrew](http://brew.sh) installed, which you should.
 
 1. A TeX engine of some sort. The folks at Pandoc [have recommendations and
-   instructions](https://pandoc.org/installing.html) for different operating systems. 
-   
+   instructions](https://pandoc.org/installing.html) for different operating systems.
+
 ## Installing
 
 1. Fork this repository by clicking on the “Fork” link at the top of this
@@ -59,9 +59,9 @@ Demos:
    computer, you can start editing the YAML files in `data/` and the Markdown
    files in `sections/` as indicated below.
 
-## Editing 
+## Editing
 
-There are three things to edit in this repository. 
+There are three things to edit in this repository.
 
 1. The data, which is simple information about yourself and about the CV
    you want, which is distributed among the `YAML` files saved in `data/`.
@@ -83,11 +83,13 @@ There are three things to edit in this repository.
    package](https://ctan.org/pkg/res?lang=en). I have tried to make the
    defaults acceptable, aesthetically, but leave fine tuning up to you.
 
-When you’ve made your changes, you must run the Ruby script:
+When you’ve made your changes, you must run the Ruby script in command line:
 
 `ruby process-cv.rb`
 
-This produces new versions of the `html` and `pdf` files, so you can
+If you have the [`run-command`](https://atom.io/packages/run-command) package installed in Atom, you can simply type `ctrl-r` and type in `ruby process-cv.rb` in the little dialog box to process the files without the need of opening the command line or leaving Atom.
+
+The Ruby script produces new versions of the `html` and `pdf` files, so you can
 subsequently stage, commit, and push, to make the files available online via
 GitHub.
 
@@ -187,7 +189,7 @@ the document
 
 The sections are all separate Markdown files in the `sections/` directory.
 They can be called whatever, but the file names must correspond with the
-`cv-sections` collection in `data/format.yml`. 
+`cv-sections` collection in `data/format.yml`.
 
 Each section should begin with a `## Header`. Failure to do so will cause
 problems in both the `html` and `pdf` versions of the CV. The text of the
