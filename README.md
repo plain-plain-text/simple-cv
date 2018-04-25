@@ -1,24 +1,33 @@
 # simple-cv
 
-This repository lets one write an academic CV using Markdown. Using the
+This repository lets one write an academic CV using Markdown. With the
 discrete Markdown files and a bit of information provided by `YAML` files, it
-generates a CV in both `html` and `pdf` forms. Furthermore, it even hosts them
-on GitHub Pages. This project was inspired by my [own
-cv](http://cv.moacir.com), which uses the same underlying logic.
+generates a CV in both `html` and `pdf` forms that have similar content.
+Furthermore, it even allows you to host them on GitHub Pages. This project was
+inspired by my [own cv](http://cv.moacir.com), which uses the same underlying
+logic.
 
-Demo:
-[http://muziejus.github.io/simple-cv/](http://muziejus.github.io/simple-cv/)
+Demos:
+
+* [http://muziejus.github.io/simple-cv/](http://muziejus.github.io/simple-cv/)
+* [http://muziejus.github.io/simple-cv/H_W_Jones.pdf](http://muziejus.github.io/simple-cv/H_W_Jones.pdf)
 
 ## Requirements/Assumptions
 
-1. You have used the command line before. 
+1. You have used the command line before. The creation of the `html` and `pdf`
+   files is done with a Ruby script you run from the command line.
+
+1. You generally know what Git is and how to stage, commit, and push.
 
 1. You know the basics of the [YAML
-   syntax](https://learnxinyminutes.com/docs/yaml/).
+   syntax](https://learnxinyminutes.com/docs/yaml/). The repository as it
+   exists here has examples of all the features in it, but it’s useful to know
+   what YAML is, at least.
 
-1. [Pandoc](https://pandoc.org/). They have an [installing
+1. [Pandoc](https://pandoc.org/) installed. The Pandoc peopl have an
+   [installation
    page](https://pandoc.org/installing.html) that explains the process for
-   various computers. For Macs, you can simply do `brew install pandoc` if you
+   various systems. For Macs, you can simply do `brew install pandoc` if you
    have [Homebrew](http://brew.sh) installed, which you should.
 
 1. A TeX engine of some sort. The folks at Pandoc [have recommendations and
@@ -34,8 +43,21 @@ Demo:
   * Scroll down to “GitHub Pages” and choose “master branch /docs folder.”
   * Click “Save” beside that.
 
-Now the sample webpage should be visible at
-`http://GITHUBUSERNAME.github.io/simple-cv/`.
+    Now the sample CV should be visible at `http://GITHUBUSERNAME.github.io/simple-cv/`.
+
+1. Your forked repository should now be cloned to your computer. GitHub
+   [provides extensive
+   instructions](https://help.github.com/articles/fork-a-repo/), but your own
+   method may vary. If you use Atom as your text editor (which is a good
+   choice, especially for beginners), you can follow [the instructions I wrote
+   for my JavaScript students on linking Atom to a GitHub
+   repository](https://the-javascripting-english-major.org/1-environment#s-link-atom-to-github),
+   but you should note that the url you want to use is
+   `https://github.com/GITHUBUSERNAME/simple-cv.git`.
+
+1. Once the repository is forked to your GitHub account and cloned to your
+   computer, you can start editing the YAML files in `data/` and the Markdown
+   files in `sections/` as indicated below.
 
 ## Editing 
 
@@ -51,14 +73,23 @@ There are three things to edit in this repository.
    of the sections on the fly.
 
 1. The look and feel of both the `html` and `pdf` versions of the document are
-   managed by the two files in the `templates/` directory.
+   managed by the two files in the `templates/` directory. The [Pandoc
+   templating language](https://pandoc.org/MANUAL.html#templates) is pretty
+   straightforward, and the templates reveal how the data in `data/` is
+   incorporated into the templates. That said, just because the templating
+   language is easy doesn’t mean the templates are. The `html` file depends on
+   the [Bootstrap](http://getbootstrap.com) framework, and the `pdf` file
+   depends on the rather restrictive [`res` LaTeX
+   package](https://ctan.org/pkg/res?lang=en). I have tried to make the
+   defaults acceptable, aesthetically, but leave fine tuning up to you.
 
-When you’ve made your changes, you must run the ruby script:
+When you’ve made your changes, you must run the Ruby script:
 
 `ruby process-cv.rb`
 
 This produces new versions of the `html` and `pdf` files, so you can
-subsequently stage, commit, and push, to make the files available online.
+subsequently stage, commit, and push, to make the files available online via
+GitHub.
 
 ## Features
 
@@ -175,7 +206,7 @@ MultiMarkDown and shell script. This all works, in my opinion, more simply.
 
 ## Features to Add
 
+* YAML mode that gets rid of Markdown completely
 * BibTeX support
 * Europass support
-* font-wrangling support
-
+* Sass integration with Bootstrap.
