@@ -45,5 +45,5 @@ function fetchHeader(url, wch) {
 }
 
 let lastMod = fetchHeader(location.href, "Last-Modified");
-$("#last-modified").html("Last Modified: " + lastMod.replace(/ \S+ \S+$/, ""));
+$("#last-modified").html("<small>Last Modified: " + lastMod.replace(/ \S+ \S+$/, "</small>"));
 
