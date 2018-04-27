@@ -157,6 +157,10 @@ the document
 * `lang`: The language code for the CV. Default is `en` because American hegemony.
 * `fontawesome`: Whether to use the [Font Awesome](http://fontawesome.com)
   icons.
+* `background-color`: *Enclosed in "*, this is color recognizable by CSS, so, typically, either a hex value (“`#nnnnnn`”), an rgb value (“`rgb(n, n, n)`”), or an
+  rgba value if you want to change the opacity (“`rgba(n, n, n)`”). See [this
+  color picker](https://www.w3schools.com/colors/colors_picker.asp) provided
+  by W3Schools to handcraft your color choice.
 * `navbar`: A set of settings regarding the navbar that is added by default.
   * `background`: This option, set to `light` by default, corresponds to Bootstrap’s [semantic background
     colors](https://getbootstrap.com/docs/4.1/utilities/colors/#background-color)
@@ -170,6 +174,9 @@ the document
   * `margin`: If the navbar is fixed, then we need to push the content away
     from it to provide some padding. Here you can tell it how many pixels to
     push it away. Default is 20.
+  * `background-color`: This overrides the selection made for the navbar
+    `background` above. See `background-color` above for information about
+    picking colors.
 * `fonts`: Three separate font families are supported, one for the body text,
   one for the headings, and one for the navbar. If you only want one custom
   font throughout, set the `body` font and comment our `headings` and
@@ -179,6 +186,17 @@ the document
     * `url`: The URL for the font, like from
       [Google](http://fonts.google.com).
     * `name`: The name of the font for the CSS.
+    * `colors`: These allow adjusting the color values of the text. See
+      `background-color` above for information about picking colors. Each
+      color value must be enclosed in quotes. These are *optional*.
+      * `body`: The color of the main body text.
+      * `headings`: The color of the headings.
+      * `display`: The color of the display name.
+      * `navbar-items`: The color of the items in the navbar.
+      * `links`: These adjust the colors of links.
+        * `regular`: The color of the link text under regular circumstances.
+        * `hover`: The color of the link text when the mouse or finger hovers
+          over it.
 * `keywords`: A list of keywords for SEO like this even works.
 * `last-modified`: As with the `pdf`, this triggers a “last modified” widget
   to appear at the top right corner of the page.

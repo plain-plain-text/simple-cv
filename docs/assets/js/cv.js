@@ -27,7 +27,7 @@ $(".navbar-collapse ul li a").click(function() {
 });
 
 // replace \LaTeX
-$(":contains('\LaTeX')").html(function(_, html){ return html.replace("\\LaTeX", "<span class='latex'>L<sup>A</sup>T<sub>E</sub>X</span>"); });
+$("body:contains('\LaTeX')").html(function(_, html){ return html.replace("\\LaTeX", "<span class='latex'>L<sup>A</sup>T<sub>E</sub>X</span>"); });
 
 
 function fetchHeader(url, wch) {

@@ -38,12 +38,51 @@
     $endif$
   $endif$
   <style>
+    $if(format.html-options.background-color)$
+    body {
+      background-color: $format.html-options.background-color$;
+    }
+    $endif$
+    $if(format.html-options.fonts.colors.body)$
+    body {
+      color: $format.html-options.fonts.colors.body$;
+    }
+    $endif$
+    $if(format.html-options.fonts.colors.headings)$
+    h1,h2,h3,h4,h5,h6 {
+      color: $format.html-options.fonts.colors.headings$;
+    }
+    $endif$
+    $if(format.html-options.fonts.colors.links)$
+    a {
+      color: $format.html-options.fonts.colors.links.regular$;
+    }
+    a:hover {
+      color: $format.html-options.fonts.colors.links.hover$;
+    }
+    $endif$
+    $if(format.html-options.fonts.colors.display)$
+    .navbar-$format.html-options.navbar.text$ .navbar-brand:hover {
+      color: $format.html-options.fonts.colors.display$;
+    }
+    .navbar-$format.html-options.navbar.text$ .navbar-brand {
+      color: $format.html-options.fonts.colors.display$;
+    }
+    $endif$
+    $if(format.html-options.fonts.colors.navbar-items)$
+    .navbar-$format.html-options.navbar.text$ .navbar-nav .nav-link {
+      color: $format.html-options.fonts.colors.navbar-items$;
+    }
+    .navbar-$format.html-options.navbar.text$ .navbar-nav .nav-link:hover {
+      color: $format.html-options.fonts.colors.navbar-items$;
+    }
+    $endif$
     .latex sub, .latex sup {
       text-transform: uppercase;
     }
 
     .latex sub {
-      vertical-align: -0.5ex;
+      vertical-align: -0.4ex;
       margin-left: -0.1667em;
       margin-right: -0.125em;
     }
@@ -66,7 +105,7 @@
 </head>
 <body>
     $if(format.html-options.navbar)$
-    <nav class="navbar $format.html-options.navbar.position$ navbar-$format.html-options.navbar.text$ bg-$format.html-options.navbar.background$" id="navbar" data-margin="$format.html-options.navbar.margin$">
+    <nav class="navbar $format.html-options.navbar.position$ navbar-$format.html-options.navbar.text$ bg-$format.html-options.navbar.background$" id="navbar" data-margin="$format.html-options.navbar.margin$" $if(format.html-options.navbar.background-color)$ style="background-color: $format.html-options.navbar.background-color$!important;" $endif$>
       <span class="navbar-brand">$if(personal.display-name)$$personal.display-name$$else$$personal.name$$endif$ <small>(<a href="./$format.pdf-options.filename$.pdf">.pdf</a>)</small></span>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -80,7 +119,7 @@
     $else$
     <!-- no navbar. -->
     <div id="cvBody" class="wrapper container">
-    <h1>$if(personal.display-name)$$personal.display-name$$else$$personal.name$$endif$</h1>
+    <h1 $if(format.html-options.fonts.colors.display)$ style="color: $format.html-options.fonts.colors.display$!important;"$endif$>$if(personal.display-name)$$personal.display-name$$else$$personal.name$$endif$</h1>
     $endif$
     <div id="widgets" class="float-right">
     $if(format.html-options.last-modified)$
