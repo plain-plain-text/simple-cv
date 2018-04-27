@@ -29,7 +29,12 @@ end
 
 # Set the templates
 if data["format"]["mode"] == "markdown"
-  tex_template = "templates/tex.tex"
+  if data["format"]["pdf-options"]["memoir-mode"]
+    puts "Using experimental memoir-mode"
+    tex_template = "templates/memoir.tex"
+  else 
+    tex_template = "templates/tex.tex"
+  end
   html_template = "templates/html.html"
 else
   raise "Formatting mode must be 'markdown'."

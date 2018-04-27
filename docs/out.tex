@@ -1,6 +1,8 @@
-\documentclass[margin,line]{res}
+\documentclass[%
+    12pt,
+  ]{memoir}
 \usepackage{fontspec}
-\setmainfont{EBGaramond12-Regular.otf}[
+\setmainfont{EBGaramond12-Regular.otf}[%
     ItalicFont = EBGaramond12-Italic.otf ,
         Path = ./fonts/ ,
   Ligatures=Historic ,
@@ -38,22 +40,42 @@ Henry Walton Jones, Jr.  \today, \thepage}
 % \renewcommand{\sectionskip}{0pt}
 
 % res.cls variables
-    \name{\sc{Henry Walton ``Indiana'' Jones, Jr.}}
-    \renewcommand{\subsection}[1]{\section{\sc{#1}}} % res.cls expects \section, but pandoc gives \subsection
+    \newcommand\name{\textsc{Henry Walton ``Indiana'' Jones, Jr.}}
+    % \renewcommand{\subsection}[1]{\section{\textsc{#1}}} % pandoc gives \subsection
+
+  \setlrmarginsandblock{.5in}{*}{*}
+  \setulmarginsandblock{.75in}{*}{*}
+\setheaderspaces{0in}{*}{*}
+\checkandfixthelayout
 
 \begin{document}
-  \begin{resume}
+  \section*{\textsc{\name}}
+  The text width  is \the\textwidth
+
+  The paper width  is \the\paperwidth
+
+  The spine width  is \the\spinemargin
+
+
+  The text height is \the\textheight
+
+  The paper height is \the\paperheight
+
+  The upper margin is \the\uppermargin
+
+  The lower margin is \the\lowermargin
+
   \hypertarget{contact-information}{
   \subsection{Contact Information}\label{contact-information}}
     \begin{minipage}[t]{0.3\textwidth}
       Brody Hall 134\\ Marshall College\\ Bedford, CT 0649x
     \end{minipage}
     \begin{minipage}[t]{0.7\textwidth}
-                {\it Tel:} +1 860 555-5555 \\
-                        {\it E-mail:} hwjones@marshall-ct.edu \\
-                        {\it Web:} http://archaeology.marshall-ct.edu/faculty/jones-henry/ \\
-                        {\it Twitter:} \href{http://twitter.com/IndianaJones}{@IndianaJones} \\
-                        {\it GitHub:} \href{http://github.com/IndianaJones}{@IndianaJones}
+                {\textit{Tel:}} +1 860 555-5555 \\
+                        {\textit{E-mail:}} hwjones@marshall-ct.edu \\
+                        {\textit{Web:}} http://archaeology.marshall-ct.edu/faculty/jones-henry/ \\
+                        {\textit{Twitter:}} \href{http://twitter.com/IndianaJones}{@IndianaJones} \\
+                        {\textit{GitHub:}} \href{http://github.com/IndianaJones}{@IndianaJones}
             \end{minipage}
 \vspace{-\baselineskip} % To pull the contact information back a line.
 \hypertarget{fields-of-specialization}{%
@@ -209,6 +231,5 @@ Activities}\label{service-related-professional-activities}}
 \item
   Foundations: Mayan and Quechua.
 \end{itemize}
-  \end{resume}
 \end{document}
 

@@ -19,6 +19,13 @@ contact-information: Contact Information # The text for the contact information 
 ## PDF options
 pdf-options:
   filename: H_W_Jones # no '.pdf' needed.
+  memoir-mode: # uses "memoir" instead of "res" class. Experimental.
+    # papersize: a4 # "letter" is the default.
+    typesize: 12pt # Default text size.
+    left-margin: .5in
+    # right-margin: .5in # Only needed for unequal margins
+    top-margin: .75in # Minimum of about .5in or 2cm
+    # bottom-margin: 2in # Only needed for unequal margins. Useful if the footer is too low.
   address: false # print the address as its own entity. Can look clumsy.
   style: 
   - margin # section titles are in the margin

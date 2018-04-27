@@ -1,0 +1,130 @@
+\documentclass[%
+  $if(format.pdf-options.memoir-mode.papersize)$
+    $format.pdf-options.memoir-mode.papersize$paper,
+  $endif$
+  $format.pdf-options.memoir-mode.typesize$,
+  ]{memoir}
+\usepackage{fontspec}
+$if(format.pdf-options.fonts.regular)$
+\setmainfont{$format.pdf-options.fonts.regular$.otf}[%
+  $if(format.pdf-options.fonts.italic)$
+  ItalicFont = $format.pdf-options.fonts.italic$.otf ,
+  $endif$
+  $if(format.pdf-options.fonts.bold)$
+  BoldFont = $format.pdf-options.fonts.bold$.otf ,
+  $endif$
+  $if(format.pdf-options.fonts.smallcaps)$
+  SmallCapsFont = $format.pdf-options.fonts.smallcaps$.otf ,
+  $endif$
+  Path = ./fonts/ ,
+  Ligatures=Historic ,
+  Ligatures=Rare ,
+  Mapping=tex-text ,
+  ItalicFeatures={Style=Swash} ,
+]
+$endif$
+$if(format.pdf-options.fonts.monospace)$
+\setmonofont{$format.pdf-options.fonts.monospace$.otf}[
+  Path = ./fonts/
+]
+$endif$
+\usepackage[
+  breaklinks=true,
+  hidelinks
+]{hyperref}
+\hypersetup{
+            pdftitle={$format.title$},
+            pdfauthor={$for(format.author)$$format.author$$sep$, $endfor$},
+            pdfborder={0 0 0},
+            breaklinks=true}
+
+\def\tightlist{} % Pandoc adds \tightlist when an md list isn’t sep. by newlines.
+\date{$date$}
+
+$if(format.pdf-options.footer)$
+\usepackage{fancyhdr}
+\pagestyle{fancy} % for fancy headers/footers
+\newcommand\datestyle{}
+\fancyhead{}
+\lfoot{}
+\cfoot{}% of \pageref{LastPage}}     % Use \thepage for counting page number
+\rfoot{\datestyle\datestyle\
+$if(format.pdf-options.footer.display-author)$$for(format.author)$$format.author$$sep$,
+$endfor$$endif$  $if(format.pdf-options.footer.last-modified)$\today,$endif$ \thepage}
+\renewcommand{\headrulewidth}{0.0pt}
+$endif$
+
+% \renewcommand{\sectionskip}{0pt}
+
+% res.cls variables
+$if(format.pdf-options.smallcaps-headings)$
+  $if(personal.display-name)$
+  \newcommand\name{\textsc{$personal.display-name$}}
+  $else$
+  \newcommand\name{\textsc{$personal.display-name$}}
+  $endif$
+  % \renewcommand{\subsection}[1]{\section{\textsc{#1}}} % pandoc gives \subsection
+$else$
+  $if(personal.display-name)$
+  \name{$personal.display-name$}
+  $else$
+  \name{$personal.display-name$}
+  $endif$
+  % \renewcommand{\subsection}[1]{\section{#1}} % pandoc gives \subsection
+$endif$
+$if(format.pdf-options.address)$
+\newcommand\address{$for(personal.address)$$personal.address$$sep$\\ $endfor$}
+$endif$
+
+$if(format.pdf-options.memoir-mode.left-margin)$
+  \setlrmarginsandblock{$format.pdf-options.memoir-mode.left-margin$}$if(format.pdf-options.memoir-mode.right-margin)${$format.pdf-options.memoir-mode.right-margin$}$else${*}$endif${*}
+$endif$
+$if(format.pdf-options.memoir-mode.top-margin)$
+  \setulmarginsandblock{$format.pdf-options.memoir-mode.top-margin$}$if(format.pdf-options.memoir-mode.bottom-margin)${$format.pdf-options.memoir-mode.bottom-margin$}$else${*}$endif${*}
+$endif$
+\setheaderspaces{0in}{*}{*}
+\checkandfixthelayout
+
+\begin{document}
+  \section*{\textsc{\name}}
+  The text width  is \the\textwidth
+
+  The paper width  is \the\paperwidth
+
+  The spine width  is \the\spinemargin
+
+
+  The text height is \the\textheight
+
+  The paper height is \the\paperheight
+
+  The upper margin is \the\uppermargin
+
+  The lower margin is \the\lowermargin
+
+  \hypertarget{contact-information}{
+  \subsection{$format.contact-information$}\label{contact-information}}
+    \begin{minipage}[t]{0.3\textwidth}
+      $for(personal.address)$$personal.address$$sep$\\ $endfor$
+    \end{minipage}
+    \begin{minipage}[t]{0.7\textwidth}
+        $if(personal.telephone)$
+        {\textit{Tel:}} $personal.telephone$ \\
+        $endif$
+        $if(personal.email)$
+        {\textit{E-mail:}} $personal.email$ \\
+        $endif$
+        $if(personal.url)$
+        {\textit{Web:}} http://$personal.url$ \\
+        $endif$
+        $if(personal.twitter)$
+        {\textit{Twitter:}} \href{http://twitter.com/$personal.twitter$}{@$personal.twitter$} \\
+        $endif$
+        $if(personal.github)$
+        {\textit{GitHub:}} \href{http://github.com/$personal.github$}{@$personal.github$}
+        $endif$
+    \end{minipage}
+\vspace{-\baselineskip} % To pull the contact information back a line.
+$body$
+\end{document}
+
