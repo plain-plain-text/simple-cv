@@ -153,8 +153,7 @@ the document
   class](https://ctan.org/pkg/memoir?lang=en), an exceptionally robust and
   configurable class for typesetting. This support is experimental, but should
   eventually supersede using Res. For now, these are the options:
-  * `papersize`: “letter” is the default, but any page size LaTeX understands
-    works. “a4” is the only other size I can imagine using for a CV…
+  * `papersize`: “letter” (8.5in x 11in) is the default, but any page size LaTeX understands works. “a4” is the only other size I can imagine using for a CV…
   * `typesize`: How large the default text should be. The headings, etc., are
     all scaled in relation to this setting.
   * `left-margin`: The left margin. Can be set in inches, centimeters,
