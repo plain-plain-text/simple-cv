@@ -149,6 +149,24 @@ the document
 * `fonts`: This lets you give the name of OpenType fonts for use in the
   document, but they must be in the `fonts/` directory. See `fonts/FONTS-README.md`
   for more details.
+* `memoir-mode`: This uses the [Memoir
+  class](https://ctan.org/pkg/memoir?lang=en), an exceptionally robust and
+  configurable class for typesetting. This support is experimental, but should
+  eventually supersede using Res. For now, these are the options:
+  * `papersize`: “letter” is the default, but any page size LaTeX understands
+    works. “a4” is the only other size I can imagine using for a CV…
+  * `typesize`: How large the default text should be. The headings, etc., are
+    all scaled in relation to this setting.
+  * `left-margin`: The left margin. Can be set in inches, centimeters,
+    whatever. In the absence of a `right-margin`, it stands in for both
+    horizontal margins.
+  * `right-margin`: The right margin. Only needed if it’s different from the
+    left margin.
+  * `top-margin`: Should be a minimum of about .5in so that there is room at
+    the bottom for the footer.
+  * `bottom-margin`: Unneeded unless the margin is different from the top
+    margin. If this margin is large enough for the footer (.5in or so), then
+    the top-margin can be made hilariously small.
 
 #### `html` options
 
