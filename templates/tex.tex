@@ -1,7 +1,17 @@
-\documentclass[$for(format.pdf-options.style)$$format.pdf-options.style$$sep$,$endfor$]{res}
-\usepackage{fontspec}
+\documentclass[%
+  $if(format.pdf-options.papersize)$
+    $format.pdf-options.papersize$paper,
+  $endif$
+  $format.pdf-options.typesize$,
+  oneside
+  ]{memoir}
+
+\usepackage{enumitem}
+% \usepackage{showframe}
+%%% Font declarations
+\usepackage{fontspec} % Choose fonts intelligently
 $if(format.pdf-options.fonts.regular)$
-\setmainfont{$format.pdf-options.fonts.regular$.otf}[
+\setmainfont{$format.pdf-options.fonts.regular$.otf}[%
   $if(format.pdf-options.fonts.italic)$
   ItalicFont = $format.pdf-options.fonts.italic$.otf ,
   $endif$
@@ -23,80 +33,129 @@ $if(format.pdf-options.fonts.monospace)$
   Path = ./fonts/
 ]
 $endif$
-\usepackage[
-  breaklinks=true,
-  hidelinks
-]{hyperref}
+
+%%% PDF generation
+\usepackage[ breaklinks=true, hidelinks ]{hyperref}
 \hypersetup{
             pdftitle={$format.title$},
             pdfauthor={$for(format.author)$$format.author$$sep$, $endfor$},
             pdfborder={0 0 0},
             breaklinks=true}
 
-\def\tightlist{} % Pandoc adds \tightlist when an md list isn’t sep. by newlines.
-\date{$date$}
-
-$if(format.pdf-options.footer)$
-\usepackage{fancyhdr}
-\pagestyle{fancy} % for fancy headers/footers
-\newcommand\datestyle{}
-\fancyhead{}
-\lfoot{}
-\cfoot{}% of \pageref{LastPage}}     % Use \thepage for counting page number
-\rfoot{\datestyle\datestyle\
-$if(format.pdf-options.footer.display-author)$$for(format.author)$$format.author$$sep$,
-$endfor$$endif$  $if(format.pdf-options.footer.last-modified)$\today,$endif$ \thepage}
-\renewcommand{\headrulewidth}{0.0pt}
+%%% Layout of the page
+$if(format.pdf-options.left-margin)$
+  \setlrmarginsandblock{$format.pdf-options.left-margin$}$if(format.pdf-options.right-margin)${$format.pdf-options.right-margin$}$else${*}$endif${*}
 $endif$
+$if(format.pdf-options.top-margin)$
+  \setulmarginsandblock{$format.pdf-options.top-margin$}$if(format.pdf-options.bottom-margin)${$format.pdf-options.bottom-margin$}$else${*}$endif${*}
+$endif$
+  \setheadfoot{0pt}{\baselineskip}
+  \setheaderspaces{*}{0pt}{*}
+  \setsecnumdepth{part} % Don’t number chapter or sections.
 
-% \renewcommand{\sectionskip}{0pt}
+%%% Define the (default) chapter style and choose the chapter
+  \makechapterstyle{line}{%
+    \setlength{\beforechapskip}{0pt}
+    \setlength{\afterchapskip}{0pt}
+    \renewcommand*{\chaptitlefont}{\Large\scshape}
+    \renewcommand*{\printchaptertitle}[1]{%
+      \chaptitlefont ##1 \smallskip\hrule\vskip\onelineskip 
+    }
+  }
+\chapterstyle{$format.pdf-options.display-style$}
 
-% res.cls variables
-$if(format.pdf-options.smallcaps-headings)$
-  $if(personal.display-name)$
-  \name{\sc{$personal.display-name$}}
-  $else$
-  \name{\sc{$personal.display-name$}}
-  $endif$
-  \renewcommand{\subsection}[1]{\section{\sc{#1}}} % res.cls expects \section, but pandoc gives \subsection
+% margin-heading is set in the ruby script.
+$if(format.pdf-options.margin-heading)$
+\newcommand{\marginbox}[1]{%
+  \parbox[t][0pt]{9em}{\parbox[t][0pt]{7em}{\scshape\raggedright{} #1}}
+}
+\newcommand{\marginhead}[1]{%
+  {\hspace{-9em}{\marginbox{#1}}}
+}
+\setsecindent{0em}
+\setaftersecskip{0em}
+\setsecheadstyle{\marginhead}
+\setlength{\parindent}{0em}
+\setlist[itemize]{nosep}
+\setlist[itemize,1]{leftmargin=0em}
 $else$
-  $if(personal.display-name)$
-  \name{$personal.display-name$}
+  $if(format.pdf-options.smallcaps-headings)$
+    \setsecheadstyle{\large\scshape}
   $else$
-  \name{$personal.display-name$}
+    \setsecheadstyle{\large}
   $endif$
-  \renewcommand{\subsection}[1]{\section{#1}} % res.cls expects \section, but pandoc gives \subsection
+    \setaftersecskip{\baselineskip}
+    \setlength{\parindent}{3em}
+    \setlist[itemize]{leftmargin=3em, nosep}
 $endif$
-$if(format.pdf-options.address)$
-\address{$for(personal.address)$$personal.address$$sep$\\ $endfor$}
+
+\checkandfixthelayout
+
+%%% List layout
+% \setlist[itemize,0]{topsep=0pt, partopsep=0pt}
+
+%%% Format footer
+\copypagestyle{chapter}{plain}
+$if(format.pdf-options.footer)$
+  \makeoddhead{chapter}{}{}{}
+  \makeoddfoot{chapter}{}{}{%
+    $if(format.pdf-options.footer.display-author)$$for(format.author)$$format.author$$sep$, $endfor$$endif$  $if(format.pdf-options.footer.last-modified)$\today,$endif$ \thepage}
+$else$
+  \makeoddhead{chapter}{}{}{}
+  \makeoddfoot{chapter}{}{}{\thepage}
 $endif$
+\pagestyle{chapter}
+
+%%% Redefine \section to tighten vertical space
+\let\oldsection\section
+\renewcommand{\section}[1]{%
+  \oldsection{#1}
+  \leavevmode
+  \par
+  \vspace{\dimexpr-\baselineskip-\parskip}
+}
+
 
 \begin{document}
-  \begin{resume}
+
+  $if(personal.display-name)$
+    \chapter*{$personal.display-name$}
+  $else$
+    \chapter*{$personal.name$}
+  $endif$
+
+$if(format.pdf-options.margin-heading)$
+  \begin{adjustwidth*}{9em}{0em}
+  \mbox{}
+$endif$
+
   \hypertarget{contact-information}{
-  \subsection{$format.contact-information$}\label{contact-information}}
+  \section{$format.contact-information$}\label{contact-information}}
     \begin{minipage}[t]{0.3\textwidth}
       $for(personal.address)$$personal.address$$sep$\\ $endfor$
     \end{minipage}
     \begin{minipage}[t]{0.7\textwidth}
         $if(personal.telephone)$
-        {\it Tel:} $personal.telephone$ \\
+        {\textit{Tel:}} $personal.telephone$ \\
         $endif$
         $if(personal.email)$
-        {\it E-mail:} $personal.email$ \\
+        {\textit{E-mail:}} $personal.email$ \\
         $endif$
         $if(personal.url)$
-        {\it Web:} http://$personal.url$ \\
+        {\textit{Web:}} http://$personal.url$ \\
         $endif$
         $if(personal.twitter)$
-        {\it Twitter:} \href{http://twitter.com/$personal.twitter$}{@$personal.twitter$} \\
+        {\textit{Twitter:}} \href{http://twitter.com/$personal.twitter$}{@$personal.twitter$} \\
         $endif$
         $if(personal.github)$
-        {\it GitHub:} \href{http://github.com/$personal.github$}{@$personal.github$}
+        {\textit{GitHub:}} \href{http://github.com/$personal.github$}{@$personal.github$}
         $endif$
     \end{minipage}
 \vspace{-\baselineskip} % To pull the contact information back a line.
 $body$
-  \end{resume}
+
+$if(format.pdf-options.margin-heading)$
+  \end{adjustwidth*}
+$endif$
 \end{document}
 
