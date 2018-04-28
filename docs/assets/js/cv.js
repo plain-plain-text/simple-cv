@@ -38,9 +38,9 @@ function fetchHeader(url, wch) {
     if(req.status === 200){
       return req.getResponseHeader(wch);
     }
-    else { return false; }
+    else { return "Failed to get 200 status"; }
   } catch(er) {
-    return er.message;
+    return "Failed to get date."
   }
 }
 

@@ -175,7 +175,8 @@ the document
 #### `html` options
 
 * `headshot-url`: Some cultures expect a headshot in a CV. Here is where you
-  tell Pandoc where to find it. Leaving it blank means no headshot.
+  tell Pandoc where to find it. Leaving it blank means no headshot. This
+  feature does not yet work perfectly, so it is left off by default.
 * `lang`: The language code for the CV. Default is `en` because American hegemony.
 * `fontawesome`: Whether to use the [Font Awesome](http://fontawesome.com)
   icons.
