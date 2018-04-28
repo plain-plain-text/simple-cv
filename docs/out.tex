@@ -25,14 +25,6 @@
             pdfborder={0 0 0},
             breaklinks=true}
 
-%%% Format footer
-\copypagestyle{chapter}{plain}
-\makeoddhead{chapter}{}{}{}
-% \makeevenhead{chapter}{}{}{}
-\makeoddfoot{chapter}{}{}{\thepage}
-% \makeevenfoot{chapter}{}{}{\thepage}
-\pagestyle{chapter}
-
 %%% Layout of the page
   \setlrmarginsandblock{.5in}{*}{*}
   \setulmarginsandblock{.75in}{*}{*}
@@ -63,22 +55,30 @@
 \setsecheadstyle{\marginhead}
 \setsechook{\setsecnumformat{\csname the##1\endcsname\ }}
 
-\addtolength{\spinemargin}{9em}
-\addtolength{\textwidth}{-9em}
-
 \checkandfixthelayout
 
 %%% List layout
 \usepackage{enumitem}
 \setlist[itemize,0]{topsep=0pt, partopsep=0pt}
 
+%%% Format footer
+\copypagestyle{chapter}{plain}
+  \makeoddhead{chapter}{}{}{}
+  \makeoddfoot{chapter}{}{}{%
+    Moacir P. de Sá Pereira, Henry Walton Jones, Jr.  \today, \thepage}
+\pagestyle{chapter}
 
 \begin{document}
 
-  % \begin{adjustwidth*}{-9em}{0em}
       \chapter*{Henry Walton ``Indiana'' Jones, Jr.}
-    % \end{adjustwidth*}
+  
+  Text width is \the\textwidth.
 
+% \addtolength{\spinemargin}{9em}
+% \addtolength{\textwidth}{-9em}
+
+  \begin{adjustwidth*}{9em}{0em}
+  Text width is \the\textwidth.
 
 
   \hypertarget{contact-information}{
@@ -247,5 +247,6 @@ Activities}\label{service-related-professional-activities}}
 \item
   Foundations: Mayan and Quechua.
 \end{itemize}
+  \end{adjustwidth*}
 \end{document}
 

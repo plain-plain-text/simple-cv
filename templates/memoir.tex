@@ -78,9 +78,6 @@ $endif$
 \setsecheadstyle{\marginhead}
 \setsechook{\setsecnumformat{\csname the##1\endcsname\ }}
 
-\addtolength{\spinemargin}{9em}
-\addtolength{\textwidth}{-9em}
-
 \checkandfixthelayout
 
 %%% List layout
@@ -101,13 +98,20 @@ $endif$
 
 \begin{document}
 
-  % \begin{adjustwidth*}{-9em}{0em}
   $if(personal.display-name)$
     \chapter*{$personal.display-name$}
   $else$
     \chapter*{$personal.name$}
   $endif$
-  % \end{adjustwidth*}
+
+  Text width is \the\textwidth.
+
+% \addtolength{\spinemargin}{9em}
+% \addtolength{\textwidth}{-9em}
+
+  \begin{adjustwidth*}{9em}{0em}
+  Text width is \the\textwidth.
+
 
   \hypertarget{contact-information}{
   \section{$format.contact-information$}\label{contact-information}}
@@ -133,5 +137,6 @@ $endif$
     \end{minipage}
 \vspace{-\baselineskip} % To pull the contact information back a line.
 $body$
+  \end{adjustwidth*}
 \end{document}
 
