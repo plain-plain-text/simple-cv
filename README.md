@@ -79,9 +79,9 @@ There are three things to edit in this repository.
    incorporated into the templates. That said, just because the templating
    language is easy doesn’t mean the templates are. The `html` file depends on
    the [Bootstrap](http://getbootstrap.com) framework, and the `pdf` file
-   depends on the rather restrictive [`res` LaTeX
-   package](https://ctan.org/pkg/res?lang=en). I have tried to make the
-   defaults acceptable, aesthetically, but leave fine tuning up to you.
+   depends on the rather expansive [`memoir` LaTeX
+   package](https://ctan.org/pkg/memoir?lang=en). I have tried to make the
+   defaults acceptable, aesthetically, but I leave fine tuning up to you.
 
 When you’ve made your changes, you must run the Ruby script in command line:
 
@@ -139,33 +139,38 @@ the document
 
 * `filename`: The name of the resulting `pdf` document (which is linked to
   from the `html` page as well).
-* `address`: Whether to print the address as its own entity. I find this to be
-  clumsy, so it’s set to false.
-* `style`: Four mix and matchable options are available here, that determine
-  how the headings are presented as well as the title.
-* `smallcaps-headings`: Whether the headers and name are in small caps or not.
 * `footer`: By default, a footer is added that includes the author(s) name(s)
   and the last modified date. One or both of those options can be suppressed.
 * `fonts`: This lets you give the name of OpenType fonts for use in the
   document, but they must be in the `fonts/` directory. See `fonts/FONTS-README.md`
   for more details.
-* `memoir-mode`: This uses the [Memoir
-  class](https://ctan.org/pkg/memoir?lang=en), an exceptionally robust and
-  configurable class for typesetting. This support is experimental, but should
-  eventually supersede using Res. For now, these are the options:
-  * `papersize`: “letter” (8.5in x 11in) is the default, but any page size LaTeX understands works. “a4” is the only other size I can imagine using for a CV…
-  * `typesize`: How large the default text should be. The headings, etc., are
-    all scaled in relation to this setting.
-  * `left-margin`: The left margin. Can be set in inches, centimeters,
-    whatever. In the absence of a `right-margin`, it stands in for both
-    horizontal margins.
-  * `right-margin`: The right margin. Only needed if it’s different from the
-    left margin.
-  * `top-margin`: Should be a minimum of about .5in so that there is room at
-    the bottom for the footer.
-  * `bottom-margin`: Unneeded unless the margin is different from the top
-    margin. If this margin is large enough for the footer (.5in or so), then
-    the top-margin can be made hilariously small.
+* `headings`: One of two settings for the section headings. The
+  default is `overlapped`, which creates headings that jut out to the left a
+  bit in comparison to the body. The only other option is `margin`, which
+  places the headings in their own boxes in the margin to create a nice
+  effect.
+* `smallcaps-headings`: Whether the headers and name are in small caps or not.
+* `papersize`: Letter paper (8.5in x 11in) is the default, but any page size
+  LaTeX understands works. `a4` is the only other size I can imagine using for a CV…
+* `typesize`: How large the default text should be. The headings, etc., are
+  all scaled in relation to this setting.
+* `left-margin`: The left margin. Can be set in inches, centimeters,
+  whatever. In the absence of a `right-margin`, it stands in for both
+  horizontal margins.
+* `right-margin`: The right margin. Only needed if it’s different from the
+  left margin.
+* `top-margin`: Should be a minimum of about .5in so that there is room at
+  the bottom for the footer.
+* `bottom-margin`: Unneeded unless the margin is different from the top
+  margin. If this margin is large enough for the footer (.5in or so), then
+  the top-margin can be made hilariously small.
+* `display-style`: I created a default look, called `line` that is based on
+  the `resume` package. However, any `memoir` chapter style, as demonstrated
+  in [10.5 of the Memoir
+  manual](http://texdoc.net/texmf-dist/doc/latex/memoir/memman.pdf) can be
+  used here. Reasonable values include: `bianchi`, `bringhurst`, `chappell`,
+ `crosshead`, `demo2`, `dowding`, `lyhne`, and `wilsondob`. Some of these styles will
+  clobber your font choices.
 
 #### `html` options
 
