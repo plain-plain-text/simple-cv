@@ -25,13 +25,14 @@
             pdfborder={0 0 0},
             breaklinks=true}
 
-\date{2018-04-27}
+%%% Format footer
+\copypagestyle{chapter}{plain}
+\makeoddhead{chapter}{}{}{}
+% \makeevenhead{chapter}{}{}{}
+\makeoddfoot{chapter}{}{}{\thepage}
+% \makeevenfoot{chapter}{}{}{\thepage}
+\pagestyle{chapter}
 
-% 
-% \renewcommand{\sectionskip}{0pt}
-
-    \newcommand\name{Henry Walton ``Indiana'' Jones, Jr.}
-  
 %%% Layout of the page
   \setlrmarginsandblock{.5in}{*}{*}
   \setulmarginsandblock{.75in}{*}{*}
@@ -39,7 +40,6 @@
 
 \setheaderspaces{0in}{*}{*}
 \setsecnumdepth{part} % Don’t number chapter or sections.
-% \renewcommand{\subsection}[1]{\section{#1}} % pandoc gives \subsection
 \makechapterstyle{line}{%
   \setlength{\beforechapskip}{0pt}
   \setlength{\afterchapskip}{0pt}
@@ -74,9 +74,10 @@
 
 
 \begin{document}
+
   % \begin{adjustwidth*}{-9em}{0em}
-    \chapter{\name}
-  % \end{adjustwidth*}
+      \chapter*{Henry Walton ``Indiana'' Jones, Jr.}
+    % \end{adjustwidth*}
 
 
 

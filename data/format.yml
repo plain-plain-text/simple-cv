@@ -23,9 +23,9 @@ pdf-options:
   - margin # section titles are in the margin
   # - overlapped # section titles overlap the body
   - line # name on the left with a line and address on the right
-  # footer: # comment out this entire section to disable the footer
-  #   last-modified: true
-  #   display-author: true
+  footer: # comment out this entire section to disable the footer
+    last-modified: true
+    display-author: true
   fonts: # please see fonts/FONTS-README.md for more information
     # These are .otf files that should be in fonts/
     regular: EBGaramond12-Regular # note no ".otf"

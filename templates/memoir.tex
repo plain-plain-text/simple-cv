@@ -40,29 +40,6 @@ $endif$
             pdfborder={0 0 0},
             breaklinks=true}
 
-\date{$date$}
-
-% $if(format.pdf-options.footer)$
-% \usepackage{fancyhdr}
-% \pagestyle{fancy} % for fancy headers/footers
-% \newcommand\datestyle{}
-% \fancyhead{}
-% \lfoot{}
-% \cfoot{}% of \pageref{LastPage}}     % Use \thepage for counting page number
-% \rfoot{\datestyle\datestyle\
-% $if(format.pdf-options.footer.display-author)$$for(format.author)$$format.author$$sep$,
-% $endfor$$endif$  $if(format.pdf-options.footer.last-modified)$\today,$endif$ \thepage}
-% \renewcommand{\headrulewidth}{0.0pt}
-% $endif$
-
-% \renewcommand{\sectionskip}{0pt}
-
-  $if(personal.display-name)$
-  \newcommand\name{$personal.display-name$}
-  $else$
-  \newcommand\name{$personal.name$}
-  $endif$
-
 %%% Layout of the page
 $if(format.pdf-options.memoir-mode.left-margin)$
   \setlrmarginsandblock{$format.pdf-options.memoir-mode.left-margin$}$if(format.pdf-options.memoir-mode.right-margin)${$format.pdf-options.memoir-mode.right-margin$}$else${*}$endif${*}
@@ -74,7 +51,6 @@ $endif$
 
 \setheaderspaces{0in}{*}{*}
 \setsecnumdepth{part} % Don’t number chapter or sections.
-% \renewcommand{\subsection}[1]{\section{#1}} % pandoc gives \subsection
 \makechapterstyle{line}{%
   \setlength{\beforechapskip}{0pt}
   \setlength{\afterchapskip}{0pt}
@@ -111,13 +87,27 @@ $endif$
 \usepackage{enumitem}
 \setlist[itemize,0]{topsep=0pt, partopsep=0pt}
 
+%%% Format footer
+\copypagestyle{chapter}{plain}
+$if(format.pdf-options.footer)$
+  \makeoddhead{chapter}{}{}{}
+  \makeoddfoot{chapter}{}{}{%
+    $if(format.pdf-options.footer.display-author)$$for(format.author)$$format.author$$sep$, $endfor$$endif$  $if(format.pdf-options.footer.last-modified)$\today,$endif$ \thepage}
+$else$
+  \makeoddhead{chapter}{}{}{}
+  \makeoddfoot{chapter}{}{}{\thepage}
+$endif$
+\pagestyle{chapter}
 
 \begin{document}
+
   % \begin{adjustwidth*}{-9em}{0em}
-    \chapter{\name}
+  $if(personal.display-name)$
+    \chapter*{$personal.display-name$}
+  $else$
+    \chapter*{$personal.name$}
+  $endif$
   % \end{adjustwidth*}
-
-
 
   \hypertarget{contact-information}{
   \section{$format.contact-information$}\label{contact-information}}
