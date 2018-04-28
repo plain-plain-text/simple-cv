@@ -21,6 +21,11 @@ data["title"] = data["format"]["title"] # pandoc complains if no "title" is set.
     end
   end
 end
+# set the headings style
+if data["format"]["pdf-options"]["headings"] == "margin"
+  puts "Headings in margin mode."
+  data["format"]["pdf-options"]["margin-heading"] = true
+end
 File.open('metadata.yml', 'w') do |file|
   file.puts YAML::dump(data)
   file.puts "date: #{Time.now.strftime "%F"}" # set the date

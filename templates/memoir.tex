@@ -6,6 +6,8 @@
   oneside
   ]{memoir}
 
+\usepackage{enumitem}
+% \usepackage{showframe}
 %%% Font declarations
 \usepackage{fontspec} % Choose fonts intelligently
 $if(format.pdf-options.fonts.regular)$
@@ -47,42 +49,50 @@ $endif$
 $if(format.pdf-options.memoir-mode.top-margin)$
   \setulmarginsandblock{$format.pdf-options.memoir-mode.top-margin$}$if(format.pdf-options.memoir-mode.bottom-margin)${$format.pdf-options.memoir-mode.bottom-margin$}$else${*}$endif${*}
 $endif$
-\newcommand{\origtextwidth}{\textwidth}
+  \setheadfoot{0pt}{\baselineskip}
+  \setheaderspaces{*}{0pt}{*}
+  \setsecnumdepth{part} % Don’t number chapter or sections.
 
-\setheaderspaces{0in}{*}{*}
-\setsecnumdepth{part} % Don’t number chapter or sections.
-\makechapterstyle{line}{%
-  \setlength{\beforechapskip}{0pt}
-  \setlength{\afterchapskip}{0pt}
-  \renewcommand*{\chaptitlefont}{\Large\scshape}
-  \renewcommand*{\printchaptertitle}[1]{%
-    \chaptitlefont ##1 \smallskip\hrule\vskip\onelineskip 
+%%% Define the (default) chapter style and choose the chapter
+  \makechapterstyle{line}{%
+    \setlength{\beforechapskip}{0pt}
+    \setlength{\afterchapskip}{0pt}
+    \renewcommand*{\chaptitlefont}{\Large\scshape}
+    \renewcommand*{\printchaptertitle}[1]{%
+      \chaptitlefont ##1 \smallskip\hrule\vskip\onelineskip 
+    }
   }
-}
-
 \chapterstyle{$format.pdf-options.memoir-mode.display-style$}
-% $if(format.pdf-options.smallcaps-headings)$
-% \setsecheadstyle{\large\scshape}
-% $else$
-% \setsecheadstyle{\large}
-% $endif$
-% \setaftersecskip{1pt}
+
+% margin-heading is set in the ruby script.
+$if(format.pdf-options.margin-heading)$
 \newcommand{\marginbox}[1]{%
   \parbox[t][0pt]{9em}{\parbox[t][0pt]{7em}{\scshape\raggedright{} #1}}
 }
 \newcommand{\marginhead}[1]{%
-  {\llap{\marginbox{#1}}}
+  {\hspace{-9em}{\marginbox{#1}}}
 }
 \setsecindent{0em}
 \setaftersecskip{0em}
 \setsecheadstyle{\marginhead}
-\setsechook{\setsecnumformat{\csname the##1\endcsname\ }}
+\setlength{\parindent}{0em}
+\setlist[itemize]{nosep}
+\setlist[itemize,1]{leftmargin=0em}
+$else$
+  $if(format.pdf-options.smallcaps-headings)$
+    \setsecheadstyle{\large\scshape}
+  $else$
+    \setsecheadstyle{\large}
+  $endif$
+    \setaftersecskip{\baselineskip}
+    \setlength{\parindent}{3em}
+    \setlist[itemize]{leftmargin=3em, nosep}
+$endif$
 
 \checkandfixthelayout
 
 %%% List layout
-\usepackage{enumitem}
-\setlist[itemize,0]{topsep=0pt, partopsep=0pt}
+% \setlist[itemize,0]{topsep=0pt, partopsep=0pt}
 
 %%% Format footer
 \copypagestyle{chapter}{plain}
@@ -96,6 +106,16 @@ $else$
 $endif$
 \pagestyle{chapter}
 
+%%% Redefine \section to tighten vertical space
+\let\oldsection\section
+\renewcommand{\section}[1]{%
+  \oldsection{#1}
+  \leavevmode
+  \par
+  \vspace{\dimexpr-\baselineskip-\parskip}
+}
+
+
 \begin{document}
 
   $if(personal.display-name)$
@@ -104,14 +124,10 @@ $endif$
     \chapter*{$personal.name$}
   $endif$
 
-  Text width is \the\textwidth.
-
-% \addtolength{\spinemargin}{9em}
-% \addtolength{\textwidth}{-9em}
-
+$if(format.pdf-options.margin-heading)$
   \begin{adjustwidth*}{9em}{0em}
-  Text width is \the\textwidth.
-
+  \mbox{}
+$endif$
 
   \hypertarget{contact-information}{
   \section{$format.contact-information$}\label{contact-information}}
@@ -137,6 +153,9 @@ $endif$
     \end{minipage}
 \vspace{-\baselineskip} % To pull the contact information back a line.
 $body$
+
+$if(format.pdf-options.margin-heading)$
   \end{adjustwidth*}
+$endif$
 \end{document}
 

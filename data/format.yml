@@ -33,13 +33,14 @@ pdf-options:
     monospace: SourceCodePro-Regular # not currently used in template
     # bold: # No good bold version of EBGaramond and the template doesn't use it
     # smallcaps: # smallcaps is built into EBGaramond
+  headings: overlapped # section headings jut out to the left a bit. The other option, “margin,” moves the headings to the left on their own.
   smallcaps-headings: true # To make headings smallcaps
   memoir-mode: # uses "memoir" instead of "res" class. Experimental.
     # papersize: a4 # "letter" is the default.
     typesize: 11pt # Default text size.
     left-margin: .5in
     # right-margin: .5in # Only needed for unequal margins
-    top-margin: .75in # Minimum of about .5in or 2cm
+    top-margin: .5in # Minimum of about .25in or 2cm
     # bottom-margin: 2in # Only needed for unequal margins. Useful if the footer is too low.
     display-style: line # The style for the top of the page. This can be any memoir chapter style as demonstrated in 10.5 of the Memoir manual: http://texdoc.net/texmf-dist/doc/latex/memoir/memman.pdf. Reasonable values include: bianchi, bringhurst, chappell, crosshead, demo2, dowding, lyhne, and wilsondob. Some of these styles will clobber your font choices. “line” is a style I created based on the res.cls line option.
 ## HTML options
