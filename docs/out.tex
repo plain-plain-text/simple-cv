@@ -1,7 +1,10 @@
 \documentclass[%
-    12pt,
+    11pt,
+  oneside
   ]{memoir}
-\usepackage{fontspec}
+
+%%% Font declarations
+\usepackage{fontspec} % Choose fonts intelligently
 \setmainfont{EBGaramond12-Regular.otf}[%
     ItalicFont = EBGaramond12-Italic.otf ,
         Path = ./fonts/ ,
@@ -13,60 +16,72 @@
 \setmonofont{SourceCodePro-Regular.otf}[
   Path = ./fonts/
 ]
-\usepackage[
-  breaklinks=true,
-  hidelinks
-]{hyperref}
+
+%%% PDF generation
+\usepackage[ breaklinks=true, hidelinks ]{hyperref}
 \hypersetup{
             pdftitle={Henry Walton Jones, Jr.~CV},
             pdfauthor={Moacir P. de Sá Pereira, Henry Walton Jones, Jr.},
             pdfborder={0 0 0},
             breaklinks=true}
 
-\def\tightlist{} % Pandoc adds \tightlist when an md list isn’t sep. by newlines.
 \date{2018-04-27}
 
-\usepackage{fancyhdr}
-\pagestyle{fancy} % for fancy headers/footers
-\newcommand\datestyle{}
-\fancyhead{}
-\lfoot{}
-\cfoot{}% of \pageref{LastPage}}     % Use \thepage for counting page number
-\rfoot{\datestyle\datestyle\
-Moacir P. de Sá Pereira,
-Henry Walton Jones, Jr.  \today, \thepage}
-\renewcommand{\headrulewidth}{0.0pt}
-
+% 
 % \renewcommand{\sectionskip}{0pt}
 
-% res.cls variables
-    \newcommand\name{\textsc{Henry Walton ``Indiana'' Jones, Jr.}}
-    % \renewcommand{\subsection}[1]{\section{\textsc{#1}}} % pandoc gives \subsection
-
+    \newcommand\name{Henry Walton ``Indiana'' Jones, Jr.}
+  
+%%% Layout of the page
   \setlrmarginsandblock{.5in}{*}{*}
   \setulmarginsandblock{.75in}{*}{*}
+\newcommand{\origtextwidth}{\textwidth}
+
 \setheaderspaces{0in}{*}{*}
+\setsecnumdepth{part} % Don’t number chapter or sections.
+% \renewcommand{\subsection}[1]{\section{#1}} % pandoc gives \subsection
+\makechapterstyle{line}{%
+  \setlength{\beforechapskip}{0pt}
+  \setlength{\afterchapskip}{0pt}
+  \renewcommand*{\chaptitlefont}{\Large\scshape}
+  \renewcommand*{\printchaptertitle}[1]{%
+    \chaptitlefont ##1 \smallskip\hrule\vskip\onelineskip 
+  }
+}
+
+\chapterstyle{line}
+% % \setsecheadstyle{\large\scshape}
+% % \setaftersecskip{1pt}
+\newcommand{\marginbox}[1]{%
+  \parbox[t][0pt]{9em}{\parbox[t][0pt]{7em}{\scshape\raggedright{} #1}}
+}
+\newcommand{\marginhead}[1]{%
+  {\llap{\marginbox{#1}}}
+}
+\setsecindent{0em}
+\setaftersecskip{0em}
+\setsecheadstyle{\marginhead}
+\setsechook{\setsecnumformat{\csname the##1\endcsname\ }}
+
+\addtolength{\spinemargin}{9em}
+\addtolength{\textwidth}{-9em}
+
 \checkandfixthelayout
 
+%%% List layout
+\usepackage{enumitem}
+\setlist[itemize,0]{topsep=0pt, partopsep=0pt}
+
+
 \begin{document}
-  \section*{\textsc{\name}}
-  The text width  is \the\textwidth
-
-  The paper width  is \the\paperwidth
-
-  The spine width  is \the\spinemargin
+  % \begin{adjustwidth*}{-9em}{0em}
+    \chapter{\name}
+  % \end{adjustwidth*}
 
 
-  The text height is \the\textheight
-
-  The paper height is \the\paperheight
-
-  The upper margin is \the\uppermargin
-
-  The lower margin is \the\lowermargin
 
   \hypertarget{contact-information}{
-  \subsection{Contact Information}\label{contact-information}}
+  \section{Contact Information}\label{contact-information}}
     \begin{minipage}[t]{0.3\textwidth}
       Brody Hall 134\\ Marshall College\\ Bedford, CT 0649x
     \end{minipage}
@@ -79,13 +94,13 @@ Henry Walton Jones, Jr.  \today, \thepage}
             \end{minipage}
 \vspace{-\baselineskip} % To pull the contact information back a line.
 \hypertarget{fields-of-specialization}{%
-\subsection{Fields of Specialization}\label{fields-of-specialization}}
+\section{Fields of Specialization}\label{fields-of-specialization}}
 
 Ancient relics, imperial theft of cultural patrimony, Grail lore,
 anti-fascism, masculinist archæology, Celtic mythology, Herpetology.
 
 \hypertarget{education}{%
-\subsection{Education}\label{education}}
+\section{Education}\label{education}}
 
 \begin{itemize}
 \tightlist
@@ -102,7 +117,7 @@ anti-fascism, masculinist archæology, Celtic mythology, Herpetology.
 \end{itemize}
 
 \hypertarget{academic-appointments}{%
-\subsection{Academic Appointments}\label{academic-appointments}}
+\section{Academic Appointments}\label{academic-appointments}}
 
 \begin{itemize}
 \tightlist
@@ -126,7 +141,7 @@ anti-fascism, masculinist archæology, Celtic mythology, Herpetology.
 \end{itemize}
 
 \hypertarget{selected-publications}{%
-\subsection{Selected Publications}\label{selected-publications}}
+\section{Selected Publications}\label{selected-publications}}
 
 \begin{itemize}
 \tightlist
@@ -139,7 +154,7 @@ anti-fascism, masculinist archæology, Celtic mythology, Herpetology.
 \end{itemize}
 
 \hypertarget{invited-lectures}{%
-\subsection{Invited Lectures}\label{invited-lectures}}
+\section{Invited Lectures}\label{invited-lectures}}
 
 \begin{itemize}
 \tightlist
@@ -162,7 +177,7 @@ anti-fascism, masculinist archæology, Celtic mythology, Herpetology.
 \end{itemize}
 
 \hypertarget{selected-teaching}{%
-\subsection{Selected Teaching}\label{selected-teaching}}
+\section{Selected Teaching}\label{selected-teaching}}
 
 \begin{itemize}
 \tightlist
@@ -189,7 +204,7 @@ anti-fascism, masculinist archæology, Celtic mythology, Herpetology.
 \end{itemize}
 
 \hypertarget{service-related-professional-activities}{%
-\subsection{Service \& Related Professional
+\section{Service \& Related Professional
 Activities}\label{service-related-professional-activities}}
 
 \begin{itemize}
@@ -205,7 +220,7 @@ Activities}\label{service-related-professional-activities}}
 \end{itemize}
 
 \hypertarget{skills}{%
-\subsection{Skills}\label{skills}}
+\section{Skills}\label{skills}}
 
 \begin{itemize}
 \tightlist
@@ -216,7 +231,7 @@ Activities}\label{service-related-professional-activities}}
 \end{itemize}
 
 \hypertarget{languages}{%
-\subsection{Languages}\label{languages}}
+\section{Languages}\label{languages}}
 
 \begin{itemize}
 \tightlist

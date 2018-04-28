@@ -3,8 +3,11 @@
     $format.pdf-options.memoir-mode.papersize$paper,
   $endif$
   $format.pdf-options.memoir-mode.typesize$,
+  oneside
   ]{memoir}
-\usepackage{fontspec}
+
+%%% Font declarations
+\usepackage{fontspec} % Choose fonts intelligently
 $if(format.pdf-options.fonts.regular)$
 \setmainfont{$format.pdf-options.fonts.regular$.otf}[%
   $if(format.pdf-options.fonts.italic)$
@@ -28,82 +31,96 @@ $if(format.pdf-options.fonts.monospace)$
   Path = ./fonts/
 ]
 $endif$
-\usepackage[
-  breaklinks=true,
-  hidelinks
-]{hyperref}
+
+%%% PDF generation
+\usepackage[ breaklinks=true, hidelinks ]{hyperref}
 \hypersetup{
             pdftitle={$format.title$},
             pdfauthor={$for(format.author)$$format.author$$sep$, $endfor$},
             pdfborder={0 0 0},
             breaklinks=true}
 
-\def\tightlist{} % Pandoc adds \tightlist when an md list isn’t sep. by newlines.
 \date{$date$}
 
-$if(format.pdf-options.footer)$
-\usepackage{fancyhdr}
-\pagestyle{fancy} % for fancy headers/footers
-\newcommand\datestyle{}
-\fancyhead{}
-\lfoot{}
-\cfoot{}% of \pageref{LastPage}}     % Use \thepage for counting page number
-\rfoot{\datestyle\datestyle\
-$if(format.pdf-options.footer.display-author)$$for(format.author)$$format.author$$sep$,
-$endfor$$endif$  $if(format.pdf-options.footer.last-modified)$\today,$endif$ \thepage}
-\renewcommand{\headrulewidth}{0.0pt}
-$endif$
+% $if(format.pdf-options.footer)$
+% \usepackage{fancyhdr}
+% \pagestyle{fancy} % for fancy headers/footers
+% \newcommand\datestyle{}
+% \fancyhead{}
+% \lfoot{}
+% \cfoot{}% of \pageref{LastPage}}     % Use \thepage for counting page number
+% \rfoot{\datestyle\datestyle\
+% $if(format.pdf-options.footer.display-author)$$for(format.author)$$format.author$$sep$,
+% $endfor$$endif$  $if(format.pdf-options.footer.last-modified)$\today,$endif$ \thepage}
+% \renewcommand{\headrulewidth}{0.0pt}
+% $endif$
 
 % \renewcommand{\sectionskip}{0pt}
 
-% res.cls variables
-$if(format.pdf-options.smallcaps-headings)$
   $if(personal.display-name)$
-  \newcommand\name{\textsc{$personal.display-name$}}
+  \newcommand\name{$personal.display-name$}
   $else$
-  \newcommand\name{\textsc{$personal.display-name$}}
+  \newcommand\name{$personal.name$}
   $endif$
-  % \renewcommand{\subsection}[1]{\section{\textsc{#1}}} % pandoc gives \subsection
-$else$
-  $if(personal.display-name)$
-  \name{$personal.display-name$}
-  $else$
-  \name{$personal.display-name$}
-  $endif$
-  % \renewcommand{\subsection}[1]{\section{#1}} % pandoc gives \subsection
-$endif$
-$if(format.pdf-options.address)$
-\newcommand\address{$for(personal.address)$$personal.address$$sep$\\ $endfor$}
-$endif$
 
+%%% Layout of the page
 $if(format.pdf-options.memoir-mode.left-margin)$
   \setlrmarginsandblock{$format.pdf-options.memoir-mode.left-margin$}$if(format.pdf-options.memoir-mode.right-margin)${$format.pdf-options.memoir-mode.right-margin$}$else${*}$endif${*}
 $endif$
 $if(format.pdf-options.memoir-mode.top-margin)$
   \setulmarginsandblock{$format.pdf-options.memoir-mode.top-margin$}$if(format.pdf-options.memoir-mode.bottom-margin)${$format.pdf-options.memoir-mode.bottom-margin$}$else${*}$endif${*}
 $endif$
+\newcommand{\origtextwidth}{\textwidth}
+
 \setheaderspaces{0in}{*}{*}
+\setsecnumdepth{part} % Don’t number chapter or sections.
+% \renewcommand{\subsection}[1]{\section{#1}} % pandoc gives \subsection
+\makechapterstyle{line}{%
+  \setlength{\beforechapskip}{0pt}
+  \setlength{\afterchapskip}{0pt}
+  \renewcommand*{\chaptitlefont}{\Large\scshape}
+  \renewcommand*{\printchaptertitle}[1]{%
+    \chaptitlefont ##1 \smallskip\hrule\vskip\onelineskip 
+  }
+}
+
+\chapterstyle{$format.pdf-options.memoir-mode.display-style$}
+% $if(format.pdf-options.smallcaps-headings)$
+% \setsecheadstyle{\large\scshape}
+% $else$
+% \setsecheadstyle{\large}
+% $endif$
+% \setaftersecskip{1pt}
+\newcommand{\marginbox}[1]{%
+  \parbox[t][0pt]{9em}{\parbox[t][0pt]{7em}{\scshape\raggedright{} #1}}
+}
+\newcommand{\marginhead}[1]{%
+  {\llap{\marginbox{#1}}}
+}
+\setsecindent{0em}
+\setaftersecskip{0em}
+\setsecheadstyle{\marginhead}
+\setsechook{\setsecnumformat{\csname the##1\endcsname\ }}
+
+\addtolength{\spinemargin}{9em}
+\addtolength{\textwidth}{-9em}
+
 \checkandfixthelayout
 
+%%% List layout
+\usepackage{enumitem}
+\setlist[itemize,0]{topsep=0pt, partopsep=0pt}
+
+
 \begin{document}
-  \section*{\textsc{\name}}
-  The text width  is \the\textwidth
-
-  The paper width  is \the\paperwidth
-
-  The spine width  is \the\spinemargin
+  % \begin{adjustwidth*}{-9em}{0em}
+    \chapter{\name}
+  % \end{adjustwidth*}
 
 
-  The text height is \the\textheight
-
-  The paper height is \the\paperheight
-
-  The upper margin is \the\uppermargin
-
-  The lower margin is \the\lowermargin
 
   \hypertarget{contact-information}{
-  \subsection{$format.contact-information$}\label{contact-information}}
+  \section{$format.contact-information$}\label{contact-information}}
     \begin{minipage}[t]{0.3\textwidth}
       $for(personal.address)$$personal.address$$sep$\\ $endfor$
     \end{minipage}
