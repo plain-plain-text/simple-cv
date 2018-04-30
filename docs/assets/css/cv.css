@@ -8,3 +8,15 @@
     width: 25%;
   }
 }
+
+#cvBody {
+  max-width: 900px;
+}
+
+body {
+  font-size: 1.25rem;
+}
+
+.navbar-brand {
+  font-size: 2rem;
+}
