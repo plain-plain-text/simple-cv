@@ -226,6 +226,7 @@ the document
 * `keywords`: A list of keywords for SEO like this even works.
 * `last-modified`: As with the `pdf`, this triggers a “last modified” widget
   to appear at the top right corner of the page.
+* `meta-title`: The title used in the metadata on Twitter or Facebook.
 * `canonical-url`: The canonical URL for the site.
 * `date-created`: A date when the CV was _created_, as opposed to last
   _modified_.
