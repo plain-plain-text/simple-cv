@@ -7,10 +7,48 @@
   $for(format.author)$
   <meta name="author" content="$format.author$" />
   $endfor$
+  $for(format.author-lastname-first)$
+  <meta name="DC.creator" content="$format.author-lastname-first$" />
+  $endfor$
+  <meta name="DC.contributor" content="Sá Pereira, Moacir P." />
+  <meta name="DC.title" content="$format.title$" />
+  <meta property="og.site_name" content="$format.title$" />
+  <meta name="DC.type" content="Text" />
+  <meta name="DC.date" content="$date$" />
+  $if(format.html-options.date-created)$
+  <meta name="DC.created" content="$format.html-options.date-created$" />
+  $endif$
+  $if(format.html-options.canonical-url)$
+  <link rel="canonical" href="$format.html-options.canonical-url$" />
+  <meta property="og:url" content="$format.html-options.canonical-url$" />
+  $endif$
+  $if(format.html-options.description)$
+  <meta name="DC.description" content="$format.html-options.description$" />
+  <meta property="og.description" content="$format.html-options.description$" />
+  <meta name="twitter.description" content="$format.html-options.description$" />
+  $endif$
+  $if(personal.twitter)$
+  <meta name="twitter:creator" content="@$personal.twitter$" />
+  $endif$
+  $if(format.html-options.og-image)$
+    <meta property="og:image" content="$format.html-options.og-image.url$" />
+    <meta property="og:image:type" content="$format.html-options.og-image.type$" />
+    <meta property="og:image:height" content="$format.html-options.og-image.height$" />
+    <meta property="og:image:width" content="$format.html-options.og-image.width$" />
+    <meta name="twitter:image" content="$format.html-options.og-image.url$" />
+  $endif$
   <meta name="dcterms.date" content="$date$" />
+  <meta name="twitter:card" content="summary" />
   $if(format.html-options.keywords)$
   <meta name="keywords" content="$for(format.html-options.keywords)$$format.html-options.keywords$$sep$, $endfor$" />
   $endif$
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/images/favicon-16x16.png">
+  <link rel="manifest" href="./site.webmanifest">
+  <link rel="mask-icon" href="./assets/images/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
   <title>$format.title$</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
   $if(format.html-options.fontawesome)$

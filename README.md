@@ -107,6 +107,7 @@ GitHub.
   [Bootstrap](http://getbootstrap.com).
 * URL support for digital projects, etc., in the `pdf`, meaning readers can
   click on the `pdf` to open websites.
+* Dublin Core, Open Graph, and Twitter card metadata in the web version.
 
 ## `data/` `YAML` files.
 
@@ -126,6 +127,8 @@ These are mandatory:
 * `title` this sets the `<title>` tag for the webpage and the metadata title
   for the pdf.
 * `author`: This can be a collection or a single value of the author’s name.
+* `author-lastname-first`: Dublin Core prefers the names to be with the family
+  name first. Definitely surround this with quotes.
 * `mode`: For the time being, this must be set to `markdown`.
 * `cv-sections`: This `YAML` collection stands in as the list of sections to
   the CV. Every section is its own Markdown page in the `sections/` directory.
@@ -223,6 +226,16 @@ the document
 * `keywords`: A list of keywords for SEO like this even works.
 * `last-modified`: As with the `pdf`, this triggers a “last modified” widget
   to appear at the top right corner of the page.
+* `canonical-url`: The canonical URL for the site.
+* `date-created`: A date when the CV was _created_, as opposed to last
+  _modified_.
+* `description`: A short description of the CV.
+* `og-image`: This gives a few settings to embed an image in the metadata for
+  sharing on Twitter or Facebook.
+  * `url`: The URL of the image
+  * `type`: Its type. Probably `image/jpeg` or `image/png`.
+  * `height`: Its height.
+  * `width`: Its width.
 
 ### personal.yml
 

@@ -4,6 +4,9 @@ title: Henry Walton Jones, Jr. CV # This is for the pdf metadata and <title> in 
 author: 
 - Moacir P. de Sá Pereira # This is the *author*, not the person, though it’s likely the same.
 - Henry Walton Jones, Jr.
+author-lastname-first: # Same as above, but for Dublin Core metadata
+- "Sá Pereira, Moacir P. de"
+- "Jones, Henry Walton"
 mode: markdown # or yaml. Yaml mode, however, is a future feature.
 cv-sections: # Each of these corresponds to a file in sections/ and are in order
 - fields # so, sections/fields.md
@@ -87,3 +90,13 @@ html-options:
   - anti-fascism
   - colonial exploitation
   last-modified: true
+  canonical-url: "https://muziejus.github.io/simple-cv/" # Change this to your url.
+  date-created: 2018-04-18
+  description: >- 
+    A Curriculum Vitæ created using the “simple-cv” package,
+    available at https://github.com/muziejus/simple-cv 
+  og-image:
+    url: https://muziejus.github.io/simple-cv/assets/images/simple-cv.png
+    type: image/png
+    height: 384
+    width: 384
