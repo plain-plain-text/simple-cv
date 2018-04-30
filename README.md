@@ -134,6 +134,15 @@ These are mandatory:
   the CV. Every section is its own Markdown page in the `sections/` directory.
   The order in which they are listed here is the order in which they appear in
   the final documents
+* `contact-information`: The first section, “Contact Information,” isn’t
+  created by a section above. Here is where you can set what the heading is.
+* `markers`: Most of the CV is probably unordered lists. Here you can set what
+  markers make up the first three levels deep on the list. Any sort of
+  character should work for html, but some characters may break the
+  pdf-template. I use `»` for top level and `›` for the rest.
+  * `level-1`: First level marker. Default is `•`.
+  * `level-2`: Second level marker. Default is `-`.
+  * `level-3`: Third level marker. Default is `*`.
 
 #### `pdf` options
 

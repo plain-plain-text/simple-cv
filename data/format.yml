@@ -18,7 +18,11 @@ cv-sections: # Each of these corresponds to a file in sections/ and are in order
 - service
 - skills
 - languages
-contact-information: Contact Information # The text for the contact information section.
+contact-information: Contact Information # The text for the contact information header.
+markers: # The glyphs that begin lists
+  level-1: "•" # First level marker in a list.
+  level-2: "-" # Second level marker.
+  level-3: "*" # Third level.
 #
 ############################
 ## PDF options

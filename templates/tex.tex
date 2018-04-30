@@ -91,8 +91,12 @@ $endif$
 
 \checkandfixthelayout
 
-%%% List layout
-% \setlist[itemize,0]{topsep=0pt, partopsep=0pt}
+%%% List markers
+$if(format.markers)$
+\renewcommand{\labelitemi}{$format.markers.level-1$}
+\renewcommand{\labelitemii}{$format.markers.level-2$}
+\renewcommand{\labelitemiii}{$format.markers.level-3$}
+$endif$
 
 %%% Format footer
 \copypagestyle{chapter}{plain}

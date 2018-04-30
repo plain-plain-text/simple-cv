@@ -117,6 +117,34 @@
       color: $format.html-options.fonts.colors.navbar-items$;
     }
     $endif$
+
+    $if(format.markers)$
+    #cvBody ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    #cvBody li {
+      padding-left: 1.3em;
+    }
+
+    #cvBody li:before {
+      content: "$format.markers.level-1$";
+      color: #586e75;
+      display: inline-block;
+      margin-left: -1.3em;
+      width: 1.3em;
+    }
+
+    #cvBody ul>li>ul>li:before {
+      content: "$format.markers.level-2$";
+    }
+
+    #cvBody ul>li>ul>li>ul>li:before {
+      content: "$format.markers.level-3$";
+    }
+    $endif$
+
     .latex sub, .latex sup {
       text-transform: uppercase;
     }
@@ -155,10 +183,10 @@
         </ul>
       </div>
     </nav>
-    <div id="cvBody" class="wrapper container">
+    <div id="cvBody" class="container">
     $else$
     <!-- no navbar. -->
-    <div id="cvBody" class="wrapper container">
+    <div id="cvBody" class="container">
     <h1 $if(format.html-options.fonts.colors.display)$ style="color: $format.html-options.fonts.colors.display$!important;"$endif$>$if(personal.display-name)$$personal.display-name$$else$$personal.name$$endif$</h1>
     $endif$
     <div id="widgets" class="float-right">
