@@ -254,6 +254,11 @@
         $endif$
       </div>
     </div>
+    $if(personal.citizenships)$
+    <p>Citizenship:
+      $for(personal.citizenships)$$personal.citizenships$$sep$ and $endfor$
+    </p>
+    $endif$
 
     $body$
   </div> <!-- wrapper container -->
