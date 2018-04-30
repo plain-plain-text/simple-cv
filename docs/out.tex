@@ -48,28 +48,24 @@
 \chapterstyle{line}
 
 %%% Section styling. We assume two, margin and overlapping.
-\setsecnumdepth{subsubsection} % Keep the section counters running.
+\setsecnumdepth{subsubsection} % Keep the section counters running (see below).
+% This gets complicated, because we need the numbers to roll over so that the
+% subsections have an appropriate beforeskip.
   % using regular headings mode
       \setsecheadstyle{\large\scshape}
       \setaftersecskip{\baselineskip} % add a blank line after the heading
     \setlength{\parindent}{3em} % indent paragraphs
+% Blank out all printed counters and their teeny spaces. Vital both for
+% sections and subsections.
+\makeatletter % enter into macro mode
+\renewcommand{\@seccntformat}[1]{}
+\makeatother % exit macro mode.
 
 %%% Subsection styling. Should someone (me) include subsections in their CV,
 % things get complex.
-\usepackage{etoolbox} % So we can use the \ifnumequal conditional.
+
 \setsubsecheadstyle{\normalsize} % Subheads shouldn’t be big.
 \setaftersubsecskip{0em} % Subheads should have no space after them
-\renewcommand{\thesubsection}{} % Keep counting subsections (see below), but
-% don’t print the number. Problem: it still makes a space for them.
-\makeatletter % enter into macro mode
-\def\@seccntformat#1{\@ifundefined{#1@cntformat}% If @cntformat for the
-% division is not defined, use:
-   {\csname the#1\endcsname\quad}
-% otherwise use the defined @cntformat
-   {\csname #1@cntformat\endcsname}
-}
-\newcommand\subsection@cntformat{} % define @cntformat for subsecs that’s blank
-\makeatother % exit macro mode.
 % New problem: \subsection should have no top margin, so it’s in line w/ the 
 % section header. But if that’s the case, when a subsection appears later in
 % the section, it looks just like a regular line. We need subsection to have
@@ -103,7 +99,7 @@
 %%% Redefine \section to tighten vertical space
 \let\oldsection\section
 \renewcommand{\section}[1]{%
-  \oldsection*{#1}
+  \oldsection{#1}
   \leavevmode
   \par
   \vspace{\dimexpr-\baselineskip-\parskip}
