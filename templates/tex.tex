@@ -151,7 +151,6 @@ $endif$
 $if(format.pdf-options.footer)$
   \makeoddhead{chapter}{}{}{}
   \makeoddfoot{chapter}{}{}{%
-    % \vspace{\smallskip}
     $if(format.pdf-options.footer.display-author)$$for(format.author)$$format.author$$sep$, $endfor$,$endif$  $if(format.pdf-options.footer.last-modified)$\today,$endif$ \thepage}
 $else$
   \makeoddhead{chapter}{}{}{}
@@ -204,7 +203,12 @@ $endif$
         {\textit{GitHub:}} \href{http://github.com/$personal.github$}{@$personal.github$}
         $endif$
     \end{minipage}
-\vspace{-\baselineskip} % To pull the contact information back a line.
+  $if(personal.citizenships)$
+    % \vspace{\baselineskip}
+    \medskip%amount
+    \par Citizenship:
+    $for(personal.citizenships)$$personal.citizenships$$sep$ and $endfor$
+  $endif$
 $body$
 
 $if(format.pdf-options.margin-heading)$
