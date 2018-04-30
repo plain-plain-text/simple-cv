@@ -17,6 +17,11 @@ $if(format.pdf-options.fonts.regular)$
   $endif$
   $if(format.pdf-options.fonts.bold)$
   BoldFont = $format.pdf-options.fonts.bold$.otf ,
+  $else$
+  BoldFont = $format.pdf-options.fonts.regular$.otf ,
+  $endif$
+  $if(format.pdf-options.bold-as-smallcaps)$
+  BoldFeatures = {Letters=SmallCaps} ,
   $endif$
   $if(format.pdf-options.fonts.smallcaps)$
   SmallCapsFont = $format.pdf-options.fonts.smallcaps$.otf ,

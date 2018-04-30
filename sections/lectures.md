@@ -1,6 +1,6 @@
 ## Invited Lectures
 
 * “How I Found the Ark.” 
-  * Princeton University, 1948
+  * **Princeton University**, 1948
 * “How I Lost the Ark.” 
-  * Princeton University, 1942
+  * **Princeton University**, 1942

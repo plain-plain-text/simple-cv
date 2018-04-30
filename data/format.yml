@@ -39,7 +39,8 @@ pdf-options:
     # bold: # No good bold version of EBGaramond & the template doesn’t use it
     # smallcaps: # smallcaps is built into EBGaramond
   headings: overlapped # section headings jut out to the left a bit. The other option, “margin,” moves the headings to the left on their own.
-  smallcaps-headings: true # To make headings smallcaps
+  smallcaps-headings: true # To make headings smallcaps.
+  bold-as-smallcaps: true # To make Markdown text typed **like this** become small caps.
   # papersize: a4 # “letter” is the default.
   typesize: 11pt # Default text size.
   left-margin: .5in
@@ -89,6 +90,8 @@ html-options:
     #   links:
     #     regular: "#cccc00" # This must be in quotes;
     #     hover: "#cc00cc" # This must be in quotes;
+  smallcaps-headings: true # To make headings smallcaps
+  bold-as-smallcaps: true # To make Markdown text typed **like this** become small caps.
   keywords:
   - Archæology
   - anti-fascism

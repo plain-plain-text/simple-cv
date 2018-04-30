@@ -145,6 +145,20 @@
     }
     $endif$
 
+    $if(format.html-options.smallcaps-headings)$
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: normal;
+      font-variant: small-caps;
+    }
+    $endif$
+
+    $if(format.html-options.bold-as-smallcaps)$
+    strong {
+      font-weight: normal;
+      font-variant: small-caps;
+    }
+    $endif$
+
     .latex sub, .latex sup {
       text-transform: uppercase;
     }

@@ -162,6 +162,9 @@ the document
   places the headings in their own boxes in the margin to create a nice
   effect.
 * `smallcaps-headings`: Whether the headers and name are in small caps or not.
+* `bold-as-smallcaps`: Text typed as `**bold**` will appear as small caps
+  instead. This is useful when your font (EB Garamond, say) does not have a
+  bold face.
 * `papersize`: Letter paper (8.5in x 11in) is the default, but any page size
   LaTeX understands works. `a4` is the only other size I can imagine using for a CV…
 * `typesize`: How large the default text should be. The headings, etc., are
@@ -232,6 +235,10 @@ the document
         * `regular`: The color of the link text under regular circumstances.
         * `hover`: The color of the link text when the mouse or finger hovers
           over it.
+* `smallcaps-headings`: Whether the headers and name are in small caps or not.
+* `bold-as-smallcaps`: Text typed as `**bold**` will appear as small caps
+  instead. This is useful when your font (EB Garamond, say) does not have a
+  bold face.
 * `keywords`: A list of keywords for SEO like this even works.
 * `last-modified`: As with the `pdf`, this triggers a “last modified” widget
   to appear at the top right corner of the page.
