@@ -12,7 +12,8 @@
   $endfor$
   <meta name="DC.contributor" content="Sá Pereira, Moacir P." />
   <meta name="DC.title" content="$format.title$" />
-  <meta property="og.site_name" content="$format.title$" />
+  <meta property="og:title" content="$format.title$" />
+  <meta property="og:site_name" content="$format.title$" />
   <meta name="DC.type" content="Text" />
   <meta name="DC.date" content="$date$" />
   $if(format.html-options.date-created)$
@@ -24,8 +25,8 @@
   $endif$
   $if(format.html-options.description)$
   <meta name="DC.description" content="$format.html-options.description$" />
-  <meta property="og.description" content="$format.html-options.description$" />
-  <meta name="twitter.description" content="$format.html-options.description$" />
+  <meta property="og:description" content="$format.html-options.description$" />
+  <meta name="twitter:description" content="$format.html-options.description$" />
   $endif$
   $if(personal.twitter)$
   <meta name="twitter:creator" content="@$personal.twitter$" />
