@@ -17,7 +17,7 @@ $if(format.pdf-options.fonts.regular)$
   $endif$
   $if(format.pdf-options.fonts.bold)$
   BoldFont = $format.pdf-options.fonts.bold$.otf ,
-  $else$
+  $else$ % The default is not to have a bold font defined…
   BoldFont = $format.pdf-options.fonts.regular$.otf ,
   $endif$
   $if(format.pdf-options.bold-as-smallcaps)$
@@ -54,9 +54,8 @@ $endif$
 $if(format.pdf-options.top-margin)$
   \setulmarginsandblock{$format.pdf-options.top-margin$}$if(format.pdf-options.bottom-margin)${$format.pdf-options.bottom-margin$}$else${*}$endif${*}
 $endif$
-  \setheadfoot{0pt}{\baselineskip}
+  \setheadfoot{0pt}{\baselineskip} % footer is a baseline tall.
   \setheaderspaces{*}{0pt}{*}
-  \setsecnumdepth{part} % Don’t number chapter or sections.
 
 %%% Define the (default) chapter style and choose the chapter
   \makechapterstyle{line}{%
@@ -69,46 +68,91 @@ $endif$
   }
 \chapterstyle{$format.pdf-options.display-style$}
 
-% margin-heading is set in the ruby script.
+%%% Section styling. We assume two, margin and overlapping.
+\setsecnumdepth{subsubsection} % Keep the section counters running.
 $if(format.pdf-options.margin-heading)$
-\newcommand{\marginbox}[1]{%
-  \parbox[t][0pt]{9em}{\parbox[t][0pt]{7em}{\scshape\raggedright{} #1}}
-}
-\newcommand{\marginhead}[1]{%
-  {\hspace{-9em}{\marginbox{#1}}}
-}
-\setsecindent{0em}
-\setaftersecskip{0em}
-\setsecheadstyle{\marginhead}
-\setlength{\parindent}{0em}
-\setlist[itemize]{nosep}
-\setlist[itemize,1]{leftmargin=0em}
+  % margin-heading is set in the ruby script.
+  \newcommand{\marginbox}[1]{% Build the small margin header box.
+    $if(format.pdf-options.smallcaps-headings)$
+    \parbox[t][0pt]{9em}{\parbox[t][0pt]{7em}{\scshape \raggedright{} #1}}
+    $else$
+    \parbox[t][0pt]{9em}{\parbox[t][0pt]{7em}{\raggedright{} #1}}
+    $endif$
+  }
+  \newcommand{\marginhead}[1]{% Pull the margin header into the margin.
+    {\hspace{-9em}{\marginbox{#1}}}
+  }
+  \setsecindent{0em} % no indent in the margin
+  \setaftersecskip{0em} % no space after the heading
+  \setsecheadstyle{\marginhead}
+  \setlength{\parindent}{0em} % no indent for paragraphs
 $else$
+  % using regular headings mode
   $if(format.pdf-options.smallcaps-headings)$
     \setsecheadstyle{\large\scshape}
   $else$
     \setsecheadstyle{\large}
   $endif$
-    \setaftersecskip{\baselineskip}
-    \setlength{\parindent}{3em}
-    \setlist[itemize]{leftmargin=3em, nosep}
+    \setaftersecskip{\baselineskip} % add a blank line after the heading
+    \setlength{\parindent}{3em} % indent paragraphs
 $endif$
 
-\checkandfixthelayout
+%%% Subsection styling. Should someone (me) include subsections in their CV,
+% things get complex.
+\usepackage{etoolbox} % So we can use the \ifnumequal conditional.
+\setsubsecheadstyle{\normalsize} % Subheads shouldn’t be big.
+\setaftersubsecskip{0em} % Subheads should have no space after them
+\renewcommand{\thesubsection}{} % Keep counting subsections (see below), but
+% don’t print the number. Problem: it still makes a space for them.
+\makeatletter % enter into macro mode
+\def\@seccntformat#1{\@ifundefined{#1@cntformat}% If @cntformat for the
+% division is not defined, use:
+   {\csname the#1\endcsname\quad}
+% otherwise use the defined @cntformat
+   {\csname #1@cntformat\endcsname}
+}
+\newcommand\subsection@cntformat{} % define @cntformat for subsecs that’s blank
+\makeatother % exit macro mode.
+% New problem: \subsection should have no top margin, so it’s in line w/ the 
+% section header. But if that’s the case, when a subsection appears later in
+% the section, it looks just like a regular line. We need subsection to have
+% conditional beforeskips, based on whether it’s the first subsection or not.
+\let\oldsubsection\subsection % to avoid recursion
+\renewcommand{\subsection}[1]{%
+  \ifnumequal{\value{subsection}}{0} % If this is the first subsection
+  {\setbeforesubsecskip{0em} \oldsubsection{#1}} % make beforeskip 0
+  {\setbeforesubsecskip{\medskipamount} \oldsubsection{#1}} % else add a skip
+}
+$if(format.pdf-options.margin-heading)$
+  \setsubsecindent{0em} % In margin, subsection headings shouldn’t be indented
+$else$
+  \setsubsecindent{3em} % In overlapped, yes.
+$endif$
 
-%%% List markers
+
+%%% List styling. They behave differently based on margin or regular headings.
+\setlist[itemize]{nosep} % No gaps between list items.
+$if(format.pdf-options.margin-heading)$
+  \setlist[itemize,1]{leftmargin=!,labelwidth=1em,labelindent=0em} % Pull list all the way to the left.
+$else$
+  \setlist[itemize,1]{leftmargin=!,labelwidth=1em,labelindent=3em} % Push list in.
+$endif$
+% And now the markers.
 $if(format.markers)$
 \renewcommand{\labelitemi}{$format.markers.level-1$}
 \renewcommand{\labelitemii}{$format.markers.level-2$}
 \renewcommand{\labelitemiii}{$format.markers.level-3$}
 $endif$
 
+\checkandfixthelayout
+
 %%% Format footer
 \copypagestyle{chapter}{plain}
 $if(format.pdf-options.footer)$
   \makeoddhead{chapter}{}{}{}
   \makeoddfoot{chapter}{}{}{%
-    $if(format.pdf-options.footer.display-author)$$for(format.author)$$format.author$$sep$, $endfor$$endif$  $if(format.pdf-options.footer.last-modified)$\today,$endif$ \thepage}
+    % \vspace{\smallskip}
+    $if(format.pdf-options.footer.display-author)$$for(format.author)$$format.author$$sep$, $endfor$,$endif$  $if(format.pdf-options.footer.last-modified)$\today,$endif$ \thepage}
 $else$
   \makeoddhead{chapter}{}{}{}
   \makeoddfoot{chapter}{}{}{\thepage}
@@ -118,7 +162,7 @@ $endif$
 %%% Redefine \section to tighten vertical space
 \let\oldsection\section
 \renewcommand{\section}[1]{%
-  \oldsection{#1}
+  \oldsection*{#1}
   \leavevmode
   \par
   \vspace{\dimexpr-\baselineskip-\parskip}
