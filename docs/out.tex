@@ -4,7 +4,6 @@
   ]{memoir}
 
 \usepackage{enumitem}
-% \usepackage{showframe}
 %%% Font declarations
 \usepackage{fontspec} % Choose fonts intelligently
 \setmainfont{EBGaramond12-Regular.otf}[%
@@ -12,19 +11,19 @@
      % The default is not to have a bold font defined…
   BoldFont = EBGaramond12-Regular.otf ,
       BoldFeatures = {Letters=SmallCaps} ,
-      Path = ./fonts/ ,
+      Path =./fonts/ ,
   Ligatures=Historic ,
   Ligatures=Rare ,
   Mapping=tex-text ,
   ItalicFeatures={Style=Swash} ,
 ]
 \setmonofont{SourceCodePro-Regular.otf}[
-  Path = ./fonts/
+  Path =./fonts/
 ]
 
 %%% PDF generation
 \usepackage[ breaklinks=true, hidelinks ]{hyperref}
-\hypersetup{
+\hypersetup{%
             pdftitle={Henry Walton Jones, Jr.~CV},
             pdfauthor={Moacir P. de Sá Pereira, Henry Walton Jones, Jr.},
             pdfborder={0 0 0},
@@ -42,7 +41,7 @@
     \setlength{\afterchapskip}{0pt}
     \renewcommand*{\chaptitlefont}{\Large\scshape}
     \renewcommand*{\printchaptertitle}[1]{%
-      \chaptitlefont ##1 \smallskip\hrule\vskip\onelineskip 
+    \chaptitlefont ##1 \smallskip\hrule\vspace{\baselineskip}
     }
   }
 \chapterstyle{line}
@@ -111,7 +110,7 @@
       \chapter*{Henry Walton ``Indiana'' Jones, Jr.}
   
 
-  \hypertarget{contact-information}{
+  \hypertarget{contact-information}{%
   \section{Contact Information}\label{contact-information}}
     \begin{minipage}[t]{0.3\textwidth}
       Brody Hall 134\\ Marshall College\\ Bedford, CT 0649x

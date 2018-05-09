@@ -7,7 +7,6 @@
   ]{memoir}
 
 \usepackage{enumitem}
-% \usepackage{showframe}
 %%% Font declarations
 \usepackage{fontspec} % Choose fonts intelligently
 $if(format.pdf-options.fonts.regular)$
@@ -26,7 +25,7 @@ $if(format.pdf-options.fonts.regular)$
   $if(format.pdf-options.fonts.smallcaps)$
   SmallCapsFont = $format.pdf-options.fonts.smallcaps$.otf ,
   $endif$
-  Path = ./fonts/ ,
+  Path =./fonts/ ,
   Ligatures=Historic ,
   Ligatures=Rare ,
   Mapping=tex-text ,
@@ -35,13 +34,13 @@ $if(format.pdf-options.fonts.regular)$
 $endif$
 $if(format.pdf-options.fonts.monospace)$
 \setmonofont{$format.pdf-options.fonts.monospace$.otf}[
-  Path = ./fonts/
+  Path =./fonts/
 ]
 $endif$
 
 %%% PDF generation
 \usepackage[ breaklinks=true, hidelinks ]{hyperref}
-\hypersetup{
+\hypersetup{%
             pdftitle={$format.title$},
             pdfauthor={$for(format.author)$$format.author$$sep$, $endfor$},
             pdfborder={0 0 0},
@@ -63,7 +62,7 @@ $endif$
     \setlength{\afterchapskip}{0pt}
     \renewcommand*{\chaptitlefont}{\Large\scshape}
     \renewcommand*{\printchaptertitle}[1]{%
-      \chaptitlefont ##1 \smallskip\hrule\vskip\onelineskip 
+    \chaptitlefont ##1 \smallskip\hrule\vspace{\baselineskip}
     }
   }
 \chapterstyle{$format.pdf-options.display-style$}
@@ -177,7 +176,7 @@ $if(format.pdf-options.margin-heading)$
   \mbox{}
 $endif$
 
-  \hypertarget{contact-information}{
+  \hypertarget{contact-information}{%
   \section{$format.contact-information$}\label{contact-information}}
     \begin{minipage}[t]{0.3\textwidth}
       $for(personal.address)$$personal.address$$sep$\\ $endfor$
