@@ -15,16 +15,16 @@ $("#navList").html(() => {
   let list = "";
   $("h2").each(function(){ // can't use => because of setting this.
     list = list + "<li class='nav-item'>\n";
-    list = list + "<a class='nav-link' href='#" + $( this ).attr("id") + "'>";
+    list = list + "<a class='nav-link' onclick='closeDropdown()' href='#" + $( this ).attr("id") + "'>";
     list = list + $( this ).html() + "</a>\n</li>\n";
   });
   return list;
 });
 
 // always close responsive nav after click
-$(".navbar-collapse ul li a").click(function() {
+function closeDropdown(){
   $(".navbar-toggler:visible").click();
-});
+}
 
 // replace \LaTeX
 $("body:contains('\LaTeX')").html(function(_, html){ return html.replace("\\LaTeX", "<span class='latex'>L<sup>A</sup>T<sub>E</sub>X</span>"); });
