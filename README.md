@@ -9,8 +9,8 @@ logic.
 
 Demos:
 
-* [http://muziejus.github.io/simple-cv/](http://muziejus.github.io/simple-cv/)
-* [http://muziejus.github.io/simple-cv/H_W_Jones.pdf](http://muziejus.github.io/simple-cv/H_W_Jones.pdf)
+* [http://plain-plain-text.github.io/simple-cv/](http://plain-plain-text.github.io/simple-cv/)
+* [http://plain-plain-text.github.io/simple-cv/H_W_Jones.pdf](http://plain-plain-text.github.io/simple-cv/H_W_Jones.pdf)
 
 ## Requirements/Assumptions
 
