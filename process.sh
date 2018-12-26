@@ -69,10 +69,10 @@ pandoc -sr markdown+yaml_metadata_block-raw_tex \
   $sections \
   -o docs/index.html
 echo .html saved as docs/index.html
-# pandoc -sr markdown+yaml_metadata_block+raw_tex \
-#   --pdf-engine=xelatex
-#   --template=templates/tex.tex \
-#   --metadata-file=tmp/metadata.yml \
-#   $sections \
-#   -o docs/"$pdf_filename".pdf
-# echo .pdf saved as docs/"$pdf_filename".pdf
+pandoc -sr markdown+yaml_metadata_block+raw_tex \
+  --pdf-engine=xelatex \
+  --template=templates/tex.tex \
+  --metadata-file=tmp/metadata.yml \
+  $sections \
+  -o "docs/$pdf_filename.pdf"
+echo .pdf saved as docs/"$pdf_filename".pdf
