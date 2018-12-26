@@ -11,5 +11,19 @@ else
   mkdir tmp
 fi
 
-# 2. collapse data/yml files into one & get rid of ---
-cat data/*.yml | sed '/^---/d' > tmp/metadata.yml
+# 2. collapse data/yml files into one,
+# get rid of ---,
+# and add one --- back for the first line.
+cat data/*.yml | sed '/^---/d' | sed '1s/^/---/' > tmp/metadata.yml
+
+# 3. Set date and close YAML block.
+echo date: `date +%F` >> tmp/metadata.yml
+echo --- >> tmp/metadata.yml
+
+# 4. Set templates
+
+# 5. Check to make sure fonts exist
+
+# 6. Make sections list
+
+# 7. Invoke pandoc
