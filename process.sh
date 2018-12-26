@@ -48,4 +48,31 @@ else
   exit 1
 fi
 
-# 7. Invoke pandoc
+# 7. Grab filename.
+if grep -q "^\s*filename:" tmp/metadata.yml; then
+  pdf_filename=`grep "^\s*filename:" tmp/metadata.yml | awk -F ' ' '{print $2;}'`
+else
+  pdf_filename=CV
+fi
+
+# 8. Invoke pandoc
+echo "Generating .tex, .pdf, and .html files."
+pandoc -sr markdown+yaml_metadata_block+raw_tex \
+  --template=templates/tex.tex \
+  --metadata-file=tmp/metadata.yml \
+  $sections \
+  -o tmp/out.tex
+echo .tex saved as tmp/out.tex
+pandoc -sr markdown+yaml_metadata_block-raw_tex \
+  --template=templates/html.html \
+  --metadata-file=tmp/metadata.yml \
+  $sections \
+  -o docs/index.html
+echo .html saved as docs/index.html
+# pandoc -sr markdown+yaml_metadata_block+raw_tex \
+#   --pdf-engine=xelatex
+#   --template=templates/tex.tex \
+#   --metadata-file=tmp/metadata.yml \
+#   $sections \
+#   -o docs/"$pdf_filename".pdf
+# echo .pdf saved as docs/"$pdf_filename".pdf
