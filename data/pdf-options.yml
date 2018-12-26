@@ -8,14 +8,14 @@ footer: # comment out this entire section to disable the footer
   last-modified: true
   display-author: true
 pdf-fonts: # please see fonts/FONTS-README.md for more information
-  # These are .otf files that should be in fonts/
-  regular: EBGaramond12-Regular # note no ".otf"
-  italic: EBGaramond12-Italic
-  monospace: SourceCodePro-Regular # not currently used in template
-  # bold: # No good bold version of EBGaramond & the template doesn’t use it
-  # smallcaps: # smallcaps is built into EBGaramond
+  regular: Azuro
+  # regular: Times New Roman
+  # bold: Times New Roman
+  # italic: Times New Roman
+  # smallcaps: Times New Roman
+  # smallcaps: Times New Roman
 headings: overlapped # section headings jut out to the left a bit. The other option, “margin,” moves the headings to the left on their own.
-pdf-smallcaps-headings: true # To make headings smallcaps.
+pdf-smallcaps-headings: true # To make headings use the smallcaps font.
 pdf-bold-as-smallcaps: true # To make Markdown text typed **like this** become small caps.
 # papersize: a4 # “letter” is the default.
 typesize: 11pt # Default text size.

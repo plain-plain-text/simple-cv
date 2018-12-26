@@ -8,35 +8,30 @@
 
 \usepackage{enumitem}
 %%% Font declarations
-% \usepackage{fontspec} % Choose fonts intelligently
-% $if(pdf-fonts.regular)$
-% \setmainfont{$pdf-fonts.regular$.otf}[%
-%   $if(pdf-fonts.italic)$
-%   ItalicFont = $pdf-fonts.italic$.otf ,
-%   $endif$
-%   $if(pdf-fonts.bold)$
-%   BoldFont = $pdf-fonts.bold$.otf ,
-%   $else$ % The default is not to have a bold font defined…
-%   BoldFont = $pdf-fonts.regular$.otf ,
-%   $endif$
-%   $if(pdf-bold-as-smallcaps)$
-%   BoldFeatures = {Letters=SmallCaps} ,
-%   $endif$
-%   $if(pdf-fonts.smallcaps)$
-%   SmallCapsFont = $pdf-fonts.smallcaps$.otf ,
-%   $endif$
-%   Path =./fonts/ ,
-%   Ligatures=Historic ,
-%   Ligatures=Rare ,
-%   Mapping=tex-text ,
-%   ItalicFeatures={Style=Swash} ,
-% ]
-% $endif$
-% $if(pdf-fonts.monospace)$
-% \setmonofont{$pdf-fonts.monospace$.otf}[
-%   Path =./fonts/
-% ]
-% $endif$
+\usepackage{fontspec} % Choose fonts intelligently
+%%% This font declaration looks for metadata values set on the fly
+%%% in tmp/metadata.yml, regular-found, bold-found, italic-found, and smallcaps-found.
+%%% They, in turn, rely on the results of fc-list, which is a kludgy
+%%% way of finding which fonts fontspec knows about.
+$if(regular-found)$
+\setmainfont{$pdf-fonts.regular$}[%
+  $if(italic-found)$
+    ItalicFont = $pdf-fonts.italic$ ,
+  $endif$
+  $if(bold-found)$
+    BoldFont = $pdf-fonts.bold$ ,
+  $endif$
+  $if(pdf-bold-as-smallcaps)$
+    BoldFeatures = {Letters=SmallCaps} ,
+  $endif$
+  $if(smallcaps-found)$
+    SmallCapsFont = $pdf-fonts.smallcaps$ ,
+  $endif$
+    SmallCapsFeatures = {Color=115511} ,
+  % SmallCapsFeatures={Letters=SmallCaps} ,
+  Mapping=tex-text ,
+]
+$endif$
 
 %%% PDF generation
 \usepackage[ breaklinks=true, hidelinks ]{hyperref}

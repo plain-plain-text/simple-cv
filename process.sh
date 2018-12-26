@@ -23,14 +23,14 @@ echo date: `date +%F` >> tmp/metadata.yml
 # the CV to markdown or yaml depending.
 
 # 5. Check to make sure fonts exist
-for fonttype in regular italic monospace bold smallcaps
+for fonttype in regular italic smallcaps bold
 do
-  font=`grep "^\s*$fonttype:" tmp/metadata.yml | awk -F ' ' '{print $2;}'`
+  font=`grep "^\s*$fonttype:" tmp/metadata.yml | awk -F ': ' '{print $2;}'`
   if [[ ! -z "$font" ]]; then # $font is not empty.
-    if [[ -f "fonts/$font.otf" ]]; then
-      echo "Found font ./fonts/$font.otf"
+    if fc-list : family | awk -F ',' '{print $1;}' | grep -q "^$font$" ; then
+      echo "$fonttype-found: true" >> tmp/metadata.yml
     else
-      echo "Could not find font ./fonts/$font.otf. Defaulting to Computer Modern."
+      echo "Could not find font $font for $fonttype. Defaulting to Computer Modern."
     fi
   fi
 done
