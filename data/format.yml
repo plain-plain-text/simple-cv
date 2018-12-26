@@ -8,16 +8,6 @@ author-lastname-first: # Same as above, but for Dublin Core metadata
 - "Sá Pereira, Moacir P. de"
 - "Jones, Henry Walton"
 mode: markdown # or yaml. Yaml mode, however, is a future feature.
-cv-sections: # Each of these corresponds to a file in sections/ and are in order
-- fields # so, sections/fields.md
-- education
-- appointments
-- publications
-- lectures
-- teaching
-- service
-- skills
-- languages
 contact-information: Contact Information # The text for the contact information header.
 markers: # The glyphs that begin lists
   level-1: "•" # First level marker in a list.

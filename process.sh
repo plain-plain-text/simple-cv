@@ -38,7 +38,15 @@ do
 done
 
 # 5. Set headings style
+# if grep -q "^\s*headings: margin" tmp/metadata.yml; then
+# fi
 
 # 6. Make sections list
+if [[ -f sections.txt ]]; then
+  sections=`grep "^[^#]" sections.txt | sed -n 's#^\(.*\)$#sections/\1.md#p' | tr '\n' ' '`
+else
+  echo "Could not find file “sections.txt”"
+  exit 1
+fi
 
 # 7. Invoke pandoc
