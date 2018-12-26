@@ -21,8 +21,23 @@ echo date: `date +%F` >> tmp/metadata.yml
 echo --- >> tmp/metadata.yml
 
 # 4. Set templates
+# This is a future feature that takes the `mode` key and sets
+# the CV to markdown or yaml depending.
 
 # 5. Check to make sure fonts exist
+for fonttype in regular italic monospace bold smallcaps
+do
+  font=`grep "^\s*$fonttype:" tmp/metadata.yml | awk -F ' ' '{print $2;}'`
+  if [[ ! -z "$font" ]]; then # $font is not empty.
+    if [[ -f "fonts/$font.otf" ]]; then
+      echo "Found font ./fonts/$font.otf"
+    else
+      echo "Could not find font ./fonts/$font.otf. Defaulting to Computer Modern."
+    fi
+  fi
+done
+
+# 5. Set headings style
 
 # 6. Make sections list
 
