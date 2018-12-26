@@ -8,41 +8,41 @@
 
 \usepackage{enumitem}
 %%% Font declarations
-\usepackage{fontspec} % Choose fonts intelligently
-$if(fonts.regular)$
-\setmainfont{$pdf-fonts.regular$.otf}[%
-  $if(pdf-fonts.italic)$
-  ItalicFont = $pdf-fonts.italic$.otf ,
-  $endif$
-  $if(pdf-fonts.bold)$
-  BoldFont = $pdf-fonts.bold$.otf ,
-  $else$ % The default is not to have a bold font defined…
-  BoldFont = $pdf-fonts.regular$.otf ,
-  $endif$
-  $if(pdf-bold-as-smallcaps)$
-  BoldFeatures = {Letters=SmallCaps} ,
-  $endif$
-  $if(pdf-fonts.smallcaps)$
-  SmallCapsFont = $pdf-fonts.smallcaps$.otf ,
-  $endif$
-  Path =./fonts/ ,
-  Ligatures=Historic ,
-  Ligatures=Rare ,
-  Mapping=tex-text ,
-  ItalicFeatures={Style=Swash} ,
-]
-$endif$
-$if(pdf-fonts.monospace)$
-\setmonofont{$pdf-fonts.monospace$.otf}[
-  Path =./fonts/
-]
-$endif$
+% \usepackage{fontspec} % Choose fonts intelligently
+% $if(pdf-fonts.regular)$
+% \setmainfont{$pdf-fonts.regular$.otf}[%
+%   $if(pdf-fonts.italic)$
+%   ItalicFont = $pdf-fonts.italic$.otf ,
+%   $endif$
+%   $if(pdf-fonts.bold)$
+%   BoldFont = $pdf-fonts.bold$.otf ,
+%   $else$ % The default is not to have a bold font defined…
+%   BoldFont = $pdf-fonts.regular$.otf ,
+%   $endif$
+%   $if(pdf-bold-as-smallcaps)$
+%   BoldFeatures = {Letters=SmallCaps} ,
+%   $endif$
+%   $if(pdf-fonts.smallcaps)$
+%   SmallCapsFont = $pdf-fonts.smallcaps$.otf ,
+%   $endif$
+%   Path =./fonts/ ,
+%   Ligatures=Historic ,
+%   Ligatures=Rare ,
+%   Mapping=tex-text ,
+%   ItalicFeatures={Style=Swash} ,
+% ]
+% $endif$
+% $if(pdf-fonts.monospace)$
+% \setmonofont{$pdf-fonts.monospace$.otf}[
+%   Path =./fonts/
+% ]
+% $endif$
 
 %%% PDF generation
 \usepackage[ breaklinks=true, hidelinks ]{hyperref}
 \hypersetup{%
-            pdftitle={$format.title$},
-            pdfauthor={$for(format.author)$$format.author$$sep$, $endfor$},
+            pdftitle={$title$},
+            pdfauthor={$for(author)$$author$$sep$, $endfor$},
             pdfborder={0 0 0},
             breaklinks=true}
 
@@ -133,10 +133,10 @@ $else$
   \setlist[itemize,1]{leftmargin=!,labelwidth=1em,labelindent=3em} % Push list in.
 $endif$
 % And now the markers.
-$if(format.markers)$
-\renewcommand{\labelitemi}{$format.markers.level-1$}
-\renewcommand{\labelitemii}{$format.markers.level-2$}
-\renewcommand{\labelitemiii}{$format.markers.level-3$}
+$if(markers)$
+\renewcommand{\labelitemi}{$markers.level-1$}
+\renewcommand{\labelitemii}{$markers.level-2$}
+\renewcommand{\labelitemiii}{$markers.level-3$}
 $endif$
 
 \checkandfixthelayout
@@ -146,7 +146,7 @@ $endif$
 $if(footer)$
   \makeoddhead{chapter}{}{}{}
   \makeoddfoot{chapter}{}{}{%
-    $if(footer.display-author)$$for(format.author)$$format.author$$sep$, $endfor$,$endif$  $if(footer.last-modified)$\today,$endif$ \thepage}
+    $if(footer.display-author)$$for(author)$$author$$sep$, $endfor$,$endif$  $if(footer.last-modified)$\today,$endif$ \thepage}
 $else$
   \makeoddhead{chapter}{}{}{}
   \makeoddfoot{chapter}{}{}{\thepage}
@@ -165,10 +165,10 @@ $endif$
 
 \begin{document}
 
-  $if(personal.display-name)$
-    \chapter*{$personal.display-name$}
+  $if(display-name)$
+    \chapter*{$display-name$}
   $else$
-    \chapter*{$personal.name$}
+    \chapter*{$name$}
   $endif$
 
 $if(margin-heading)$
@@ -177,32 +177,32 @@ $if(margin-heading)$
 $endif$
 
   \hypertarget{contact-information}{%
-  \section{$format.contact-information$}\label{contact-information}}
+  \section{$contact-information$}\label{contact-information}}
     \begin{minipage}[t]{0.3\textwidth}
-      $for(personal.address)$$personal.address$$sep$\\ $endfor$
+      $for(address)$$address$$sep$\\ $endfor$
     \end{minipage}
     \begin{minipage}[t]{0.7\textwidth}
-        $if(personal.telephone)$
-        {\textit{Tel:}} $personal.telephone$ \\
+        $if(telephone)$
+        {\textit{Tel:}} $telephone$ \\
         $endif$
-        $if(personal.email)$
-        {\textit{E-mail:}} $personal.email$ \\
+        $if(email)$
+        {\textit{E-mail:}} $email$ \\
         $endif$
-        $if(personal.url)$
-        {\textit{Web:}} http://$personal.url$ \\
+        $if(url)$
+        {\textit{Web:}} http://$url$ \\
         $endif$
-        $if(personal.twitter)$
-        {\textit{Twitter:}} \href{http://twitter.com/$personal.twitter$}{@$personal.twitter$} \\
+        $if(twitter)$
+        {\textit{Twitter:}} \href{http://twitter.com/$twitter$}{@$twitter$} \\
         $endif$
-        $if(personal.github)$
-        {\textit{GitHub:}} \href{http://github.com/$personal.github$}{@$personal.github$}
+        $if(github)$
+        {\textit{GitHub:}} \href{http://github.com/$github$}{@$github$}
         $endif$
     \end{minipage}
-  $if(personal.citizenships)$
+  $if(citizenships)$
     % \vspace{\baselineskip}
     \medskip%amount
     \par Citizenship:
-    $for(personal.citizenships)$$personal.citizenships$$sep$ and $endfor$
+    $for(citizenships)$$citizenships$$sep$ and $endfor$
   $endif$
 $body$
 

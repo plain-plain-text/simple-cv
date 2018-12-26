@@ -4,7 +4,7 @@
 #
 #
 ## General options. These are all required.
-title: Henry Walton Jones, Jr. CV # This is for the pdf metadata and <title> in html
+title: "Henry Walton Jones, Jr. CV" # This is for the pdf metadata and <title> in html
 author: 
 - Moacir P. de Sá Pereira # This is the *author*, not the person, though it’s likely the same.
 - Henry Walton Jones, Jr.

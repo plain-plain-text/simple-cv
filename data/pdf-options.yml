@@ -3,7 +3,7 @@
 ############################
 #
 #
-filename: H_W_Jones # no '.pdf' needed.
+filename: H-W-Jones # no '.pdf' needed.
 footer: # comment out this entire section to disable the footer
   last-modified: true
   display-author: true
@@ -24,4 +24,3 @@ left-margin: .5in
 top-margin: .5in # Minimum of about .25in or 2cm
 # bottom-margin: 2in # Only for unequal margins. Useful if footer is too low.
 display-style: line # The style for the top of the page. This can be any memoir chapter style as demonstrated in 10.5 of the Memoir manual: http://texdoc.net/texmf-dist/doc/latex/memoir/memman.pdf. Reasonable values include: bianchi, bringhurst, chappell, crosshead, demo2, dowding, lyhne, and wilsondob. Some of these styles will clobber your font choices. “line” is a style I created based on the res.cls line option.
-

@@ -29,8 +29,8 @@
   <meta property="og:description" content="$description$" />
   <meta name="twitter:description" content="$description$" />
   $endif$
-  $if(personal.twitter)$
-  <meta name="twitter:creator" content="@$personal.twitter$" />
+  $if(twitter)$
+  <meta name="twitter:creator" content="@$twitter$" />
   $endif$
   $if(og-image)$
     <meta property="og:image" content="$og-image.url$" />
@@ -187,7 +187,7 @@
 <body>
     $if(navbar)$
     <nav class="navbar $navbar.position$ navbar-$navbar.text$ bg-$navbar.background$" id="navbar" data-margin="$navbar.margin$" $if(navbar.background-color)$ style="background-color: $navbar.background-color$!important;" $endif$>
-      <span class="navbar-brand">$if(personal.display-name)$$personal.display-name$$else$$personal.name$$endif$ <small>(<a href="./$filename$.pdf">.pdf</a>)</small></span>
+      <span class="navbar-brand">$if(display-name)$$display-name$$else$$name$$endif$ <small>(<a href="./$filename$.pdf">.pdf</a>)</small></span>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -200,62 +200,62 @@
     $else$
     <!-- no navbar. -->
     <div id="cvBody" class="container">
-    <h1 $if(html-fonts.colors.display)$ style="color: $html-fonts.colors.display$!important;"$endif$>$if(personal.display-name)$$personal.display-name$$else$$personal.name$$endif$</h1>
+    <h1 $if(html-fonts.colors.display)$ style="color: $html-fonts.colors.display$!important;"$endif$>$if(display-name)$$display-name$$else$$name$$endif$</h1>
     $endif$
     <div id="widgets" class="float-right">
     $if(last-modified)$
     <div id="last-modified" class="text-right"></div>
     $endif$
     $if(headshot-url)$
-    <img src="$headshot-url$" alt="$if(personal.display-name)$$personal.display-name$$else$$personal.name$$endif$" class="img-fluid m-2 rounded">
+    <img src="$headshot-url$" alt="$if(display-name)$$display-name$$else$$name$$endif$" class="img-fluid m-2 rounded">
     $endif$
     </div> <!-- widgets -->
     <h2 id="contact-information">$contact-information$</h2>
     <div class="row">
       <div class="col-md-6">
-        $for(personal.address)$$personal.address$$sep$<br />$endfor$
+        $for(address)$$address$$sep$<br />$endfor$
       </div>
       <div class="col-md-6">
-        $if(personal.telephone)$
+        $if(telephone)$
         $if(fontawesome)$
         <i class="fas fa-phone">
         $else$
         <i>Tel:
-        $endif$</i> $personal.telephone$ <br />
+        $endif$</i> $telephone$ <br />
         $endif$
-        $if(personal.email)$
+        $if(email)$
         $if(fontawesome)$
         <i class="fas fa-envelope">
         $else$
         <i>Email:
-        $endif$</i> $personal.email$ <br />
+        $endif$</i> $email$ <br />
         $endif$
-        $if(personal.url)$
+        $if(url)$
         $if(fontawesome)$
         <i class="fas fa-globe">
         $else$
         <i>Web:
-        $endif$</i> <a href="http://$personal.url$">$personal.url$</a> <br />
+        $endif$</i> <a href="http://$url$">$url$</a> <br />
         $endif$
-        $if(personal.twitter)$
+        $if(twitter)$
         $if(fontawesome)$
         <i class="fab fa-twitter">
         $else$
         <i>Twitter:
-        $endif$</i> <a href="http://twitter.com/$personal.twitter$">@$personal.twitter$</a> <br />
+        $endif$</i> <a href="http://twitter.com/$twitter$">@$twitter$</a> <br />
         $endif$
-        $if(personal.github)$
+        $if(github)$
         $if(fontawesome)$
         <i class="fab fa-github">
         $else$
         <i>GitHub:
-        $endif$</i> <a href="http://github.com/$personal.github$">@$personal.github$</a>
+        $endif$</i> <a href="http://github.com/$github$">@$github$</a>
         $endif$
       </div>
     </div>
-    $if(personal.citizenships)$
+    $if(citizenships)$
     <p class="mt-3">Citizenship:
-      $for(personal.citizenships)$$personal.citizenships$$sep$ and $endfor$
+      $for(citizenships)$$citizenships$$sep$ and $endfor$
     </p>
     $endif$
 
