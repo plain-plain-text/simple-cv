@@ -11,13 +11,13 @@ logic.
 
 Demos:
 
-* [http://plain-plain-text.github.io/simple-cv/](http://plain-plain-text.github.io/simple-cv/)
-* [http://plain-plain-text.github.io/simple-cv/H_W_Jones.pdf](http://plain-plain-text.github.io/simple-cv/H_W_Jones.pdf)
+* [http://plain-plain-text.github.io/simple-cv/ ](http://plain-plain-text.github.io/simple-cv/)
+* [http://plain-plain-text.github.io/simple-cv/H_W_Jones.pdf ](http://plain-plain-text.github.io/simple-cv/H_W_Jones.pdf)
 
 ## Requirements/Assumptions
 
 1. You have used the command line before. The creation of the `html` and `pdf`
-   files is done with a Ruby script you run from the command line.
+   files is done with a shell script you run from the command line.
 
 1. You generally know what Git is and how to stage, commit, and push.
 
@@ -26,7 +26,7 @@ Demos:
    exists here has examples of all the features in it, but it’s useful to know
    what YAML is, at least.
 
-1. [Pandoc](https://pandoc.org/) installed. The Pandoc peopl have an
+1. [Pandoc](https://pandoc.org/) installed. The Pandoc people have an
    [installation
    page](https://pandoc.org/installing.html) that explains the process for
    various systems. For Macs, you can simply do `brew install pandoc` if you
@@ -70,9 +70,9 @@ There are three things to edit in this repository.
 
 1. Each section of your CV (education, publications, etc.) is its own Markdown
    file in `sections/`. **Note:** The processing script does not know about
-   these files, so you need to inform the script about them under
-   `cv-sections` in `data/format.yml`. This allows you to determine the order
-   of the sections on the fly.
+   these files, so you need to inform the script about them by filling out the
+   file `sections.txt` with each file’s name on a separate line.  This allows
+   you to determine the order of the sections on the fly.
 
 1. The look and feel of both the `html` and `pdf` versions of the document are
    managed by the two files in the `templates/` directory. The [Pandoc
@@ -85,21 +85,24 @@ There are three things to edit in this repository.
    package](https://ctan.org/pkg/memoir?lang=en). I have tried to make the
    defaults acceptable, aesthetically, but I leave fine tuning up to you.
 
-When you’ve made your changes, you must run the Ruby script in command line:
+When you’ve made your changes, you must run the shell script in command line:
 
-`ruby process-cv.rb`
+`sh process.sh`
 
-If you have the [`run-command`](https://atom.io/packages/run-command) package installed in Atom, you can simply type `ctrl-r` and type in `ruby process-cv.rb` in the little dialog box to process the files without the need of opening the command line or leaving Atom.
+If you have the [`run-command`](https://atom.io/packages/run-command) package
+installed in Atom, you can simply type `ctrl-r` and type in `sh process.rb` in
+the little dialog box to process the files without the need of opening the
+command line or leaving Atom.
 
-The Ruby script produces new versions of the `html` and `pdf` files, so you can
+The shell script produces new versions of the `html` and `pdf` files, so you can
 subsequently stage, commit, and push, to make the files available online via
 GitHub.
 
 ## Features
 
-* Single source for both paper and web versions of your cv.
+* Single source for both “paper” and web versions of your cv.
 * Customizable sections that can be switched in and out or reordered just by
-  changing a `YAML` option.
+  changing the contents of `sections.txt`.
 * Customizable styles for `html` *and* `pdf` (fonts, etc.) via `YAML` configuration files.
 * Straightforward templates that allow for massive flexibility with
   comparatively little effort.
@@ -115,7 +118,8 @@ GitHub.
 
 ### `format.yml`
 
-This document holds all the configuration options for formatting both
+This document holds all the configuration options shared in common between
+`html` and `pdf` versions. 
 documents as well as the `html` and `pdf` versions on their own. These options
 become variables like `$format.title$` in the templates. The templates use
 [Pandoc’s templating language](https://pandoc.org/MANUAL.html#templates),
