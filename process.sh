@@ -17,7 +17,6 @@ cat data/*.yml | sed $'1s/^/---\\\n/' > tmp/metadata.yml
 
 # 3. Set date and close YAML block.
 echo date: `date +%F` >> tmp/metadata.yml
-echo --- >> tmp/metadata.yml
 
 # 4. Set templates
 # This is a future feature that takes the `mode` key and sets
@@ -36,11 +35,15 @@ do
   fi
 done
 
-# 5. Set headings style
-# if grep -q "^\s*headings: margin" tmp/metadata.yml; then
-# fi
+# 6. Set headings style
+if grep -q "^\s*headings: margin" tmp/metadata.yml; then
+  echo "margin-headings: true" >> tmp/metadata.yml
+fi
 
-# 6. Make sections list
+# 7. Close metadata block.
+echo --- >> tmp/metadata.yml
+
+# 8. Make sections list
 if [[ -f sections.txt ]]; then
   sections=`grep "^[^#]" sections.txt | sed -n 's#^\(.*\)$#sections/\1.md#p' | tr '\n' ' '`
 else
@@ -48,14 +51,14 @@ else
   exit 1
 fi
 
-# 7. Grab filename.
+# 9. Grab filename.
 if grep -q "^\s*filename:" tmp/metadata.yml; then
   pdf_filename=`grep "^\s*filename:" tmp/metadata.yml | awk -F ' ' '{print $2;}'`
 else
   pdf_filename=CV
 fi
 
-# 8. Invoke pandoc
+# 10. Invoke pandoc
 echo "Generating .tex, .pdf, and .html files."
 pandoc -sr markdown+yaml_metadata_block+raw_tex \
   --template=templates/tex.tex \
