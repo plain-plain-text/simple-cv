@@ -1,29 +1,29 @@
 \documentclass[%
-  $if(format.pdf-options.papersize)$
-    $format.pdf-options.papersize$paper,
+  $if(papersize)$
+    $papersize$paper,
   $endif$
-  $format.pdf-options.typesize$,
+  $typesize$,
   oneside
   ]{memoir}
 
 \usepackage{enumitem}
 %%% Font declarations
 \usepackage{fontspec} % Choose fonts intelligently
-$if(format.pdf-options.fonts.regular)$
-\setmainfont{$format.pdf-options.fonts.regular$.otf}[%
-  $if(format.pdf-options.fonts.italic)$
-  ItalicFont = $format.pdf-options.fonts.italic$.otf ,
+$if(fonts.regular)$
+\setmainfont{$pdf-fonts.regular$.otf}[%
+  $if(pdf-fonts.italic)$
+  ItalicFont = $pdf-fonts.italic$.otf ,
   $endif$
-  $if(format.pdf-options.fonts.bold)$
-  BoldFont = $format.pdf-options.fonts.bold$.otf ,
+  $if(pdf-fonts.bold)$
+  BoldFont = $pdf-fonts.bold$.otf ,
   $else$ % The default is not to have a bold font defined…
-  BoldFont = $format.pdf-options.fonts.regular$.otf ,
+  BoldFont = $pdf-fonts.regular$.otf ,
   $endif$
-  $if(format.pdf-options.bold-as-smallcaps)$
+  $if(pdf-bold-as-smallcaps)$
   BoldFeatures = {Letters=SmallCaps} ,
   $endif$
-  $if(format.pdf-options.fonts.smallcaps)$
-  SmallCapsFont = $format.pdf-options.fonts.smallcaps$.otf ,
+  $if(pdf-fonts.smallcaps)$
+  SmallCapsFont = $pdf-fonts.smallcaps$.otf ,
   $endif$
   Path =./fonts/ ,
   Ligatures=Historic ,
@@ -32,8 +32,8 @@ $if(format.pdf-options.fonts.regular)$
   ItalicFeatures={Style=Swash} ,
 ]
 $endif$
-$if(format.pdf-options.fonts.monospace)$
-\setmonofont{$format.pdf-options.fonts.monospace$.otf}[
+$if(pdf-fonts.monospace)$
+\setmonofont{$pdf-fonts.monospace$.otf}[
   Path =./fonts/
 ]
 $endif$
@@ -47,11 +47,11 @@ $endif$
             breaklinks=true}
 
 %%% Layout of the page
-$if(format.pdf-options.left-margin)$
-  \setlrmarginsandblock{$format.pdf-options.left-margin$}$if(format.pdf-options.right-margin)${$format.pdf-options.right-margin$}$else${*}$endif${*}
+$if(left-margin)$
+  \setlrmarginsandblock{$left-margin$}$if(right-margin)${$right-margin$}$else${*}$endif${*}
 $endif$
-$if(format.pdf-options.top-margin)$
-  \setulmarginsandblock{$format.pdf-options.top-margin$}$if(format.pdf-options.bottom-margin)${$format.pdf-options.bottom-margin$}$else${*}$endif${*}
+$if(top-margin)$
+  \setulmarginsandblock{$top-margin$}$if(bottom-margin)${$bottom-margin$}$else${*}$endif${*}
 $endif$
   \setheadfoot{0pt}{\baselineskip} % footer is a baseline tall.
   \setheaderspaces{*}{0pt}{*}
@@ -65,16 +65,16 @@ $endif$
     \chaptitlefont ##1 \smallskip\hrule\vspace{\baselineskip}
     }
   }
-\chapterstyle{$format.pdf-options.display-style$}
+\chapterstyle{$display-style$}
 
 %%% Section styling. We assume two, margin and overlapping.
 \setsecnumdepth{subsubsection} % Keep the section counters running (see below).
 % This gets complicated, because we need the numbers to roll over so that the
 % subsections have an appropriate beforeskip.
-$if(format.pdf-options.margin-heading)$
+$if(margin-heading)$
   % margin-heading is set in the ruby script.
   \newcommand{\marginbox}[1]{% Build the small margin header box.
-    $if(format.pdf-options.smallcaps-headings)$
+    $if(pdf-smallcaps-headings)$
     \parbox[t][0pt]{9em}{\parbox[t][0pt]{7em}{\scshape\normalsize \raggedright{} #1}}
     $else$
     \parbox[t][0pt]{9em}{\parbox[t][0pt]{7em}{\raggedright{} #1}}
@@ -89,7 +89,7 @@ $if(format.pdf-options.margin-heading)$
   \setlength{\parindent}{0em} % no indent for paragraphs
 $else$
   % using regular headings mode
-  $if(format.pdf-options.smallcaps-headings)$
+  $if(pdf-smallcaps-headings)$
     \setsecheadstyle{\large\scshape}
   $else$
     \setsecheadstyle{\large}
@@ -118,7 +118,7 @@ $endif$
   {\setbeforesubsecskip{0em} \oldsubsection{#1}} % make beforeskip 0
   {\setbeforesubsecskip{\medskipamount} \oldsubsection{#1}} % else add a skip
 }
-$if(format.pdf-options.margin-heading)$
+$if(margin-heading)$
   \setsubsecindent{0em} % In margin, subsection headings shouldn’t be indented
 $else$
   \setsubsecindent{3em} % In overlapped, yes.
@@ -127,7 +127,7 @@ $endif$
 
 %%% List styling. They behave differently based on margin or regular headings.
 \setlist[itemize]{nosep} % No gaps between list items.
-$if(format.pdf-options.margin-heading)$
+$if(margin-heading)$
   \setlist[itemize,1]{leftmargin=!,labelwidth=1em,labelindent=0em} % Pull list all the way to the left.
 $else$
   \setlist[itemize,1]{leftmargin=!,labelwidth=1em,labelindent=3em} % Push list in.
@@ -143,10 +143,10 @@ $endif$
 
 %%% Format footer
 \copypagestyle{chapter}{plain}
-$if(format.pdf-options.footer)$
+$if(footer)$
   \makeoddhead{chapter}{}{}{}
   \makeoddfoot{chapter}{}{}{%
-    $if(format.pdf-options.footer.display-author)$$for(format.author)$$format.author$$sep$, $endfor$,$endif$  $if(format.pdf-options.footer.last-modified)$\today,$endif$ \thepage}
+    $if(footer.display-author)$$for(format.author)$$format.author$$sep$, $endfor$,$endif$  $if(footer.last-modified)$\today,$endif$ \thepage}
 $else$
   \makeoddhead{chapter}{}{}{}
   \makeoddfoot{chapter}{}{}{\thepage}
@@ -171,7 +171,7 @@ $endif$
     \chapter*{$personal.name$}
   $endif$
 
-$if(format.pdf-options.margin-heading)$
+$if(margin-heading)$
   \begin{adjustwidth*}{9em}{0em}
   \mbox{}
 $endif$
@@ -206,7 +206,7 @@ $endif$
   $endif$
 $body$
 
-$if(format.pdf-options.margin-heading)$
+$if(margin-heading)$
   \end{adjustwidth*}
 $endif$
 \end{document}

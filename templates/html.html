@@ -1,48 +1,48 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="$format.html-options.lang$" xml:lang="$format.html-options.lang$">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="$lang$" xml:lang="$lang$">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  $for(format.author)$
-  <meta name="author" content="$format.author$" />
+  $for(author)$
+  <meta name="author" content="$author$" />
   $endfor$
-  $for(format.author-lastname-first)$
-  <meta name="DC.creator" content="$format.author-lastname-first$" />
+  $for(author-lastname-first)$
+  <meta name="DC.creator" content="$author-lastname-first$" />
   $endfor$
   <meta name="DC.contributor" content="Sá Pereira, Moacir P." />
-  <meta name="DC.title" content="$format.html-options.meta-title$" />
-  <meta property="og:title" content="$format.html-options.meta-title$" />
-  <meta property="og:site_name" content="$format.html-options.meta-title$" />
+  <meta name="DC.title" content="$meta-title$" />
+  <meta property="og:title" content="$meta-title$" />
+  <meta property="og:site_name" content="$meta-title$" />
   <meta name="DC.type" content="Text" />
   <meta name="DC.date" content="$date$" />
   <meta property="og:type" content="website" />
-  $if(format.html-options.date-created)$
-  <meta name="DC.created" content="$format.html-options.date-created$" />
+  $if(date-created)$
+  <meta name="DC.created" content="$date-created$" />
   $endif$
-  $if(format.html-options.canonical-url)$
-  <link rel="canonical" href="$format.html-options.canonical-url$" />
-  <meta property="og:url" content="$format.html-options.canonical-url$" />
+  $if(canonical-url)$
+  <link rel="canonical" href="$canonical-url$" />
+  <meta property="og:url" content="$canonical-url$" />
   $endif$
-  $if(format.html-options.description)$
-  <meta name="DC.description" content="$format.html-options.description$" />
-  <meta property="og:description" content="$format.html-options.description$" />
-  <meta name="twitter:description" content="$format.html-options.description$" />
+  $if(description)$
+  <meta name="DC.description" content="$description$" />
+  <meta property="og:description" content="$description$" />
+  <meta name="twitter:description" content="$description$" />
   $endif$
   $if(personal.twitter)$
   <meta name="twitter:creator" content="@$personal.twitter$" />
   $endif$
-  $if(format.html-options.og-image)$
-    <meta property="og:image" content="$format.html-options.og-image.url$" />
-    <meta property="og:image:type" content="$format.html-options.og-image.type$" />
-    <meta property="og:image:height" content="$format.html-options.og-image.height$" />
-    <meta property="og:image:width" content="$format.html-options.og-image.width$" />
-    <meta name="twitter:image" content="$format.html-options.og-image.url$" />
+  $if(og-image)$
+    <meta property="og:image" content="$og-image.url$" />
+    <meta property="og:image:type" content="$og-image.type$" />
+    <meta property="og:image:height" content="$og-image.height$" />
+    <meta property="og:image:width" content="$og-image.width$" />
+    <meta name="twitter:image" content="$og-image.url$" />
   $endif$
   <meta name="dcterms.date" content="$date$" />
   <meta name="twitter:card" content="summary" />
-  $if(format.html-options.keywords)$
-  <meta name="keywords" content="$for(format.html-options.keywords)$$format.html-options.keywords$$sep$, $endfor$" />
+  $if(keywords)$
+  <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
   $endif$
   <link rel="apple-touch-icon" sizes="180x180" href="./assets/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
@@ -51,74 +51,74 @@
   <link rel="mask-icon" href="./assets/images/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#da532c">
   <meta name="theme-color" content="#ffffff">
-  <title>$format.title$</title>
+  <title>$title$</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-  $if(format.html-options.fontawesome)$
+  $if(fontawesome)$
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
   $endif$
  <link rel="stylesheet" href="./assets/css/cv.css">
-  $if(format.html-options.fonts)$
-    $if(format.html-options.fonts.body)$
-    <link href="$format.html-options.fonts.body.url$" rel="stylesheet">
+  $if(html-fonts)$
+    $if(html-fonts.body)$
+    <link href="$html-fonts.body.url$" rel="stylesheet">
     <style>
-      body { font-family: "$format.html-options.fonts.body.name$", $format.html-options.fonts.body.type$; }
+      body { font-family: "$html-fonts.body.name$", $html-fonts.body.type$; }
     </style>
     $endif$
-    $if(format.html-options.fonts.headings)$
-    <link href="$format.html-options.fonts.headings.url$" rel="stylesheet">
+    $if(html-fonts.headings)$
+    <link href="$html-fonts.headings.url$" rel="stylesheet">
     <style>
-      h1,h2,h3,h4,h5,h6 { font-family: "$format.html-options.fonts.headings.name$", $format.html-options.fonts.headings.type$; }
+      h1,h2,h3,h4,h5,h6 { font-family: "$html-fonts.headings.name$", $html-fonts.headings.type$; }
     </style>
     $endif$
-    $if(format.html-options.fonts.navbar)$
-    <link href="$format.html-options.fonts.navbar.url$" rel="stylesheet">
+    $if(html-fonts.navbar)$
+    <link href="$html-fonts.navbar.url$" rel="stylesheet">
     <style>
-      #navbar { font-family: "$format.html-options.fonts.navbar.name$", $format.html-options.fonts.navbar.type$; }
+      #navbar { font-family: "$html-fonts.navbar.name$", $html-fonts.navbar.type$; }
     </style>
     $endif$
   $endif$
   <style>
-    $if(format.html-options.background-color)$
+    $if(background-color)$
     body {
-      background-color: $format.html-options.background-color$;
+      background-color: $background-color$;
     }
     $endif$
-    $if(format.html-options.fonts.colors.body)$
+    $if(html-fonts.colors.body)$
     body {
-      color: $format.html-options.fonts.colors.body$;
+      color: $html-fonts.colors.body$;
     }
     $endif$
-    $if(format.html-options.fonts.colors.headings)$
+    $if(html-fonts.colors.headings)$
     h1,h2,h3,h4,h5,h6 {
-      color: $format.html-options.fonts.colors.headings$;
+      color: $html-fonts.colors.headings$;
     }
     $endif$
-    $if(format.html-options.fonts.colors.links)$
+    $if(html-fonts.colors.links)$
     a {
-      color: $format.html-options.fonts.colors.links.regular$;
+      color: $html-fonts.colors.links.regular$;
     }
     a:hover {
-      color: $format.html-options.fonts.colors.links.hover$;
+      color: $html-fonts.colors.links.hover$;
     }
     $endif$
-    $if(format.html-options.fonts.colors.display)$
-    .navbar-$format.html-options.navbar.text$ .navbar-brand:hover {
-      color: $format.html-options.fonts.colors.display$;
+    $if(html-fonts.colors.display)$
+    .navbar-$navbar.text$ .navbar-brand:hover {
+      color: $html-fonts.colors.display$;
     }
-    .navbar-$format.html-options.navbar.text$ .navbar-brand {
-      color: $format.html-options.fonts.colors.display$;
+    .navbar-$navbar.text$ .navbar-brand {
+      color: $html-fonts.colors.display$;
     }
     $endif$
-    $if(format.html-options.fonts.colors.navbar-items)$
-    .navbar-$format.html-options.navbar.text$ .navbar-nav .nav-link {
-      color: $format.html-options.fonts.colors.navbar-items$;
+    $if(html-fonts.colors.navbar-items)$
+    .navbar-$navbar.text$ .navbar-nav .nav-link {
+      color: $html-fonts.colors.navbar-items$;
     }
-    .navbar-$format.html-options.navbar.text$ .navbar-nav .nav-link:hover {
-      color: $format.html-options.fonts.colors.navbar-items$;
+    .navbar-$navbar.text$ .navbar-nav .nav-link:hover {
+      color: $html-fonts.colors.navbar-items$;
     }
     $endif$
 
-    $if(format.markers)$
+    $if(markers)$
     #cvBody ul {
       list-style: none;
       padding: 0;
@@ -129,29 +129,29 @@
     }
 
     #cvBody li:before {
-      content: "$format.markers.level-1$";
+      content: "$markers.level-1$";
       display: inline-block;
       margin-left: -1.3em;
       width: 1.3em;
     }
 
     #cvBody ul>li>ul>li:before {
-      content: "$format.markers.level-2$";
+      content: "$markers.level-2$";
     }
 
     #cvBody ul>li>ul>li>ul>li:before {
-      content: "$format.markers.level-3$";
+      content: "$markers.level-3$";
     }
     $endif$
 
-    $if(format.html-options.smallcaps-headings)$
+    $if(smallcaps-headings)$
     h1, h2, h3, h4, h5, h6 {
       font-weight: normal;
       font-variant: small-caps;
     }
     $endif$
 
-    $if(format.html-options.bold-as-smallcaps)$
+    $if(bold-as-smallcaps)$
     strong {
       font-weight: normal;
       font-variant: small-caps;
@@ -185,9 +185,9 @@
   <![endif]-->
 </head>
 <body>
-    $if(format.html-options.navbar)$
-    <nav class="navbar $format.html-options.navbar.position$ navbar-$format.html-options.navbar.text$ bg-$format.html-options.navbar.background$" id="navbar" data-margin="$format.html-options.navbar.margin$" $if(format.html-options.navbar.background-color)$ style="background-color: $format.html-options.navbar.background-color$!important;" $endif$>
-      <span class="navbar-brand">$if(personal.display-name)$$personal.display-name$$else$$personal.name$$endif$ <small>(<a href="./$format.pdf-options.filename$.pdf">.pdf</a>)</small></span>
+    $if(navbar)$
+    <nav class="navbar $navbar.position$ navbar-$navbar.text$ bg-$navbar.background$" id="navbar" data-margin="$navbar.margin$" $if(navbar.background-color)$ style="background-color: $navbar.background-color$!important;" $endif$>
+      <span class="navbar-brand">$if(personal.display-name)$$personal.display-name$$else$$personal.name$$endif$ <small>(<a href="./$filename$.pdf">.pdf</a>)</small></span>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -200,52 +200,52 @@
     $else$
     <!-- no navbar. -->
     <div id="cvBody" class="container">
-    <h1 $if(format.html-options.fonts.colors.display)$ style="color: $format.html-options.fonts.colors.display$!important;"$endif$>$if(personal.display-name)$$personal.display-name$$else$$personal.name$$endif$</h1>
+    <h1 $if(html-fonts.colors.display)$ style="color: $html-fonts.colors.display$!important;"$endif$>$if(personal.display-name)$$personal.display-name$$else$$personal.name$$endif$</h1>
     $endif$
     <div id="widgets" class="float-right">
-    $if(format.html-options.last-modified)$
+    $if(last-modified)$
     <div id="last-modified" class="text-right"></div>
     $endif$
-    $if(format.html-options.headshot-url)$
-    <img src="$format.html-options.headshot-url$" alt="$if(personal.display-name)$$personal.display-name$$else$$personal.name$$endif$" class="img-fluid m-2 rounded">
+    $if(headshot-url)$
+    <img src="$headshot-url$" alt="$if(personal.display-name)$$personal.display-name$$else$$personal.name$$endif$" class="img-fluid m-2 rounded">
     $endif$
     </div> <!-- widgets -->
-    <h2 id="contact-information">$format.contact-information$</h2>
+    <h2 id="contact-information">$contact-information$</h2>
     <div class="row">
       <div class="col-md-6">
         $for(personal.address)$$personal.address$$sep$<br />$endfor$
       </div>
       <div class="col-md-6">
         $if(personal.telephone)$
-        $if(format.html-options.fontawesome)$
+        $if(fontawesome)$
         <i class="fas fa-phone">
         $else$
         <i>Tel:
         $endif$</i> $personal.telephone$ <br />
         $endif$
         $if(personal.email)$
-        $if(format.html-options.fontawesome)$
+        $if(fontawesome)$
         <i class="fas fa-envelope">
         $else$
         <i>Email:
         $endif$</i> $personal.email$ <br />
         $endif$
         $if(personal.url)$
-        $if(format.html-options.fontawesome)$
+        $if(fontawesome)$
         <i class="fas fa-globe">
         $else$
         <i>Web:
         $endif$</i> <a href="http://$personal.url$">$personal.url$</a> <br />
         $endif$
         $if(personal.twitter)$
-        $if(format.html-options.fontawesome)$
+        $if(fontawesome)$
         <i class="fab fa-twitter">
         $else$
         <i>Twitter:
         $endif$</i> <a href="http://twitter.com/$personal.twitter$">@$personal.twitter$</a> <br />
         $endif$
         $if(personal.github)$
-        $if(format.html-options.fontawesome)$
+        $if(fontawesome)$
         <i class="fab fa-github">
         $else$
         <i>GitHub:

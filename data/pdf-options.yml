@@ -1,0 +1,27 @@
+############################
+## pdf-options.yml holds the PDF options
+############################
+#
+#
+filename: H_W_Jones # no '.pdf' needed.
+footer: # comment out this entire section to disable the footer
+  last-modified: true
+  display-author: true
+pdf-fonts: # please see fonts/FONTS-README.md for more information
+  # These are .otf files that should be in fonts/
+  regular: EBGaramond12-Regular # note no ".otf"
+  italic: EBGaramond12-Italic
+  monospace: SourceCodePro-Regular # not currently used in template
+  # bold: # No good bold version of EBGaramond & the template doesn’t use it
+  # smallcaps: # smallcaps is built into EBGaramond
+headings: overlapped # section headings jut out to the left a bit. The other option, “margin,” moves the headings to the left on their own.
+pdf-smallcaps-headings: true # To make headings smallcaps.
+pdf-bold-as-smallcaps: true # To make Markdown text typed **like this** become small caps.
+# papersize: a4 # “letter” is the default.
+typesize: 11pt # Default text size.
+left-margin: .5in
+# right-margin: .5in # Only needed for unequal margins
+top-margin: .5in # Minimum of about .25in or 2cm
+# bottom-margin: 2in # Only for unequal margins. Useful if footer is too low.
+display-style: line # The style for the top of the page. This can be any memoir chapter style as demonstrated in 10.5 of the Memoir manual: http://texdoc.net/texmf-dist/doc/latex/memoir/memman.pdf. Reasonable values include: bianchi, bringhurst, chappell, crosshead, demo2, dowding, lyhne, and wilsondob. Some of these styles will clobber your font choices. “line” is a style I created based on the res.cls line option.
+

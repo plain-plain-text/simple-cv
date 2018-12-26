@@ -1,7 +1,12 @@
---- # data.yml holds personal information
-# Required values
+############################
+# personal.yml holds personal information
+############################
+#
+# Required value:
 name: Henry Walton Jones, Jr. # full name
-# Optional values. These can be commented out or deleted.
+#
+# Optional values: 
+# These can be commented out or deleted.
 display-name: Henry Walton “Indiana” Jones, Jr. # name to be displayed.
 date-of-birth: 1899-07-01 # in YYYY-MM-DD format
 citizenships:
@@ -16,6 +21,3 @@ email: hwjones@marshall-ct.edu
 url: archaeology.marshall-ct.edu/faculty/jones-henry/
 twitter: IndianaJones
 github: IndianaJones
-
-
-
