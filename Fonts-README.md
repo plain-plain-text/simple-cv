@@ -15,16 +15,16 @@ the pdf) cannot find your font. In that case, you have a few options:
    comma is what you want.
 2. Download or copy the font you want to use into this repository. For
    example:
-  1. Go to [dafont](http://www.dafont.com) and download the font [Lemon
-     Tuesday](https://www.dafont.com/lemon-tuesday.font?l[]=10&l[]=1), which
-     is 100% free.
-  2. Unzip the downloaded file and move the file `Lemon Tuesday.otf` into the
-     same directory as this file.
-  3. Edit line 10 of `data/pdf-options.yml` to read: `regular-font: Lemon
-     Tuesday.otf`.
-  4. Execute the shell script with `sh process.sh`
-  5. The new pdf of the CV should be nearly unreadable, but it proves that
-     changing the font worked.
+    1. Go to [dafont](http://www.dafont.com) and download the font [Lemon
+       Tuesday](https://www.dafont.com/lemon-tuesday.font?l[]=10&l[]=1), which
+       is 100% free.
+    2. Unzip the downloaded file and move the file `Lemon Tuesday.otf` into the
+       same directory as this file.
+    3. Edit line 10 of `data/pdf-options.yml` to read: `regular-font: Lemon
+       Tuesday.otf`.
+    4. Execute the shell script with `sh process.sh`
+    5. The new pdf of the CV should be nearly unreadable, but it proves that
+       changing the font worked.
 
 For the purposes of a CV, I recommend using Georg Duffner’s free [EB
 Garamond](https://bitbucket.org/georgd/eb-garamond/downloads/). If you
