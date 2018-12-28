@@ -1,5 +1,4 @@
 tmp
-out.pdf
-out.log
+*.log
 *.otf
 
