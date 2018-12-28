@@ -7,8 +7,7 @@ filename: H-W-Jones # no '.pdf' needed.
 footer: # comment out this entire section to disable the footer
   last-modified: true
   display-author: true
-pdf-fonts: # please see fonts/FONTS-README.md for more information
-  regular: Times New Roman
+regular-font: Times New Roman # please see Fonts-README.md for more information
 headings: overlapped # section headings jut out to the left a bit. The other option, “margin,” moves the headings to the left on their own.
 pdf-smallcaps-headings: true # To make headings use the smallcaps font.
 pdf-bold-as-smallcaps: true # To make Markdown text typed **like this** become small caps.

@@ -30,18 +30,17 @@
   %%% please see part IV of the Fontspec documentation, available here:
   %%%
   %%% http://mirrors.ctan.org/macros/latex/contrib/fontspec/fontspec.pdf
-  $if(pdf-fonts.regular)$
-  \IfFontExistsTF{$pdf-fonts.regular$}{%
-    \setmainfont{$pdf-fonts.regular$}[%
+  $if(regular-font)$
+  \IfFontExistsTF{$regular-font$}{%
+    \setmainfont{$regular-font$}[%
       $if(pdf-bold-as-smallcaps)$
-        BoldFont = $pdf-fonts.regular$ ,
+        BoldFont = $regular-font$ ,
         BoldFeatures = {Letters=SmallCaps} ,
       $endif$
       %%% These features may not work with all fonts.
       % Ligatures=Historic ,
       % Ligatures=Rare ,
-      % Mapping=tex-text ,
-      % ItalicFeatures={Style=Swash}
+      % ItalicFeatures={Style=Swash},
       Mapping=tex-text
     ]
   }{}
