@@ -22,28 +22,15 @@ echo date: `date +%F` >> tmp/metadata.yml
 # This is a future feature that takes the `mode` key and sets
 # the CV to markdown or yaml depending.
 
-# 5. Check to make sure fonts exist
-for fonttype in regular italic smallcaps bold
-do
-  font=`grep "^\s*$fonttype:" tmp/metadata.yml | awk -F ': ' '{print $2;}'`
-  if [[ ! -z "$font" ]]; then # $font is not empty.
-    if fc-list : family | awk -F ',' '{print $1;}' | grep -q "^$font$" ; then
-      echo "$fonttype-found: true" >> tmp/metadata.yml
-    else
-      echo "Could not find font $font for $fonttype. Defaulting to Computer Modern."
-    fi
-  fi
-done
-
-# 6. Set headings style
+# 5. Set headings style
 if grep -q "^\s*headings: margin" tmp/metadata.yml; then
   echo "margin-headings: true" >> tmp/metadata.yml
 fi
 
-# 7. Close metadata block.
+# 6. Close metadata block.
 echo --- >> tmp/metadata.yml
 
-# 8. Make sections list
+# 7. Make sections list
 if [[ -f sections.txt ]]; then
   sections=`grep "^[^#]" sections.txt | sed -n 's#^\(.*\)$#sections/\1.md#p' | tr '\n' ' '`
 else
@@ -51,14 +38,14 @@ else
   exit 1
 fi
 
-# 9. Grab filename.
+# 8. Grab filename.
 if grep -q "^\s*filename:" tmp/metadata.yml; then
   pdf_filename=`grep "^\s*filename:" tmp/metadata.yml | awk -F ' ' '{print $2;}'`
 else
   pdf_filename=CV
 fi
 
-# 10. Invoke pandoc
+# 9. Invoke pandoc
 echo "Generating .tex, .pdf, and .html files."
 pandoc -sr markdown+yaml_metadata_block+raw_tex \
   --template=templates/tex.tex \
