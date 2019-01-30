@@ -1,0 +1,222 @@
+
+%%% CV template by Moacir P. de Sá Pereira as part of the Simple-CV project:
+%%%
+%%% http://plain-plain-text.org/projects/simple-cv/
+
+\documentclass[%
+  $if(papersize)$
+    $papersize$paper,
+  $endif$
+  $typesize$,
+  oneside
+  ]{memoir}
+
+\usepackage{enumitem}
+%%% Font declarations.
+%%% please see Fonts-README.md in this repo for more information.
+\usepackage{fontspec} % Choose fonts intelligently
+  %%% Fontspec looks for the font set in data/pdf-options.yml.
+  %%% If that font does not exist, it will complain and default to Latin Modern.
+  %%%
+  %%% Fonts are fiddly, so the pdf-smallcaps-headings and pdf-bold-as-smallcaps
+  %%% settings in data/pdf-options.yml may not work as expected.
+  %%%
+  %%% Included below are some advanced OpenType features that work well with
+  %%% EB Garamond. You can download EB Garamond here:
+  %%%
+  %%% http://www.georgduffner.at/ebgaramond/download.html
+  %%%
+  %%% For more information on the OpenType features available for declaration,
+  %%% please see part IV of the Fontspec documentation, available here:
+  %%%
+  %%% http://mirrors.ctan.org/macros/latex/contrib/fontspec/fontspec.pdf
+  $if(regular-font)$
+  %%% Removed font checking because it would not work with Windows.
+  \setmainfont{$regular-font$}[%
+    $if(pdf-bold-as-smallcaps)$
+      BoldFont = $regular-font$ ,
+      BoldFeatures = {Letters=SmallCaps} ,
+    $endif$
+    %%% These features may not work with all fonts.
+    % Ligatures=Historic ,
+    % Ligatures=Rare ,
+    % ItalicFeatures={Style=Swash},
+    Mapping=tex-text
+  ]
+  $endif$
+
+%%% PDF generation.
+\usepackage[ breaklinks=true, hidelinks ]{hyperref}
+\hypersetup{%
+            pdftitle={$title$},
+            pdfauthor={$for(author)$$author$$sep$, $endfor$},
+            pdfborder={0 0 0},
+            breaklinks=true}
+
+%%% Layout of the page
+$if(left-margin)$
+  \setlrmarginsandblock{$left-margin$}$if(right-margin)${$right-margin$}$else${*}$endif${*}
+$endif$
+$if(top-margin)$
+  \setulmarginsandblock{$top-margin$}$if(bottom-margin)${$bottom-margin$}$else${*}$endif${*}
+$endif$
+  \setheadfoot{0pt}{\baselineskip} %%% footer is a baseline tall.
+  \setheaderspaces{*}{0pt}{*}
+
+%%% Define the (default) chapter style and choose the chapter
+  \makechapterstyle{line}{%
+    \setlength{\beforechapskip}{0pt}
+    \setlength{\afterchapskip}{0pt}
+    \renewcommand*{\chaptitlefont}{\Large\scshape}
+    \renewcommand*{\printchaptertitle}[1]{%
+    \chaptitlefont ##1 \smallskip\hrule\vspace{\baselineskip}
+    }
+  }
+\chapterstyle{$display-style$}
+
+%%% Section styling. We assume two, margin and overlapping.
+\setsecnumdepth{subsubsection} %%% Keep the section counters running (see below).
+%%% This gets complicated, because we need the numbers to roll over so that the
+%%% subsections have an appropriate beforeskip.
+$if(margin-heading)$
+  %%% margin-heading is set in the shell script.
+  \newcommand{\marginbox}[1]{%%% Build the small margin header box.
+    %%% Fonts are fiddly, so the pdf-smallcaps-headings and pdf-bold-as-smallcaps
+    %%% settings in data/pdf-options.yml may not work as expected.
+    $if(pdf-smallcaps-headings)$
+    \parbox[t][0pt]{9em}{\parbox[t][0pt]{7em}{\scshape\normalsize \raggedright{} #1}}
+    $else$
+    \parbox[t][0pt]{9em}{\parbox[t][0pt]{7em}{\raggedright{} #1}}
+    $endif$
+  }
+  \newcommand{\marginhead}[1]{%%% Pull the margin header into the margin.
+    {\hspace{-9em}{\marginbox{#1}}}
+  }
+  \setsecindent{0em} %%% no indent in the margin
+  \setaftersecskip{0em} %%% no space after the heading
+  \setsecheadstyle{\marginhead}
+  \setlength{\parindent}{0em} %%% no indent for paragraphs
+$else$
+  %%% using regular headings mode
+  $if(pdf-smallcaps-headings)$
+    \setsecheadstyle{\large\scshape}
+  $else$
+    \setsecheadstyle{\large}
+  $endif$
+    \setaftersecskip{\baselineskip} %%% add a blank line after the heading
+    \setlength{\parindent}{3em} %%% indent paragraphs
+$endif$
+%%% Blank out all printed counters and their teeny spaces. Vital both for
+%%% sections and subsections.
+\makeatletter %%% enter into macro mode
+\renewcommand{\@seccntformat}[1]{}
+\makeatother %%% exit macro mode.
+
+%%% Subsection styling. 
+%%% Should someone (me) include subsections in their CV, things get complex.
+
+\setsubsecheadstyle{\normalsize} %%% Subheads shouldn’t be big.
+\setaftersubsecskip{0em} %%% Subheads should have no space after them
+%%% New problem: \subsection should have no top margin, so it’s in line w/ the 
+%%% section header. But if that’s the case, when a subsection appears later in
+%%% the section, it looks just like a regular line. We need subsection to have
+%%% conditional beforeskips, based on whether it’s the first subsection or not.
+\let\oldsubsection\subsection %%% to avoid recursion
+\renewcommand{\subsection}[1]{%
+  \ifnumequal{\value{subsection}}{0} %%% If this is the first subsection
+  {\setbeforesubsecskip{0em} \oldsubsection{#1}} %%% make beforeskip 0
+  {\setbeforesubsecskip{\medskipamount} \oldsubsection{#1}} %%% else add a skip
+}
+$if(margin-heading)$
+  \setsubsecindent{0em} %%% In margin, subsection headings shouldn’t be indented
+$else$
+  \setsubsecindent{3em} %%% In overlapped, yes.
+$endif$
+
+
+%%% List styling. 
+%%% They behave differently based on margin or regular headings.
+\setlist[itemize]{nosep} %%% No gaps between list items.
+$if(margin-heading)$
+  \setlist[itemize,1]{leftmargin=!,labelwidth=1em,labelindent=0em} %%% Pull list all the way to the left.
+$else$
+  \setlist[itemize,1]{leftmargin=!,labelwidth=1em,labelindent=3em} %%% Push list in.
+$endif$
+%%% And now the markers.
+$if(markers)$
+\renewcommand{\labelitemi}{$markers.level-1$}
+\renewcommand{\labelitemii}{$markers.level-2$}
+\renewcommand{\labelitemiii}{$markers.level-3$}
+$endif$
+
+\checkandfixthelayout
+
+%%% Format footer
+\copypagestyle{chapter}{plain}
+$if(footer)$
+  \makeoddhead{chapter}{}{}{}
+  \makeoddfoot{chapter}{}{}{%
+    $if(footer.display-author)$$for(author)$$author$$sep$, $endfor$,$endif$  $if(footer.last-modified)$\today,$endif$ \thepage}
+$else$
+  \makeoddhead{chapter}{}{}{}
+  \makeoddfoot{chapter}{}{}{\thepage}
+$endif$
+\pagestyle{chapter}
+
+%%% Redefine \section to tighten vertical space
+\let\oldsection\section
+\renewcommand{\section}[1]{%
+  \oldsection{#1}
+  \leavevmode
+  \par
+  \vspace{\dimexpr-\baselineskip-\parskip}
+}
+
+
+\begin{document}
+
+  $if(display-name)$
+    \chapter*{$display-name$}
+  $else$
+    \chapter*{$name$}
+  $endif$
+
+$if(margin-heading)$
+  \begin{adjustwidth*}{9em}{0em}
+  \mbox{}
+$endif$
+
+  \hypertarget{contact-information}{%
+  \section{$contact-information$}\label{contact-information}}
+    \begin{minipage}[t]{0.3\textwidth}
+      $for(address)$$address$$sep$\\ $endfor$
+    \end{minipage}
+    \begin{minipage}[t]{0.7\textwidth}
+        $if(telephone)$
+        {\textit{Tel:}} $telephone$ \\
+        $endif$
+        $if(email)$
+        {\textit{E-mail:}} $email$ \\
+        $endif$
+        $if(url)$
+        {\textit{Web:}} http://$url$ \\
+        $endif$
+        $if(twitter)$
+        {\textit{Twitter:}} \href{http://twitter.com/$twitter$}{@$twitter$} \\
+        $endif$
+        $if(github)$
+        {\textit{GitHub:}} \href{http://github.com/$github$}{@$github$}
+        $endif$
+    \end{minipage}
+  $if(citizenships)$
+    % \vspace{\baselineskip}
+    \medskip%amount
+    \par Citizenship:
+    $for(citizenships)$$citizenships$$sep$ and $endfor$
+  $endif$
+$body$
+
+$if(margin-heading)$
+  \end{adjustwidth*}
+$endif$
+\end{document}
