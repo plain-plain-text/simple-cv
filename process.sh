@@ -24,7 +24,7 @@ echo date: `date +%F` >> tmp/metadata.yml
 
 # 5. Set headings style
 if grep -q "^\s*headings: margin" tmp/metadata.yml; then
-  echo "margin-headings: true" >> tmp/metadata.yml
+  echo "margin-heading: true" >> tmp/metadata.yml
 fi
 
 # 6. Close metadata block.

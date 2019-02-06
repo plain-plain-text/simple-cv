@@ -45,7 +45,7 @@ the CV to markdown or yaml depending.
 
 # 5. Set headings style
 if(cat .\tmp\metadata.yml | Select-String -Pattern "^\s*headings: margin"){
-    Add-Content .\tmp\metadata.yml "margin-headings: true"
+    Add-Content .\tmp\metadata.yml "margin-heading: true"
 }
 
 # 6. Close metadata block.
