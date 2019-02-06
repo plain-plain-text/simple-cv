@@ -58,7 +58,7 @@ Demos:
    `https://github.com/GITHUBUSERNAME/simple-cv.git`.
 
 1. Once the repository is forked to your GitHub account and cloned to your
-   computer, you can start editing the YAML files in `data/` and the Markdown
+   computer, you can start editing the YAML files in `metadata/` and the Markdown
    files in `sections/` as indicated below.
 
 ## Editing
@@ -66,7 +66,7 @@ Demos:
 There are three things to edit in this repository.
 
 1. The data, which is simple information about yourself and about the CV
-   you want, which is distributed among the `YAML` files saved in `data/`.
+   you want, which is distributed among the `YAML` files saved in `metadata/`.
 
 1. Each section of your CV (education, publications, etc.) is its own Markdown
    file in `sections/`. **Note:** The processing script does not know about
@@ -77,7 +77,7 @@ There are three things to edit in this repository.
 1. The look and feel of both the `html` and `pdf` versions of the document are
    managed by the two files in the `templates/` directory. The [Pandoc
    templating language](https://pandoc.org/MANUAL.html#templates) is pretty
-   straightforward, and the templates reveal how the data in `data/` is
+   straightforward, and the templates reveal how the data in `metadata/` is
    incorporated into the templates. That said, just because the templating
    language is easy doesn’t mean the templates are. The `html` file depends on
    the [Bootstrap](http://getbootstrap.com) framework, and the `pdf` file
@@ -114,7 +114,7 @@ GitHub.
   click on the `pdf` to open websites.
 * Dublin Core, Open Graph, and Twitter card metadata in the web version.
 
-## `data/` `YAML` files.
+## `metadata/` `YAML` files.
 
 ### `format.yml`
 
@@ -266,7 +266,7 @@ the document
 
 The sections are all separate Markdown files in the `sections/` directory.
 They can be called whatever, but the file names must correspond with the
-`cv-sections` collection in `data/format.yml`.
+`cv-sections` collection in `metadata/format.yml`.
 
 Each section should begin with a `## Header`. Failure to do so will cause
 problems in both the `html` and `pdf` versions of the CV. The text of the

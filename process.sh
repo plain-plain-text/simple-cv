@@ -12,8 +12,8 @@ else
   mkdir tmp
 fi
 
-# 2. collapse data/yml files into one and add a --- for the first line.
-cat data/*.yml | sed $'1s/^/---\\\n/' > tmp/metadata.yml
+# 2. collapse metadata/yml files into one and add a --- for the first line.
+cat metadata/*.yml | sed $'1s/^/---\\\n/' > tmp/metadata.yml
 
 # 3. Set date and close YAML block.
 echo date: `date +%F` >> tmp/metadata.yml

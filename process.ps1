@@ -28,9 +28,9 @@ if(!(Test-Path -Path .\tmp)){
     Get-ChildItem -Path .\tmp -Include *.* -File -Recurse | foreach { $_.Delete()}
 }
 
-# 2. collapse data/yml files into one and add a --- for the first line.
+# 2. collapse metadata/yml files into one and add a --- for the first line.
 "---" | Out-File .\tmp\metadata.yml -Encoding utf8
-$metadata = Get-Content .\data\*.yml -Encoding utf8
+$metadata = Get-Content .\metadata\*.yml -Encoding utf8
 Add-Content .\tmp\metadata.yml $metadata
 
 # 3. Set date.

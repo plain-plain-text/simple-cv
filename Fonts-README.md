@@ -2,7 +2,7 @@
 
 Handling fonts in a LaTeX document like what ends up being the pdf version of
 your CV can be complicated. Hopefully, you will just set the name of your font
-in the right place in `data/pdf-options.yml`, and everything will work
+in the right place in `metadata/pdf-options.yml`, and everything will work
 correctly. However, it may be the case that XeLaTeX (what’s actually making
 the pdf) cannot find your font. In that case, you have a few options:
 
@@ -20,7 +20,7 @@ the pdf) cannot find your font. In that case, you have a few options:
        is 100% free.
     2. Unzip the downloaded file and move the file `Lemon Tuesday.otf` into the
        same directory as this file.
-    3. Edit line 10 of `data/pdf-options.yml` to read: `regular-font: Lemon
+    3. Edit line 10 of `metadata/pdf-options.yml` to read: `regular-font: Lemon
        Tuesday.otf`.
     4. Execute the shell script with `sh process.sh`
     5. The new pdf of the CV should be nearly unreadable, but it proves that
@@ -29,7 +29,7 @@ the pdf) cannot find your font. In that case, you have a few options:
 For the purposes of a CV, I recommend using Georg Duffner’s free [EB
 Garamond](https://bitbucket.org/georgd/eb-garamond/downloads/). If you
 download and install EB Garamond, you can set line 10 of
-`data/pdf-options.yml` to read: `regular-font: EB Garamond`.
+`metadata/pdf-options.yml` to read: `regular-font: EB Garamond`.
 
 If you need help installing fonts, Fontspring has a [tutorial for installing
 fonts on Windows or Mac](https://www.fontspring.com/support/installing).
