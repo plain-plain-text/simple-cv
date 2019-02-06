@@ -116,6 +116,8 @@ GitHub.
 
 ## `metadata/` `YAML` files.
 
+**This section is liable to be out of date!**
+
 ### `format.yml`
 
 This document holds all the configuration options shared in common between
